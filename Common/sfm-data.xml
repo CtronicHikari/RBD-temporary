@@ -1,0 +1,5249 @@
+<?xml version="1.0" encoding="utf-8"?>
+<cereal>
+	<sfm_data_version>0.3</sfm_data_version>
+	<root_path>D:/project/kamakura/images</root_path>
+	<views size="dynamic">
+		<value0>
+			<key>0</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483649</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48260.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>0</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>0</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value0>
+		<value1>
+			<key>1</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483650</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48261.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>1</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>1</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value1>
+		<value2>
+			<key>2</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483651</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482610.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>2</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>2</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value2>
+		<value3>
+			<key>3</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483652</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826100.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>3</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>3</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value3>
+		<value4>
+			<key>4</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483653</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826101.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>4</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>4</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value4>
+		<value5>
+			<key>5</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483654</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826102.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>5</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>5</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value5>
+		<value6>
+			<key>6</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483655</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826103.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>6</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>6</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value6>
+		<value7>
+			<key>7</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483656</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826104.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>7</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>7</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value7>
+		<value8>
+			<key>8</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483657</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826105.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>8</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>8</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value8>
+		<value9>
+			<key>9</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483658</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826106.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>9</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>9</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value9>
+		<value10>
+			<key>10</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483659</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826107.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>10</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>10</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value10>
+		<value11>
+			<key>11</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483660</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826108.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>11</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>11</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value11>
+		<value12>
+			<key>12</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483661</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826109.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>12</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>12</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value12>
+		<value13>
+			<key>13</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483662</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482611.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>13</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>13</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value13>
+		<value14>
+			<key>14</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483663</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826110.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>14</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>14</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value14>
+		<value15>
+			<key>15</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483664</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826111.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>15</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>15</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value15>
+		<value16>
+			<key>16</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483665</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826112.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>16</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>16</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value16>
+		<value17>
+			<key>17</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483666</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826113.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>17</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>17</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value17>
+		<value18>
+			<key>18</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483667</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826114.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>18</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>18</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value18>
+		<value19>
+			<key>19</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483668</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826115.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>19</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>19</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value19>
+		<value20>
+			<key>20</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483669</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826116.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>20</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>20</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value20>
+		<value21>
+			<key>21</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483670</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826117.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>21</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>21</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value21>
+		<value22>
+			<key>22</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483671</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826118.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>22</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>22</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value22>
+		<value23>
+			<key>23</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483672</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826119.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>23</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>23</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value23>
+		<value24>
+			<key>24</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483673</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482612.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>24</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>24</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value24>
+		<value25>
+			<key>25</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483674</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826120.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>25</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>25</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value25>
+		<value26>
+			<key>26</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483675</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826121.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>26</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>26</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value26>
+		<value27>
+			<key>27</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483676</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_4826122.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>27</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>27</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value27>
+		<value28>
+			<key>28</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483677</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482613.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>28</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>28</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value28>
+		<value29>
+			<key>29</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483678</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482614.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>29</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>29</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value29>
+		<value30>
+			<key>30</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483679</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482615.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>30</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>30</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value30>
+		<value31>
+			<key>31</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483680</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482616.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>31</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>31</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value31>
+		<value32>
+			<key>32</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483681</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482617.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>32</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>32</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value32>
+		<value33>
+			<key>33</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483682</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482618.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>33</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>33</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value33>
+		<value34>
+			<key>34</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483683</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482619.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>34</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>34</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value34>
+		<value35>
+			<key>35</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483684</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48262.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>35</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>35</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value35>
+		<value36>
+			<key>36</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483685</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482620.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>36</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>36</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value36>
+		<value37>
+			<key>37</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483686</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482621.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>37</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>37</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value37>
+		<value38>
+			<key>38</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483687</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482622.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>38</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>38</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value38>
+		<value39>
+			<key>39</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483688</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482623.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>39</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>39</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value39>
+		<value40>
+			<key>40</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483689</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482624.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>40</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>40</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value40>
+		<value41>
+			<key>41</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483690</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482625.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>41</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>41</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value41>
+		<value42>
+			<key>42</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483691</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482626.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>42</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>42</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value42>
+		<value43>
+			<key>43</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483692</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482627.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>43</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>43</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value43>
+		<value44>
+			<key>44</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483693</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482628.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>44</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>44</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value44>
+		<value45>
+			<key>45</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483694</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482629.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>45</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>45</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value45>
+		<value46>
+			<key>46</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483695</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48263.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>46</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>46</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value46>
+		<value47>
+			<key>47</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483696</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482630.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>47</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>47</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value47>
+		<value48>
+			<key>48</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483697</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482631.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>48</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>48</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value48>
+		<value49>
+			<key>49</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483698</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482632.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>49</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>49</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value49>
+		<value50>
+			<key>50</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483699</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482633.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>50</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>50</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value50>
+		<value51>
+			<key>51</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483700</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482634.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>51</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>51</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value51>
+		<value52>
+			<key>52</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483701</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482635.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>52</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>52</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value52>
+		<value53>
+			<key>53</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483702</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482636.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>53</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>53</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value53>
+		<value54>
+			<key>54</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483703</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482637.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>54</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>54</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value54>
+		<value55>
+			<key>55</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483704</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482638.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>55</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>55</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value55>
+		<value56>
+			<key>56</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483705</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482639.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>56</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>56</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value56>
+		<value57>
+			<key>57</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483706</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48264.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>57</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>57</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value57>
+		<value58>
+			<key>58</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483707</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482640.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>58</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>58</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value58>
+		<value59>
+			<key>59</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483708</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482641.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>59</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>59</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value59>
+		<value60>
+			<key>60</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483709</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482642.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>60</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>60</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value60>
+		<value61>
+			<key>61</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483710</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482643.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>61</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>61</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value61>
+		<value62>
+			<key>62</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483711</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482644.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>62</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>62</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value62>
+		<value63>
+			<key>63</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483712</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482645.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>63</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>63</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value63>
+		<value64>
+			<key>64</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483713</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482646.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>64</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>64</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value64>
+		<value65>
+			<key>65</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483714</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482647.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>65</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>65</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value65>
+		<value66>
+			<key>66</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483715</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482648.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>66</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>66</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value66>
+		<value67>
+			<key>67</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483716</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482649.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>67</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>67</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value67>
+		<value68>
+			<key>68</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483717</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48265.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>68</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>68</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value68>
+		<value69>
+			<key>69</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483718</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482650.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>69</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>69</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value69>
+		<value70>
+			<key>70</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483719</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482651.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>70</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>70</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value70>
+		<value71>
+			<key>71</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483720</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482652.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>71</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>71</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value71>
+		<value72>
+			<key>72</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483721</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482653.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>72</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>72</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value72>
+		<value73>
+			<key>73</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483722</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482654.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>73</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>73</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value73>
+		<value74>
+			<key>74</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483723</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482655.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>74</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>74</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value74>
+		<value75>
+			<key>75</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483724</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482656.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>75</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>75</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value75>
+		<value76>
+			<key>76</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483725</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482657.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>76</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>76</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value76>
+		<value77>
+			<key>77</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483726</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482658.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>77</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>77</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value77>
+		<value78>
+			<key>78</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483727</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482659.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>78</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>78</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value78>
+		<value79>
+			<key>79</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483728</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48266.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>79</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>79</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value79>
+		<value80>
+			<key>80</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483729</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482660.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>80</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>80</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value80>
+		<value81>
+			<key>81</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483730</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482661.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>81</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>81</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value81>
+		<value82>
+			<key>82</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483731</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482662.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>82</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>82</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value82>
+		<value83>
+			<key>83</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483732</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482663.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>83</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>83</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value83>
+		<value84>
+			<key>84</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483733</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482664.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>84</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>84</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value84>
+		<value85>
+			<key>85</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483734</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482665.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>85</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>85</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value85>
+		<value86>
+			<key>86</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483735</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482666.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>86</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>86</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value86>
+		<value87>
+			<key>87</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483736</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482667.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>87</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>87</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value87>
+		<value88>
+			<key>88</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483737</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482668.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>88</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>88</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value88>
+		<value89>
+			<key>89</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483738</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482669.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>89</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>89</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value89>
+		<value90>
+			<key>90</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483739</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48267.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>90</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>90</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value90>
+		<value91>
+			<key>91</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483740</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482670.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>91</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>91</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value91>
+		<value92>
+			<key>92</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483741</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482671.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>92</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>92</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value92>
+		<value93>
+			<key>93</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483742</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482672.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>93</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>93</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value93>
+		<value94>
+			<key>94</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483743</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482673.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>94</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>94</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value94>
+		<value95>
+			<key>95</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483744</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482674.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>95</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>95</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value95>
+		<value96>
+			<key>96</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483745</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482675.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>96</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>96</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value96>
+		<value97>
+			<key>97</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483746</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482676.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>97</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>97</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value97>
+		<value98>
+			<key>98</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483747</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482677.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>98</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>98</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value98>
+		<value99>
+			<key>99</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483748</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482678.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>99</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>99</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value99>
+		<value100>
+			<key>100</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483749</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482679.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>100</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>100</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value100>
+		<value101>
+			<key>101</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483750</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48268.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>101</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>101</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value101>
+		<value102>
+			<key>102</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483751</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482680.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>102</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>102</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value102>
+		<value103>
+			<key>103</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483752</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482681.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>103</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>103</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value103>
+		<value104>
+			<key>104</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483753</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482682.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>104</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>104</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value104>
+		<value105>
+			<key>105</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483754</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482683.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>105</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>105</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value105>
+		<value106>
+			<key>106</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483755</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482684.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>106</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>106</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value106>
+		<value107>
+			<key>107</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483756</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482685.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>107</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>107</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value107>
+		<value108>
+			<key>108</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483757</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482686.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>108</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>108</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value108>
+		<value109>
+			<key>109</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483758</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482687.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>109</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>109</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value109>
+		<value110>
+			<key>110</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483759</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482688.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>110</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>110</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value110>
+		<value111>
+			<key>111</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483760</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482689.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>111</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>111</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value111>
+		<value112>
+			<key>112</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483761</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_48269.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>112</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>112</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value112>
+		<value113>
+			<key>113</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483762</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482690.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>113</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>113</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value113>
+		<value114>
+			<key>114</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483763</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482691.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>114</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>114</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value114>
+		<value115>
+			<key>115</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483764</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482692.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>115</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>115</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value115>
+		<value116>
+			<key>116</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483765</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482693.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>116</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>116</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value116>
+		<value117>
+			<key>117</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483766</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482694.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>117</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>117</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value117>
+		<value118>
+			<key>118</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483767</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482695.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>118</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>118</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value118>
+		<value119>
+			<key>119</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483768</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482696.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>119</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>119</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value119>
+		<value120>
+			<key>120</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483769</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482697.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>120</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>120</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value120>
+		<value121>
+			<key>121</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483770</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482698.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>121</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>121</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value121>
+		<value122>
+			<key>122</key>
+			<value>
+				<polymorphic_id>1073741824</polymorphic_id>
+				<ptr_wrapper>
+					<id>2147483771</id>
+					<data>
+						<local_path></local_path>
+						<filename>MVI_482699.png</filename>
+						<width>960</width>
+						<height>540</height>
+						<id_view>122</id_view>
+						<id_intrinsic>0</id_intrinsic>
+						<id_pose>122</id_pose>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value122>
+	</views>
+	<intrinsics size="dynamic">
+		<value0>
+			<key>0</key>
+			<value>
+				<polymorphic_id>2147483649</polymorphic_id>
+				<polymorphic_name>pinhole_radial_k3</polymorphic_name>
+				<ptr_wrapper>
+					<id>2147483772</id>
+					<data>
+						<width>960</width>
+						<height>540</height>
+						<focal_length>918.17529912649911</focal_length>
+						<principal_point size="dynamic">
+							<value0>476.56694475875787</value0>
+							<value1>276.82179926371202</value1>
+						</principal_point>
+						<disto_k3 size="dynamic">
+							<value0>-0.015182835705972789</value0>
+							<value1>0.025941697678933943</value1>
+							<value2>0.01752363329101923</value2>
+						</disto_k3>
+					</data>
+				</ptr_wrapper>
+			</value>
+		</value0>
+	</intrinsics>
+	<extrinsics size="dynamic">
+		<value0>
+			<key>0</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.7492783137371547</value0>
+						<value1>-0.086371405007781357</value1>
+						<value2>-0.65659880365424661</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.094250663143731803</value0>
+						<value1>0.99527421322456555</value1>
+						<value2>-0.023367776684764439</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.65551416541534235</value0>
+						<value1>-0.044375904353646987</value1>
+						<value2>0.75387794638961503</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-6.3056559193218522</value0>
+					<value1>-0.016781165096215245</value1>
+					<value2>0.29761173199374191</value2>
+				</center>
+			</value>
+		</value0>
+		<value1>
+			<key>1</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.72308584365419393</value0>
+						<value1>-0.096555964695188401</value1>
+						<value2>-0.68397646771558163</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.10497028164936234</value0>
+						<value1>0.99404201180817675</value1>
+						<value2>-0.029355046087617707</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.68273574879110888</value0>
+						<value1>-0.05057098419186782</value1>
+						<value2>0.72891321354500749</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-6.3082716663724945</value0>
+					<value1>-0.015080209131575095</value1>
+					<value2>0.29528416051599216</value2>
+				</center>
+			</value>
+		</value1>
+		<value2>
+			<key>2</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.95533202133608686</value0>
+						<value1>-0.067597749614725741</value1>
+						<value2>-0.28769997090186061</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.071488667857365615</value0>
+						<value1>0.99743681822240859</value1>
+						<value2>0.0030272136259313059</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.28675791075031543</value0>
+						<value1>-0.023459281774653958</value1>
+						<value2>0.95771580477756113</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.0082051038695026</value0>
+					<value1>-0.064208633045780505</value1>
+					<value2>-0.34753546656808776</value2>
+				</center>
+			</value>
+		</value2>
+		<value3>
+			<key>3</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.47302560598139298</value0>
+						<value1>-0.13336102121909144</value1>
+						<value2>-0.87089701693445765</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.1494629188999147</value0>
+						<value1>0.9862968894563533</value1>
+						<value2>-0.069851855541848668</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.86827853362838203</value0>
+						<value1>-0.09712509391564475</value1>
+						<value2>0.4864762113115334</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.6292551356545664</value0>
+					<value1>1.2022948214120552</value1>
+					<value2>12.031486605318257</value2>
+				</center>
+			</value>
+		</value3>
+		<value4>
+			<key>4</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.58017997021462753</value0>
+						<value1>-0.15175367043622473</value1>
+						<value2>-0.80022623405564974</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.15051063227691747</value0>
+						<value1>0.9855444017872379</value1>
+						<value2>-0.077773913862154043</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.80046096202960226</value0>
+						<value1>-0.075319689424272862</value1>
+						<value2>0.59463366256181172</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.6384992241867433</value0>
+					<value1>1.1907504391498303</value1>
+					<value2>12.066790791693203</value2>
+				</center>
+			</value>
+		</value4>
+		<value5>
+			<key>5</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.65034801072882942</value0>
+						<value1>-0.12081038721450693</value1>
+						<value2>-0.74996820951433363</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.17720665344150388</value0>
+						<value1>0.98416162451151568</value1>
+						<value2>-0.0048681428612334862</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.73867805363170036</value0>
+						<value1>-0.12973336956980472</value1>
+						<value2>0.66145595915597233</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.6477782516282167</value0>
+					<value1>1.1806456707571558</value1>
+					<value2>12.053530448274721</value2>
+				</center>
+			</value>
+		</value5>
+		<value6>
+			<key>6</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.68687661524179056</value0>
+						<value1>-0.082776177295381226</value1>
+						<value2>-0.72204474924089357</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.11728237959461202</value0>
+						<value1>0.99309599014604288</value1>
+						<value2>-0.0022798667671799153</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.71724846383286633</value0>
+						<value1>-0.083117139196524137</value1>
+						<value2>0.69184259936865633</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.6146300546952599</value0>
+					<value1>1.1958975017625315</value1>
+					<value2>12.099398703397981</value2>
+				</center>
+			</value>
+		</value6>
+		<value7>
+			<key>7</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.73105559456283065</value0>
+						<value1>-0.064371269321158858</value1>
+						<value2>-0.67927465530841724</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.083940503571213132</value0>
+						<value1>0.99646237363858237</value1>
+						<value2>-0.0040902057128456987</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.67713492711467582</value0>
+						<value1>-0.054028488860462062</value1>
+						<value2>0.73387274978217953</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.2995153942188873</value0>
+					<value1>1.2193116718424657</value1>
+					<value2>12.20636322511564</value2>
+				</center>
+			</value>
+		</value7>
+		<value8>
+			<key>8</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.61944696044506942</value0>
+						<value1>-0.14373040909786874</value1>
+						<value2>-0.77176876893012725</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.13233474089489358</value0>
+						<value1>0.98814620535724584</value1>
+						<value2>-0.077811266474444266</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.77380422559433348</value0>
+						<value1>-0.053931867561163513</value1>
+						<value2>0.6311246898305588</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.86332093276940114</value0>
+					<value1>1.2319351403243428</value1>
+					<value2>12.270820632835244</value2>
+				</center>
+			</value>
+		</value8>
+		<value9>
+			<key>9</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.24156038790639522</value0>
+						<value1>-0.12948735721073101</value1>
+						<value2>-0.96170764960932509</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.16475428647431517</value0>
+						<value1>0.9821411518176808</value1>
+						<value2>-0.090855836326448058</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.9562973408322597</value0>
+						<value1>-0.13649828654169832</value1>
+						<value2>0.25857999475661159</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.38102819664369614</value0>
+					<value1>1.2106526859177738</value1>
+					<value2>12.171940837786879</value2>
+				</center>
+			</value>
+		</value9>
+		<value10>
+			<key>10</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>-0.067612485902750027</value0>
+						<value1>-0.12825817948908033</value1>
+						<value2>-0.98943336872383547</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.11903502306286831</value0>
+						<value1>0.98358228074214615</value1>
+						<value2>-0.13563392014721326</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.99058528912682364</value0>
+						<value1>-0.12694777037910143</value1>
+						<value2>-0.05123522773738888</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.0012573769581130101</value0>
+					<value1>1.2276106759937226</value1>
+					<value2>12.016351500485367</value2>
+				</center>
+			</value>
+		</value10>
+		<value11>
+			<key>11</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>-0.22107685415966669</value0>
+						<value1>-0.12645310734645843</value1>
+						<value2>-0.96702359650490965</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.1080318747629697</value0>
+						<value1>0.98228072181192783</value1>
+						<value2>-0.15314600090056529</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.96925442407556917</value0>
+						<value1>-0.1383264081766854</value1>
+						<value2>-0.20349856562362675</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.40991030619715074</value0>
+					<value1>1.1892725654826179</value1>
+					<value2>11.775390720883433</value2>
+				</center>
+			</value>
+		</value11>
+		<value12>
+			<key>12</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>-0.14567097241277094</value0>
+						<value1>-0.11045026388951863</value1>
+						<value2>-0.98314836469530564</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.077883760873232497</value0>
+						<value1>0.98938420981309305</value1>
+						<value2>-0.1226906889896823</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.9862626869087967</value0>
+						<value1>-0.094443764109958611</value1>
+						<value2>-0.13552227799215755</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.80315294828674588</value0>
+					<value1>1.152760383283788</value1>
+					<value2>11.530726590553863</value2>
+				</center>
+			</value>
+		</value12>
+		<value13>
+			<key>13</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.96548441324455236</value0>
+						<value1>-0.050062957302255587</value1>
+						<value2>-0.25560428026145215</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.044214099456957812</value0>
+						<value1>0.99861314956296876</value1>
+						<value2>-0.028581303839012584</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.2566806599473998</value0>
+						<value1>0.01629349029766939</value1>
+						<value2>0.96635891933736873</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.590484798367743</value0>
+					<value1>-0.056741782907811719</value1>
+					<value2>-0.29531506383793238</value2>
+				</center>
+			</value>
+		</value13>
+		<value14>
+			<key>14</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>-0.032455901114205397</value0>
+						<value1>-0.12040394140650368</value1>
+						<value2>-0.99219428811934007</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.084282039930148905</value0>
+						<value1>0.98885169670379025</value1>
+						<value2>-0.1227552836795526</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.99591322525011072</value0>
+						<value1>-0.087608291958089668</value1>
+						<value2>-0.021946183087462198</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.2162575357733596</value0>
+					<value1>1.1600709987387625</value1>
+					<value2>11.322753190071811</value2>
+				</center>
+			</value>
+		</value14>
+		<value15>
+			<key>15</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.073713493096396437</value0>
+						<value1>-0.12111776914386059</value1>
+						<value2>-0.98989737191950444</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.080503410171027731</value0>
+						<value1>0.9900811649825022</value1>
+						<value2>-0.11514550663280831</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.99402491009348581</value0>
+						<value1>-0.071202336650599662</value1>
+						<value2>0.082732734568197894</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.6797806140968694</value0>
+					<value1>1.1220988534500129</value1>
+					<value2>11.190315845038841</value2>
+				</center>
+			</value>
+		</value15>
+		<value16>
+			<key>16</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>-0.27819821917151716</value0>
+						<value1>-0.096004852116687731</value1>
+						<value2>-0.95571377473585117</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.046888468453110191</value0>
+						<value1>0.99244882187873951</value1>
+						<value2>-0.11334375800026958</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.95937856051504411</value0>
+						<value1>-0.076343986806787223</value1>
+						<value2>-0.27159597438571675</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.1322409647710816</value0>
+					<value1>1.0933022304541873</value1>
+					<value2>10.937544663721166</value2>
+				</center>
+			</value>
+		</value16>
+		<value17>
+			<key>17</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>-0.55410583747478559</value0>
+						<value1>-0.1132976155597101</value1>
+						<value2>-0.82470017047703514</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.074261811945820794</value0>
+						<value1>0.98001714266447559</value1>
+						<value2>-0.18453071118456513</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.82912719420055825</value0>
+						<value1>-0.16349327323239318</value1>
+						<value2>-0.53461953335514034</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.5150648995259162</value0>
+					<value1>1.0404763845737348</value1>
+					<value2>10.609411117458677</value2>
+				</center>
+			</value>
+		</value17>
+		<value18>
+			<key>18</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>-0.60561209198197474</value0>
+						<value1>-0.097796253849115097</value1>
+						<value2>-0.78972772952347026</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.039969017937924803</value0>
+						<value1>0.98742852805621717</value1>
+						<value2>-0.15292932873000542</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.79475560498199316</value0>
+						<value1>-0.12418049248497792</value1>
+						<value2>-0.59408983633445067</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.8421744268076972</value0>
+					<value1>1.0297756445316213</value1>
+					<value2>10.255163393560649</value2>
+				</center>
+			</value>
+		</value18>
+		<value19>
+			<key>19</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>-0.84982686285035069</value0>
+						<value1>-0.065798544275471924</value1>
+						<value2>-0.52293867207270106</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.053358177989732282</value0>
+						<value1>0.97633888663954904</value1>
+						<value2>-0.20955973677465364</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.52435408649074844</value0>
+						<value1>-0.20599254842511863</value1>
+						<value2>-0.82620812267477606</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.9968862142821031</value0>
+					<value1>0.97906476670083054</value1>
+					<value2>9.9543379650342985</value2>
+				</center>
+			</value>
+		</value19>
+		<value20>
+			<key>24</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.99050583157548722</value0>
+						<value1>-0.033486082624753104</value1>
+						<value2>-0.13332996619440349</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.036709096838081982</value0>
+						<value1>0.99908844340292757</value1>
+						<value2>0.021788172664256034</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.13247882783405387</value0>
+						<value1>-0.026475734723767776</value1>
+						<value2>0.990832173300076</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.1637448923411089</value0>
+					<value1>-0.058636770751899547</value1>
+					<value2>-0.27043126645779625</value2>
+				</center>
+			</value>
+		</value20>
+		<value21>
+			<key>28</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.99491753808924421</value0>
+						<value1>-0.049120122344338761</value1>
+						<value2>-0.087899408321755135</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.04774727972126621</value0>
+						<value1>0.99870341580746813</value1>
+						<value2>-0.017654589593490123</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.08865263493916356</value0>
+						<value1>0.013367903177858577</value1>
+						<value2>0.99597289595800287</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.7212927379298748</value0>
+					<value1>-0.030128343048942172</value1>
+					<value2>-0.18867128882680706</value2>
+				</center>
+			</value>
+		</value21>
+		<value22>
+			<key>29</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.98743309157634584</value0>
+						<value1>-0.030931848948997778</value1>
+						<value2>-0.15498100006315724</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.035029492907208984</value0>
+						<value1>0.99910336441217518</value1>
+						<value2>0.023778180059377697</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.15410653550918518</value0>
+						<value1>-0.02890826769055484</value1>
+						<value2>0.98763125090920834</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.2951233104587692</value0>
+					<value1>-0.025876561628869775</value1>
+					<value2>-0.018733247272543885</value2>
+				</center>
+			</value>
+		</value22>
+		<value23>
+			<key>30</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.99369496264148804</value0>
+						<value1>-0.02898053500654095</value1>
+						<value2>-0.10830720110715833</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.028883488702745576</value0>
+						<value1>0.99957974559050766</value1>
+						<value2>-0.0024650122868584852</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.10833312190318412</value0>
+						<value1>-0.00067881952730394627</value1>
+						<value2>0.99411441690720848</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.87229050784000361</value0>
+					<value1>-0.010100773468652072</value1>
+					<value2>0.13060741519644309</value2>
+				</center>
+			</value>
+		</value23>
+		<value24>
+			<key>31</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.9982152795763567</value0>
+						<value1>-0.053230555011869345</value1>
+						<value2>0.027069607190064626</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.052706641336641206</value0>
+						<value1>0.99841544097402057</value1>
+						<value2>0.019713375755123243</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.028076067732264634</value0>
+						<value1>-0.018251444813503614</value1>
+						<value2>0.99943915231639435</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.42996499952974776</value0>
+					<value1>0.015941608525441187</value1>
+					<value2>0.22280192184985881</value2>
+				</center>
+			</value>
+		</value24>
+		<value25>
+			<key>32</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.99997049553573758</value0>
+						<value1>0.00096785633897482955</value1>
+						<value2>0.0076204535375920439</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.00084569350410708768</value0>
+						<value1>0.99987134839022163</value1>
+						<value2>-0.016017848507745645</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.007634976130192153</value0>
+						<value1>0.016010931341651692</value1>
+						<value2>0.99984266623157481</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.035083287952310312</value0>
+					<value1>0.014270858049674923</value1>
+					<value2>0.25659217727395617</value2>
+				</center>
+			</value>
+		</value25>
+		<value26>
+			<key>33</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.99112940982460251</value0>
+						<value1>-0.0047154473164100832</value1>
+						<value2>0.13281663125279636</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.0057448938699050829</value0>
+						<value1>0.99995634794824617</value1>
+						<value2>-0.0073687442912282741</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.13277608660884177</value0>
+						<value1>0.0080663966312191238</value1>
+						<value2>0.99111323473669199</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.4701973227979912</value0>
+					<value1>0.019737873443866419</value1>
+					<value2>0.38685673630769069</value2>
+				</center>
+			</value>
+		</value26>
+		<value27>
+			<key>34</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.98696595086836625</value0>
+						<value1>0.014302151835718577</value1>
+						<value2>0.16029242115387068</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.014525137498011754</value0>
+						<value1>0.99989448054771346</value1>
+						<value2>0.00021943309281488273</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.16027236881997362</value0>
+						<value1>-0.0025448424482512029</value1>
+						<value2>0.98706954748373632</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.85527524886846396</value0>
+					<value1>0.053162038100749355</value1>
+					<value2>0.60739583832259636</value2>
+				</center>
+			</value>
+		</value27>
+		<value28>
+			<key>35</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.69837676229085155</value0>
+						<value1>-0.14028067488820373</value1>
+						<value2>-0.70184843815816644</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.11739574806883267</value0>
+						<value1>0.98977517487241062</value1>
+						<value2>-0.08101445267140997</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.70603692270837137</value0>
+						<value1>-0.025815411273095043</value1>
+						<value2>0.70770433679135702</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-6.1617061028383588</value0>
+					<value1>-0.019040644812955865</value1>
+					<value2>0.19851189752814369</value2>
+				</center>
+			</value>
+		</value28>
+		<value29>
+			<key>36</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.98405613531483882</value0>
+						<value1>0.023718878980476536</value1>
+						<value2>0.17626950198242836</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.027801812501125737</value0>
+						<value1>0.99939849809258552</value1>
+						<value2>0.020729236163847413</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.1756718012968389</value0>
+						<value1>-0.025299343671206558</value1>
+						<value2>0.98412365149859604</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.2559643057559293</value0>
+					<value1>0.069315911916401879</value1>
+					<value2>0.83260565222782434</value2>
+				</center>
+			</value>
+		</value29>
+		<value30>
+			<key>37</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.93380400735355684</value0>
+						<value1>0.048199131469615311</value1>
+						<value2>0.35452351061109205</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.093541274141430084</value0>
+						<value1>0.98930888854152044</value1>
+						<value2>0.11188365870286596</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.34534056506937633</value0>
+						<value1>-0.13763998974976827</value1>
+						<value2>0.92832921280074321</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.6567980896849641</value0>
+					<value1>0.099293013307049219</value1>
+					<value2>1.0431414777117665</value2>
+				</center>
+			</value>
+		</value30>
+		<value31>
+			<key>38</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.95900832403866421</value0>
+						<value1>0.062265908039664399</value1>
+						<value2>0.27645251151065425</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.10114813355102167</value0>
+						<value1>0.98651345803165236</value1>
+						<value2>0.1286866434466919</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.26471133240512584</value0>
+						<value1>-0.15137421781276816</value1>
+						<value2>0.95237269841059358</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.0557602027928601</value0>
+					<value1>0.1325923177992607</value1>
+					<value2>1.3091699544317912</value2>
+				</center>
+			</value>
+		</value31>
+		<value32>
+			<key>39</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.93889951887597523</value0>
+						<value1>0.055163744511568635</value1>
+						<value2>0.33974204147547693</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.072605669635115749</value0>
+						<value1>0.9966044664399939</value1>
+						<value2>0.03883238608032695</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.33644629614739219</value0>
+						<value1>-0.061126907032153371</value1>
+						<value2>0.93971665466000109</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.3865409098968278</value0>
+					<value1>0.18766592884969455</value1>
+					<value2>1.6222436669376172</value2>
+				</center>
+			</value>
+		</value32>
+		<value33>
+			<key>40</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.86767098966475786</value0>
+						<value1>0.073665761457057638</value1>
+						<value2>0.49165069844670362</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.19021020325145463</value0>
+						<value1>0.96290304165904195</value1>
+						<value2>0.191410059669824</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.45931158517200488</value0>
+						<value1>-0.25959793518577368</value1>
+						<value2>0.84949501456692667</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.7472012278323295</value0>
+					<value1>0.22173632742504507</value1>
+					<value2>1.8977600873159586</value2>
+				</center>
+			</value>
+		</value33>
+		<value34>
+			<key>41</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.87871534599583367</value0>
+						<value1>0.051120041436720491</value1>
+						<value2>0.47460097142223606</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.072918271194433448</value0>
+						<value1>0.99695530662678744</value1>
+						<value2>0.027623220570805247</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.47174385680943126</value0>
+						<value1>-0.05888003016470255</value1>
+						<value2>0.87976751224989347</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>3.1260745409883346</value0>
+					<value1>0.24391442946249778</value1>
+					<value2>2.1741609655125043</value2>
+				</center>
+			</value>
+		</value34>
+		<value35>
+			<key>42</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.5557481434670305</value0>
+						<value1>-0.11191319935038094</value1>
+						<value2>-0.82378361044883053</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.11501470581347295</value0>
+						<value1>0.99171929229010281</value1>
+						<value2>-0.057135477124620797</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.82335631319592673</value0>
+						<value1>-0.062994294271621842</value1>
+						<value2>0.56401781923059058</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.4318820631625702</value0>
+					<value1>0.29033795358628323</value1>
+					<value2>2.73036570278185</value2>
+				</center>
+			</value>
+		</value35>
+		<value36>
+			<key>43</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.66711825579306561</value0>
+						<value1>-0.07230824089581725</value1>
+						<value2>-0.74143425270631391</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.094085054229960718</value0>
+						<value1>0.9954865633270078</value1>
+						<value2>-0.012429996215944528</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.73898662732025333</value0>
+						<value1>-0.061465604478728633</value1>
+						<value2>0.6709103845581027</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.1716209003473734</value0>
+					<value1>0.24095378157766273</value1>
+					<value2>2.4149312194680936</value2>
+				</center>
+			</value>
+		</value36>
+		<value37>
+			<key>44</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.73784648158610888</value0>
+						<value1>-0.057935446986092466</value1>
+						<value2>-0.67247754876540045</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.096988552600666411</value0>
+						<value1>0.9950704450765846</value1>
+						<value2>0.020688885893531392</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.66796391390211163</value0>
+						<value1>-0.080487845775678857</value1>
+						<value2>0.73982830197753513</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.7959399596819621</value0>
+					<value1>0.2081906695108833</value1>
+					<value2>2.1209757562017564</value2>
+				</center>
+			</value>
+		</value37>
+		<value38>
+			<key>45</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.82782923120942065</value0>
+						<value1>-0.11948369702776271</value1>
+						<value2>-0.54810802776441558</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.14450110261768503</value0>
+						<value1>0.98950137579450836</value1>
+						<value2>0.0025413860486734538</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.54204999335623361</value0>
+						<value1>-0.081306048024442468</value1>
+						<value2>0.83640368916998109</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.4366246842825419</value0>
+					<value1>0.17609397797541204</value1>
+					<value2>1.8377170207179567</value2>
+				</center>
+			</value>
+		</value38>
+		<value39>
+			<key>46</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.73401463668891109</value0>
+						<value1>-0.13243566657210742</value1>
+						<value2>-0.6660955692286562</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.10499485057618577</value0>
+						<value1>0.99113895233377391</value1>
+						<value2>-0.081361283908216925</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.67096840050700635</value0>
+						<value1>-0.010216231512188971</value1>
+						<value2>0.74141556102819894</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-5.8504774474515386</value0>
+					<value1>-0.010481336695802534</value1>
+					<value2>0.10460645314066097</value2>
+				</center>
+			</value>
+		</value39>
+		<value40>
+			<key>47</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.87346064994094685</value0>
+						<value1>-0.033159559054661086</value1>
+						<value2>-0.48576428095120278</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.060273750589537045</value0>
+						<value1>0.9973681819284681</value1>
+						<value2>0.040296211566006226</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.48314963313098863</value0>
+						<value1>-0.0644759902599603</value1>
+						<value2>0.87316051140978002</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.0061782665733956</value0>
+					<value1>0.14014041735372057</value1>
+					<value2>1.6137773027104947</value2>
+				</center>
+			</value>
+		</value40>
+		<value41>
+			<key>48</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.93924187292134842</value0>
+						<value1>-0.042352452381755862</value1>
+						<value2>-0.34063319557619265</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.073992423999319643</value0>
+						<value1>0.99400991570380814</value1>
+						<value2>0.080432634379418444</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.33518625470311658</value0>
+						<value1>-0.10074997399383984</value1>
+						<value2>0.93674949554207831</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.5953123417133657</value0>
+					<value1>0.09743016313345923</value1>
+					<value2>1.4401317287463609</value2>
+				</center>
+			</value>
+		</value41>
+		<value42>
+			<key>49</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.95097299165977112</value0>
+						<value1>-0.062755133707753485</value1>
+						<value2>-0.30284015969977779</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.116822339983538</value0>
+						<value1>0.97954183167629738</value1>
+						<value2>0.16386073622748989</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.28636150232605567</value0>
+						<value1>-0.19120563064294507</value1>
+						<value2>0.93884902769082001</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.1333432813442677</value0>
+					<value1>0.081733694444419108</value1>
+					<value2>1.3354371090288908</value2>
+				</center>
+			</value>
+		</value42>
+		<value43>
+			<key>50</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.9661337889288184</value0>
+						<value1>-0.036269381775881154</value1>
+						<value2>-0.25548000672389382</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.067291617148385774</value0>
+						<value1>0.99122762514910379</value1>
+						<value2>0.1137525094352778</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.24911310714532972</value0>
+						<value1>-0.12709180574239737</value1>
+						<value2>0.96009912652888929</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.66223629699018693</value0>
+					<value1>0.061116684835699167</value1>
+					<value2>1.2677950115596717</value2>
+				</center>
+			</value>
+		</value43>
+		<value44>
+			<key>51</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.9908798635893693</value0>
+						<value1>-0.027540599282857035</value1>
+						<value2>-0.13190379571587033</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.036742253668229315</value0>
+						<value1>0.99701927524484879</value1>
+						<value2>0.067842255163104839</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.1296422104427892</value0>
+						<value1>-0.072069967263607329</value1>
+						<value2>0.98893822713561341</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.16632428501378457</value0>
+					<value1>0.034541359279671786</value1>
+					<value2>1.253875034439295</value2>
+				</center>
+			</value>
+		</value44>
+		<value45>
+			<key>52</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.999636431832024</value0>
+						<value1>-0.019256019404183346</value1>
+						<value2>-0.018873523010956156</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.01955225447003734</value0>
+						<value1>0.9996865164528197</value1>
+						<value2>0.015638995094482609</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.018566461679013636</value0>
+						<value1>-0.016002329178343409</value1>
+						<value2>0.99969956084895306</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.32148642405579836</value0>
+					<value1>0.027195012754588369</value1>
+					<value2>1.3019194630830693</value2>
+				</center>
+			</value>
+		</value45>
+		<value46>
+			<key>53</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.98183287697721777</value0>
+						<value1>-0.061163694530784539</value1>
+						<value2>0.17961960961427428</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.053882518275151357</value0>
+						<value1>0.99752628276961275</value1>
+						<value2>0.045144096049943863</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.18193646119172321</value0>
+						<value1>-0.034645600805635543</value1>
+						<value2>0.98269975396040943</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.82998692756674064</value0>
+					<value1>0.052604724007979206</value1>
+					<value2>1.3750083212044617</value2>
+				</center>
+			</value>
+		</value46>
+		<value47>
+			<key>54</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.98364537339231239</value0>
+						<value1>0.023203066956357005</value1>
+						<value2>0.17861522076160544</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.029943221482641991</value0>
+						<value1>0.99893399126157056</value1>
+						<value2>0.035132386617903535</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.1776096362564252</value0>
+						<value1>-0.039906124668366558</value1>
+						<value2>0.98329157340171136</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.3157006846319241</value0>
+					<value1>0.059203387975881483</value1>
+					<value2>1.593600827890985</value2>
+				</center>
+			</value>
+		</value47>
+		<value48>
+			<key>55</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.9705094864505347</value0>
+						<value1>0.051165743902793194</value1>
+						<value2>0.23557037878390641</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.054304109754256251</value0>
+						<value1>0.99850094837754932</value1>
+						<value2>0.0068497994811779631</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.23486677153934965</value0>
+						<value1>-0.019440235081100137</value1>
+						<value2>0.97183315280282268</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.8221458736534173</value0>
+					<value1>0.046660239890103164</value1>
+					<value2>1.7742278517552477</value2>
+				</center>
+			</value>
+		</value48>
+		<value49>
+			<key>56</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.90497831461933487</value0>
+						<value1>0.014499009223477391</value1>
+						<value2>0.425210569953624</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.032600865181750434</value0>
+						<value1>0.9988439737971252</value1>
+						<value2>0.035325622408802305</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.42420682886788791</value0>
+						<value1>-0.045831154695310274</value1>
+						<value2>0.90440481621956492</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.2952373751181896</value0>
+					<value1>0.06137543839558543</value1>
+					<value2>1.9632353648240533</value2>
+				</center>
+			</value>
+		</value49>
+		<value50>
+			<key>57</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.76389176794338121</value0>
+						<value1>-0.087716740487547906</value1>
+						<value2>-0.6393552536005126</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.064561322015690592</value0>
+						<value1>0.99613662119601143</value1>
+						<value2>-0.059528712498930193</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.64210684669136009</value0>
+						<value1>0.0041958730240748213</value1>
+						<value2>0.76660367340735069</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-5.4406998599649583</value0>
+					<value1>-0.035564003934768162</value1>
+					<value2>-0.027188014955252804</value2>
+				</center>
+			</value>
+		</value50>
+		<value51>
+			<key>58</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.8990983298613191</value0>
+						<value1>0.016600905436029947</value1>
+						<value2>0.43743182689339222</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.070126566461283027</value0>
+						<value1>0.99183698273544751</value1>
+						<value2>0.10649725045556271</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.43209311255438676</value0>
+						<value1>-0.12642709210033895</value1>
+						<value2>0.89292313917050803</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.7142707079144355</value0>
+					<value1>0.092996606108702418</value1>
+					<value2>2.2143442441676018</value2>
+				</center>
+			</value>
+		</value51>
+		<value52>
+			<key>59</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.87507190718684058</value0>
+						<value1>0.030324926590937551</value1>
+						<value2>0.48304198169480017</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.11597672179933266</value0>
+						<value1>0.9820962198872023</value1>
+						<value2>0.14844667353615007</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.46989206979163378</value0>
+						<value1>-0.18592313925523732</value1>
+						<value2>0.86292179775250322</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>3.1568103992562913</value0>
+					<value1>0.13722186701560496</value1>
+					<value2>2.5327930076290914</value2>
+				</center>
+			</value>
+		</value52>
+		<value53>
+			<key>60</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.82387354013958014</value0>
+						<value1>0.056873049718566618</value1>
+						<value2>0.56391297739419433</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.1992977998565616</value0>
+						<value1>0.96048232093748731</value1>
+						<value2>0.19430413824432935</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.53057777641945159</value0>
+						<value1>-0.27246865394435188</value1>
+						<value2>0.80265064367229122</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>3.5364600297707218</value0>
+					<value1>0.16212623419272554</value1>
+					<value2>2.8303103033686918</value2>
+				</center>
+			</value>
+		</value53>
+		<value54>
+			<key>61</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.79450340058385382</value0>
+						<value1>0.088502916252977751</value1>
+						<value2>0.60077581532166457</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.098369273001224181</value0>
+						<value1>0.99501334780125505</value1>
+						<value2>-0.016490112993831345</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.59923937837053309</value0>
+						<value1>-0.045996429340298864</value1>
+						<value2>0.79924745598471558</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>3.8327592014402114</value0>
+					<value1>0.18411701131385511</value1>
+					<value2>3.1256682413681345</value2>
+				</center>
+			</value>
+		</value54>
+		<value55>
+			<key>62</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.75870013068479081</value0>
+						<value1>0.066788077316747491</value1>
+						<value2>0.64800730275762586</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.045514982339145978</value0>
+						<value1>0.99773434848062503</value1>
+						<value2>-0.049543478325707588</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.64984805768852505</value0>
+						<value1>0.0080946025396424932</value1>
+						<value2>0.76002103874049221</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>4.2082916918428097</value0>
+					<value1>0.22696018371009408</value1>
+					<value2>3.4127918155429167</value2>
+				</center>
+			</value>
+		</value55>
+		<value56>
+			<key>63</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.77390266377085748</value0>
+						<value1>-0.073707265893706936</value1>
+						<value2>-0.62900072016083208</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.068799921538692271</value0>
+						<value1>0.99711089401614095</value1>
+						<value2>-0.032193723465947413</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.62955638175197692</value0>
+						<value1>-0.018360391847847116</value1>
+						<value2>0.77673783106435124</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.7765378431862207</value0>
+					<value1>0.15565124735760788</value1>
+					<value2>2.542240044496948</value2>
+				</center>
+			</value>
+		</value56>
+		<value57>
+			<key>64</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.81133608032524063</value0>
+						<value1>-0.066406620896502372</value1>
+						<value2>-0.58079594132843493</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.069451007085355121</value0>
+						<value1>0.99744006321462009</value1>
+						<value2>-0.017025801280543446</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.5804397663645251</value0>
+						<value1>-0.026523216160994043</value1>
+						<value2>0.81387111794630762</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.4010783474003974</value0>
+					<value1>0.12259789522854969</value1>
+					<value2>2.1578657039407751</value2>
+				</center>
+			</value>
+		</value57>
+		<value58>
+			<key>65</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.86904189071875548</value0>
+						<value1>-0.072154005209618843</value1>
+						<value2>-0.48944866095248557</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.083380208607763767</value0>
+						<value1>0.99651715499217153</value1>
+						<value2>0.0011404467695331627</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.48766169932494868</value0>
+						<value1>-0.04180142746986807</value1>
+						<value2>0.87203136851433549</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.9983473375428558</value0>
+					<value1>0.069331807526444411</value1>
+					<value2>1.8040855044256046</value2>
+				</center>
+			</value>
+		</value58>
+		<value59>
+			<key>66</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.92870286183123918</value0>
+						<value1>-0.042617766151680794</value1>
+						<value2>-0.3683676430343833</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.046425089186140772</value0>
+						<value1>0.99892068526338429</value1>
+						<value2>0.001475007454053422</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.36790719688601503</value0>
+						<value1>-0.018471344324961537</value1>
+						<value2>0.92967903274103347</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.5616504584489836</value0>
+					<value1>0.039579576115417389</value1>
+					<value2>1.4591761592044175</value2>
+				</center>
+			</value>
+		</value59>
+		<value60>
+			<key>67</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.96089401927236306</value0>
+						<value1>-0.057596531056625488</value1>
+						<value2>-0.27086033917287855</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.06346481839327156</value0>
+						<value1>0.997900064682957</value1>
+						<value2>0.012949043673544892</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.26954572998456627</value0>
+						<value1>-0.029632760856752587</value1>
+						<value2>0.96253155736894869</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.0796769328714384</value0>
+					<value1>0.033734721087175679</value1>
+					<value2>1.2341306957913438</value2>
+				</center>
+			</value>
+		</value60>
+		<value61>
+			<key>68</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.83951364864621392</value0>
+						<value1>-0.060674201698133527</value1>
+						<value2>-0.53994025131028667</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.077377972558050387</value0>
+						<value1>0.99696746338346398</value1>
+						<value2>0.0082780624271000455</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.53780059789807488</value0>
+						<value1>-0.048729028340770086</value1>
+						<value2>0.84166263948059228</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-5.0961615867642092</value0>
+					<value1>-0.049562244406464728</value1>
+					<value2>-0.13112535282197646</value2>
+				</center>
+			</value>
+		</value61>
+		<value62>
+			<key>69</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.9822118809021706</value0>
+						<value1>-0.047213688733538671</value1>
+						<value2>-0.18174346923835491</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.0551457997364257</value0>
+						<value1>0.99772265217163492</value1>
+						<value2>0.038838770771341721</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.17949585450937403</value0>
+						<value1>-0.04817029104926937</value1>
+						<value2>0.98257867943192123</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.58520630868846246</value0>
+					<value1>0.023826651802345576</value1>
+					<value2>1.0929820310143028</value2>
+				</center>
+			</value>
+		</value62>
+		<value63>
+			<key>70</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.98864927049692375</value0>
+						<value1>0.0092497310774478439</value1>
+						<value2>-0.14995686853524029</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.00067394479952868468</value0>
+						<value1>0.99781996520644423</value1>
+						<value2>0.06599138454236031</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.15024035990474607</value0>
+						<value1>-0.065343396838589418</value1>
+						<value2>0.98648774688046026</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.077598610706993948</value0>
+					<value1>0.015454592330684226</value1>
+					<value2>1.0759372317119675</value2>
+				</center>
+			</value>
+		</value63>
+		<value64>
+			<key>71</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.97917865254372616</value0>
+						<value1>0.032778016490223078</value1>
+						<value2>-0.20033663678323918</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.014390483736011588</value0>
+						<value1>0.99560316795654091</value1>
+						<value2>0.092559418390261175</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.20248970438147326</value0>
+						<value1>-0.087749265466250462</value1>
+						<value2>0.97534505998115206</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.45942621489515412</value0>
+					<value1>0.023519249860677664</value1>
+					<value2>1.0919936527344964</value2>
+				</center>
+			</value>
+		</value64>
+		<value65>
+			<key>72</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.99465052523829833</value0>
+						<value1>0.034299389647292781</value1>
+						<value2>-0.09743656661131038</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.029707362962452254</value0>
+						<value1>0.99839608250276313</value1>
+						<value2>0.048194761426455124</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.098933337298376126</value0>
+						<value1>-0.045042361316420698</value1>
+						<value2>0.99407413227487551</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.0019809458120386</value0>
+					<value1>0.026709246380279075</value1>
+					<value2>1.0967320412231203</value2>
+				</center>
+			</value>
+		</value65>
+		<value66>
+			<key>73</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.9933147934674087</value0>
+						<value1>0.038834857204518604</value1>
+						<value2>0.10870867005305483</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.041278453509520897</value0>
+						<value1>0.99894106930023052</value1>
+						<value2>0.020318202213146796</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.10780450062340445</value0>
+						<value1>-0.024669696617847802</value1>
+						<value2>0.99386598478573651</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.4904263718411757</value0>
+					<value1>0.065974803813689323</value1>
+					<value2>1.1613818519647439</value2>
+				</center>
+			</value>
+		</value66>
+		<value67>
+			<key>74</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.9713726542671498</value0>
+						<value1>0.0059025048429812467</value1>
+						<value2>0.23748753015383958</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.039527825513478748</value0>
+						<value1>0.98977138808413967</value1>
+						<value2>0.13707716928858471</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.23424926371745178</value0>
+						<value1>-0.14254037942482795</value1>
+						<value2>0.96167017354249784</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.9932621329935607</value0>
+					<value1>0.14265108826642769</value1>
+					<value2>1.2568462216074956</value2>
+				</center>
+			</value>
+		</value67>
+		<value68>
+			<key>75</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.94029912256049397</value0>
+						<value1>0.072437956715585533</value1>
+						<value2>0.3325512028828585</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.15024602494826531</value0>
+						<value1>0.96507488463662749</value1>
+						<value2>0.21460801250383313</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.30539104783737586</value0>
+						<value1>-0.25176022217671939</value1>
+						<value2>0.91834258228088195</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.4932700623202533</value0>
+					<value1>0.16326654430255139</value1>
+					<value2>1.4473345071660821</value2>
+				</center>
+			</value>
+		</value68>
+		<value69>
+			<key>76</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.88808099107165239</value0>
+						<value1>0.081833290927574159</value1>
+						<value2>0.45234441059126024</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.10325219956761317</value0>
+						<value1>0.99439343248136136</value1>
+						<value2>0.022818517094366105</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.44794099676368243</value0>
+						<value1>-0.066970246631613245</value1>
+						<value2>0.89155137231931814</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.9798037316439521</value0>
+					<value1>0.16554792994240736</value1>
+					<value2>1.6702236595821722</value2>
+				</center>
+			</value>
+		</value69>
+		<value70>
+			<key>77</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.84238041450823586</value0>
+						<value1>0.048345534226853955</value1>
+						<value2>0.53671030041657775</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.061130399820779509</value0>
+						<value1>0.99811152341572673</value1>
+						<value2>0.0060382979794773098</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.53540481084006386</value0>
+						<value1>-0.037895859207272405</value1>
+						<value2>0.84374498065722336</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>3.4774560248491779</value0>
+					<value1>0.24034499191424502</value1>
+					<value2>1.9778463724365216</value2>
+				</center>
+			</value>
+		</value70>
+		<value71>
+			<key>78</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.56774184218169943</value0>
+						<value1>-0.096951033582404256</value1>
+						<value2>-0.81747764356184927</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.12560149990691183</value0>
+						<value1>0.99161573542968418</value1>
+						<value2>-0.030372626975297353</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.81356835229577629</value0>
+						<value1>-0.08543260698088323</value1>
+						<value2>0.57515893960468489</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.6875040393585623</value0>
+					<value1>0.35893716723628694</value1>
+					<value2>2.5054811706281717</value2>
+				</center>
+			</value>
+		</value71>
+		<value72>
+			<key>79</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.87967786291372674</value0>
+						<value1>-0.072356273633031695</value1>
+						<value2>-0.47003343196572778</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.067586439471191098</value0>
+						<value1>0.99734691866547021</value1>
+						<value2>-0.027040655097446728</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.47074295608022176</value0>
+						<value1>-0.0079808204110787748</value1>
+						<value2>0.88223430890349108</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-4.721804461231355</value0>
+					<value1>-0.05390139741936073</value1>
+					<value2>-0.19356860566409306</value2>
+				</center>
+			</value>
+		</value72>
+		<value73>
+			<key>80</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.62826033137698989</value0>
+						<value1>-0.09372323473419289</value1>
+						<value2>-0.77233730409001633</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.12461423737611088</value0>
+						<value1>0.99202305894678799</value1>
+						<value2>-0.019014267301898924</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.76795849357972812</value0>
+						<value1>-0.084298314270317129</value1>
+						<value2>0.63492798516834781</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.2453211888491666</value0>
+					<value1>0.2437887166141105</value1>
+					<value2>2.1302668532095916</value2>
+				</center>
+			</value>
+		</value73>
+		<value74>
+			<key>81</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.57423173814103701</value0>
+						<value1>-0.077946904418443971</value1>
+						<value2>-0.81497373638854487</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.085559703959849728</value0>
+						<value1>0.99571990679110267</value1>
+						<value2>-0.034948594796080458</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.81420970761212763</value0>
+						<value1>-0.049660319285116432</value1>
+						<value2>0.57844308684491497</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.8233120063626345</value0>
+					<value1>0.19889727067817503</value1>
+					<value2>1.7782762252015512</value2>
+				</center>
+			</value>
+		</value74>
+		<value75>
+			<key>82</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.60432397416454975</value0>
+						<value1>-0.14900885806253972</value1>
+						<value2>-0.78268058265735874</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.10601984153310014</value0>
+						<value1>0.98865899445586503</value1>
+						<value2>-0.10636346122054349</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.78965329572620735</value0>
+						<value1>-0.018701681753671796</value1>
+						<value2>0.61326822814191462</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.4343132731088035</value0>
+					<value1>0.15531662915970484</value1>
+					<value2>1.4022397075579078</value2>
+				</center>
+			</value>
+		</value75>
+		<value76>
+			<key>83</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.57291943758909236</value0>
+						<value1>-0.15777670763291629</value1>
+						<value2>-0.80428218217309488</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.14528514450092711</value0>
+						<value1>0.98530645752212831</value1>
+						<value2>-0.089796500781150992</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.80663222401534573</value0>
+						<value1>-0.065404092331533561</value1>
+						<value2>0.58742383326380743</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.0398061496321196</value0>
+					<value1>0.10733203898476207</value1>
+					<value2>1.0469530841273431</value2>
+				</center>
+			</value>
+		</value76>
+		<value77>
+			<key>84</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.70607103141247574</value0>
+						<value1>-0.071396844466639089</value1>
+						<value2>-0.70453260336220735</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.044222551077437736</value0>
+						<value1>0.99740811549235231</value1>
+						<value2>-0.056757529246770334</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.70675884471036243</value0>
+						<value1>0.0089186181777855048</value1>
+						<value2>0.70739832744605269</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.6492110070561545</value0>
+					<value1>0.080794128751393079</value1>
+					<value2>0.68341654013063546</value2>
+				</center>
+			</value>
+		</value77>
+		<value78>
+			<key>85</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.80361246154589427</value0>
+						<value1>-0.0810207304395925</value1>
+						<value2>-0.58961229031218776</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.067228186530160508</value0>
+						<value1>0.9967072510588979</value1>
+						<value2>-0.045332401463865656</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.59134370934678471</value0>
+						<value1>-0.0032088823054191168</value1>
+						<value2>0.8064132442428853</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.2490326565101475</value0>
+					<value1>0.015202242164151475</value1>
+					<value2>0.38240749762690324</value2>
+				</center>
+			</value>
+		</value78>
+		<value79>
+			<key>86</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.90963077219341815</value0>
+						<value1>-0.017205171946574789</value1>
+						<value2>-0.41506124889839402</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.01708286611183317</value0>
+						<value1>0.999846045340954</value1>
+						<value2>-0.0040076553569508159</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.41506630068485562</value0>
+						<value1>-0.0034449491061132719</value1>
+						<value2>0.90978464394682179</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.83999126112460964</value0>
+					<value1>-0.024816580256410384</value1>
+					<value2>0.063279320482250101</value2>
+				</center>
+			</value>
+		</value79>
+		<value80>
+			<key>87</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.94782159206810057</value0>
+						<value1>-0.036726707136631162</value1>
+						<value2>-0.3166786677254898</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.036842785791162624</value0>
+						<value1>0.99930525204735698</value1>
+						<value2>-0.0056233767181962232</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.31666518397929</value0>
+						<value1>-0.0063373664458015533</value1>
+						<value2>0.94851620916139012</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-0.39083259487452993</value0>
+					<value1>-0.052387083527053208</value1>
+					<value2>-0.18222484380934101</value2>
+				</center>
+			</value>
+		</value80>
+		<value81>
+			<key>88</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.97193856261101752</value0>
+						<value1>-0.07660391821075771</value1>
+						<value2>-0.22241238774939845</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.079207985047628743</value0>
+						<value1>0.99685418445794927</value1>
+						<value2>0.0027982196789333984</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.22149836481185101</value0>
+						<value1>-0.020336534695874119</value1>
+						<value2>0.97494866518306478</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.11297619608460355</value0>
+					<value1>-0.05093922308113482</value1>
+					<value2>-0.2954329798771681</value2>
+				</center>
+			</value>
+		</value81>
+		<value82>
+			<key>89</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.99752235594306893</value0>
+						<value1>-0.0078678353121859196</value1>
+						<value2>-0.069908844657094252</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.0083741651913110914</value0>
+						<value1>0.99994076565153733</value1>
+						<value2>0.006952592722562859</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.069850001797695391</value0>
+						<value1>-0.0075207948860157477</value1>
+						<value2>0.99752915490883998</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>0.58776308379658115</value0>
+					<value1>-0.069008254672143457</value1>
+					<value2>-0.38545442749145969</value2>
+				</center>
+			</value>
+		</value82>
+		<value83>
+			<key>90</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.88174290157449553</value0>
+						<value1>-0.10725666606693024</value1>
+						<value2>-0.45937507889217988</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.096325227350198217</value0>
+						<value1>0.99422798947615787</value1>
+						<value2>-0.047245693117251131</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.46179097663220114</value0>
+						<value1>-0.002590854377201298</value1>
+						<value2>0.88698499501100581</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-4.3161456190405483</value0>
+					<value1>-0.062101277224926976</value1>
+					<value2>-0.27962683213449613</value2>
+				</center>
+			</value>
+		</value83>
+		<value84>
+			<key>91</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.9972438501585863</value0>
+						<value1>-0.01742415854131435</value1>
+						<value2>-0.07211866623840385</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.018835395979507452</value0>
+						<value1>0.99964329036746724</value1>
+						<value2>0.018934621242544955</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.071763020973021369</value0>
+						<value1>-0.02024081822532435</value1>
+						<value2>0.99721631459698612</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.0813018308722095</value0>
+					<value1>-0.083188017401483738</value1>
+					<value2>-0.43802392381875177</value2>
+				</center>
+			</value>
+		</value84>
+		<value85>
+			<key>92</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.99369229469129938</value0>
+						<value1>-0.044330926935204656</value1>
+						<value2>-0.10300675894428135</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.043522561076533767</value0>
+						<value1>0.99900156004058538</value1>
+						<value2>-0.010083140077180879</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.10335090782610054</value0>
+						<value1>0.0055364206435393939</value1>
+						<value2>0.99462954807203408</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.5445805321328832</value0>
+					<value1>-0.087991366298848767</value1>
+					<value2>-0.47269519929500309</value2>
+				</center>
+			</value>
+		</value85>
+		<value86>
+			<key>93</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.99519900248814885</value0>
+						<value1>-0.086882944427884634</value1>
+						<value2>-0.045058843905882558</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.084850935786251247</value0>
+						<value1>0.99536766238651564</value1>
+						<value2>-0.045205479440007384</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.048777701286459259</value0>
+						<value1>0.041165162974833108</value1>
+						<value2>0.99796100385459174</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.9889243742614069</value0>
+					<value1>-0.082875723987759831</value1>
+					<value2>-0.54711999757350205</value2>
+				</center>
+			</value>
+		</value86>
+		<value87>
+			<key>94</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.96304333202672265</value0>
+						<value1>0.067481412049454625</value1>
+						<value2>0.26075620734064853</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.057167259789566591</value0>
+						<value1>0.99726014291075149</value1>
+						<value2>-0.046947968750305449</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.26320988782152499</value0>
+						<value1>0.030306210410395665</value1>
+						<value2>0.96426245833981372</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.1689184189383219</value0>
+					<value1>-0.094469233416332954</value1>
+					<value2>-0.570479927718196</value2>
+				</center>
+			</value>
+		</value87>
+		<value88>
+			<key>95</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.92223552166063716</value0>
+						<value1>0.060677950487822881</value1>
+						<value2>0.3818374378081984</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.049243139305313134</value0>
+						<value1>0.99799919062905862</value1>
+						<value2>-0.039657644094188704</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.38347979844926644</value0>
+						<value1>0.017770813947063056</value1>
+						<value2>0.92337827695531638</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>2.1041579547358613</value0>
+					<value1>-0.10413915417382626</value1>
+					<value2>-0.57717987934346626</value2>
+				</center>
+			</value>
+		</value88>
+		<value89>
+			<key>96</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.75663121473751804</value0>
+						<value1>0.065865974305907515</value1>
+						<value2>0.65051585554355351</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.10283525490598067</value0>
+						<value1>0.99451857490846562</value1>
+						<value2>0.018913342128156589</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.6457043559038842</value0>
+						<value1>-0.08120638885437681</value1>
+						<value2>0.7592571416693964</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>1.933096072325091</value0>
+					<value1>-0.087683208822286918</value1>
+					<value2>-0.5262750971183896</value2>
+				</center>
+			</value>
+		</value89>
+		<value90>
+			<key>98</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.77367406952290574</value0>
+						<value1>-0.082945287146687946</value1>
+						<value2>-0.62813096841981886</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.095437964015486237</value0>
+						<value1>0.99533855480494271</value1>
+						<value2>-0.013883671826533588</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.62635455548151375</value0>
+						<value1>-0.049206103879108426</value1>
+						<value2>0.7779837595789475</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-6.9096347621265881</value0>
+					<value1>0.66504587225911571</value1>
+					<value2>6.2609495232935801</value2>
+				</center>
+			</value>
+		</value90>
+		<value91>
+			<key>99</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.78985453403066641</value0>
+						<value1>-0.1280239713260968</value1>
+						<value2>-0.59978302563268138</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.14742017912336516</value0>
+						<value1>0.98892871417966743</value1>
+						<value2>-0.016949603481633768</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.5953126118758395</value0>
+						<value1>-0.075032399913933401</value1>
+						<value2>0.79998314551290506</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-6.5903827315662848</value0>
+					<value1>0.63906393977680698</value1>
+					<value2>6.6235562874004827</value2>
+				</center>
+			</value>
+		</value91>
+		<value92>
+			<key>100</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.74003487447544281</value0>
+						<value1>-0.075358935956954684</value1>
+						<value2>-0.66833331155311348</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.098068209112249741</value0>
+						<value1>0.99517310107557999</value1>
+						<value2>-0.0036228796736117522</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.66538035056772726</value0>
+						<value1>-0.062861193649572183</value1>
+						<value2>0.74385311682570721</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-6.3089494933283961</value0>
+					<value1>0.74851125709256816</value1>
+					<value2>7.111372584965669</value2>
+				</center>
+			</value>
+		</value92>
+		<value93>
+			<key>101</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.90688657190043676</value0>
+						<value1>-0.051676263712614946</value1>
+						<value2>-0.418194105022271</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.054130847127988525</value0>
+						<value1>0.99851582625789992</value1>
+						<value2>-0.0059996751336824968</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.41788347310689405</value0>
+						<value1>-0.017196176354284921</value1>
+						<value2>0.90833787459453219</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.8828525359845654</value0>
+					<value1>-0.061268417489013571</value1>
+					<value2>-0.32422375273070325</value2>
+				</center>
+			</value>
+		</value93>
+		<value94>
+			<key>102</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.7053910119049901</value0>
+						<value1>-0.039668475648493462</value1>
+						<value2>-0.70770751893941253</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.10771331099057874</value0>
+						<value1>0.99283628941071145</value1>
+						<value2>0.051710202712972456</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.70058644217476906</value0>
+						<value1>-0.11270543229540765</value1>
+						<value2>0.7046106176974658</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-5.99301471098308</value0>
+					<value1>0.79331677550818758</value1>
+					<value2>7.5361902949138386</value2>
+				</center>
+			</value>
+		</value94>
+		<value95>
+			<key>103</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.67124960439123116</value0>
+						<value1>-0.12024509006215142</value1>
+						<value2>-0.73141307543723932</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.18698688991764514</value0>
+						<value1>0.98231035192555094</value1>
+						<value2>0.010113134965317155</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.71725858071098891</value0>
+						<value1>-0.14355309406573361</value1>
+						<value2>0.68185969053802598</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-5.7261755259798779</value0>
+					<value1>0.79242011542450475</value1>
+					<value2>8.1282033301520098</value2>
+				</center>
+			</value>
+		</value95>
+		<value96>
+			<key>104</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.63383321427406081</value0>
+						<value1>-0.091214464724098596</value1>
+						<value2>-0.76807250823610962</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.20367917060661866</value0>
+						<value1>0.97765698422006087</value1>
+						<value2>0.051977078282023678</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.74617039069103541</value0>
+						<value1>-0.18938517003934568</value1>
+						<value2>0.63824995528801698</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-5.5054056434158181</value0>
+					<value1>0.85607188120711508</value1>
+					<value2>8.6503930714457216</value2>
+				</center>
+			</value>
+		</value96>
+		<value97>
+			<key>105</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.51909640479319108</value0>
+						<value1>-0.1188871950201975</value1>
+						<value2>-0.84640696912951585</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.12325237643282126</value0>
+						<value1>0.99034074046884701</value1>
+						<value2>-0.063514324929720589</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.84578234448021317</value0>
+						<value1>-0.071351612650629892</value1>
+						<value2>0.52873544721127674</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-5.1561574801083268</value0>
+					<value1>0.87669236568009279</value1>
+					<value2>9.0067176844875032</value2>
+				</center>
+			</value>
+		</value97>
+		<value98>
+			<key>106</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.9732253476761088</value0>
+						<value1>-0.092359381914905531</value1>
+						<value2>-0.21048080010541076</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.11221311315635116</value0>
+						<value1>0.99009350258358042</value1>
+						<value2>0.084398301982549079</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.2006006975971848</value0>
+						<value1>-0.10575727262970733</value1>
+						<value2>0.97394802705762928</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.4460297236136368</value0>
+					<value1>-0.0084689325425608142</value1>
+					<value2>1.9696828682186771</value2>
+				</center>
+			</value>
+		</value98>
+		<value99>
+			<key>108</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.042955346304210405</value0>
+						<value1>-0.1778289080595733</value1>
+						<value2>-0.98312344986894973</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.24876812247098118</value0>
+						<value1>0.95494244512664528</value1>
+						<value2>-0.16186212570520334</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.9676100761495553</value0>
+						<value1>-0.23761693111788976</value1>
+						<value2>0.08525804701004927</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.9745575840613081</value0>
+					<value1>0.98882426454629635</value1>
+					<value2>10.181507349107626</value2>
+				</center>
+			</value>
+		</value99>
+		<value100>
+			<key>109</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.35697855699329506</value0>
+						<value1>-0.076178158882432262</value1>
+						<value2>-0.93100118042689273</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.24761965091856672</value0>
+						<value1>0.96873041773624124</value1>
+						<value2>0.015680759915731826</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.90069463100761959</value0>
+						<value1>-0.236131882349357</value1>
+						<value2>0.36467919574908231</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.5547955160240865</value0>
+					<value1>1.0694195301484839</value1>
+					<value2>10.527578368639503</value2>
+				</center>
+			</value>
+		</value100>
+		<value101>
+			<key>110</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.45560268735823667</value0>
+						<value1>-0.10178236813469782</value1>
+						<value2>-0.88434526108802425</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.19797293560001089</value0>
+						<value1>0.98014781466761303</value1>
+						<value2>-0.010815644789668219</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.86788991700668294</value0>
+						<value1>-0.17014879058986931</value1>
+						<value2>0.46670813258281457</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.1567828892792704</value0>
+					<value1>1.1003496755159599</value1>
+					<value2>10.922754498582105</value2>
+				</center>
+			</value>
+		</value101>
+		<value102>
+			<key>111</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.47583769171162082</value0>
+						<value1>-0.11937028669217944</value1>
+						<value2>-0.87139498839595309</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.17864524203940532</value0>
+						<value1>0.9832124832152499</value1>
+						<value2>-0.03713610569760982</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.86119937798586377</value0>
+						<value1>-0.13799980979961041</value1>
+						<value2>0.48917449223363285</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.777611917667814</value0>
+					<value1>1.1076915008822916</value1>
+					<value2>11.32943684304553</value2>
+				</center>
+			</value>
+		</value102>
+		<value103>
+			<key>112</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.91297782478768141</value0>
+						<value1>-0.031263060742794335</value1>
+						<value2>-0.40680967598982454</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.014866995838363999</value0>
+						<value1>0.99894700635284639</value1>
+						<value2>-0.043403351638190042</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.40773822960411221</value0>
+						<value1>0.03357825980718266</value1>
+						<value2>0.91248125273214542</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-3.438875531039848</value0>
+					<value1>-0.069465845258089604</value1>
+					<value2>-0.32510538997707861</value2>
+				</center>
+			</value>
+		</value103>
+		<value104>
+			<key>113</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.51240661334311488</value0>
+						<value1>-0.086918200533410317</value1>
+						<value2>-0.85433289121879974</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.19204553259917218</value0>
+						<value1>0.98126593552569141</value1>
+						<value2>0.015351781186229776</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.83699341455649456</value0>
+						<value1>-0.17193716931752556</value1>
+						<value2>0.5194994069256833</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-2.3569858480434367</value0>
+					<value1>1.1773629177660614</value1>
+					<value2>11.616133784762297</value2>
+				</center>
+			</value>
+		</value104>
+		<value105>
+			<key>114</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.54759931012215946</value0>
+						<value1>-0.09665160620748002</value1>
+						<value2>-0.83113985740743368</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.19288360852706182</value0>
+						<value1>0.98113568548777697</value1>
+						<value2>0.012987695099946961</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.81420569214131266</value0>
+						<value1>-0.16742530776422135</value1>
+						<value2>0.55591173508457403</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.9762621589282539</value0>
+					<value1>1.194946812905247</value1>
+					<value2>11.794484044731572</value2>
+				</center>
+			</value>
+		</value105>
+		<value106>
+			<key>115</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.67995223228849377</value0>
+						<value1>-0.076965282552747011</value1>
+						<value2>-0.72920594284980278</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.13624014847047378</value0>
+						<value1>0.99042024815175411</value1>
+						<value2>0.022502310898243297</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.72048843415466246</value0>
+						<value1>-0.11464762244631919</value1>
+						<value2>0.6839242201565674</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.7498022547066725</value0>
+					<value1>1.1808519443761554</value1>
+					<value2>11.924524671907957</value2>
+				</center>
+			</value>
+		</value106>
+		<value107>
+			<key>116</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.94115952646747914</value0>
+						<value1>0.0057497324631771637</value1>
+						<value2>-0.33791372614339343</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.020267109863894142</value0>
+						<value1>0.9970955927012437</value1>
+						<value2>0.073414053651330843</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.3373543982183651</value0>
+						<value1>-0.075942870582810643</value1>
+						<value2>0.9383094854099937</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.9106831901344772</value0>
+					<value1>1.1663918476442265</value1>
+					<value2>11.948311214799148</value2>
+				</center>
+			</value>
+		</value107>
+		<value108>
+			<key>117</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.97955763241209504</value0>
+						<value1>0.058642802472246396</value1>
+						<value2>0.19242626250439895</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>-0.069517494263041005</value0>
+						<value1>0.99631425379812877</value1>
+						<value2>0.050251623556517064</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>-0.18877013210409857</value0>
+						<value1>-0.062601352995593718</value1>
+						<value2>0.98002393227335127</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.9329124465867689</value0>
+					<value1>1.1497820258150606</value1>
+					<value2>11.921790643306547</value2>
+				</center>
+			</value>
+		</value108>
+		<value109>
+			<key>121</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.98077742253292111</value0>
+						<value1>-0.050432841653419221</value1>
+						<value2>-0.18849980353422391</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.05545614571149602</value0>
+						<value1>0.99823032392198041</value1>
+						<value2>0.021467098207335125</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.18708357317654906</value0>
+						<value1>-0.03150791782043353</value1>
+						<value2>0.98183857520577977</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.7535278331197608</value0>
+					<value1>1.1656509532706028</value1>
+					<value2>11.942425149959501</value2>
+				</center>
+			</value>
+		</value109>
+		<value110>
+			<key>122</key>
+			<value>
+				<rotation size="dynamic">
+					<value0 size="dynamic">
+						<value0>0.6018031428573638</value0>
+						<value1>-0.12188741552594277</value1>
+						<value2>-0.78928856268376635</value2>
+					</value0>
+					<value1 size="dynamic">
+						<value0>0.13344963782784694</value0>
+						<value1>0.98973775473881109</value1>
+						<value2>-0.051091790027299328</value2>
+					</value1>
+					<value2 size="dynamic">
+						<value0>0.7874161361126758</value0>
+						<value1>-0.074583073019173218</value1>
+						<value2>0.61189312286411657</value2>
+					</value2>
+				</rotation>
+				<center size="dynamic">
+					<value0>-1.6728653944010476</value0>
+					<value1>1.1699444048325451</value1>
+					<value2>11.876236248163945</value2>
+				</center>
+			</value>
+		</value110>
+	</extrinsics>
+	<structure size="dynamic"/>
+	<control_points size="dynamic"/>
+</cereal>
+
