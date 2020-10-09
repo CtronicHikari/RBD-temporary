@@ -1,0 +1,2 @@
+/usr/bin/ar qc libEncodeTool.a  CMakeFiles/EncodeTool.dir/Common.cpp.o CMakeFiles/EncodeTool.dir/Connect.cpp.o CMakeFiles/EncodeTool.dir/EncodeTool.cpp.o
+/usr/bin/ranlib libEncodeTool.a

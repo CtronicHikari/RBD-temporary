@@ -1,0 +1,7 @@
+/home/guan/文档/Manager/build/CMakeFiles/rebuild_cache.dir
+/home/guan/文档/Manager/build/CMakeFiles/manager.dir
+/home/guan/文档/Manager/build/CMakeFiles/edit_cache.dir
+/home/guan/文档/Manager/build/Connect/CMakeFiles/rebuild_cache.dir
+/home/guan/文档/Manager/build/Connect/CMakeFiles/edit_cache.dir
+/home/guan/文档/Manager/build/Connect/CMakeFiles/Connect.dir
+/home/guan/文档/Manager/build/Connect/CMakeFiles/EncodeTool.dir

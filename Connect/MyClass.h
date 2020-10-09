@@ -11,7 +11,6 @@
 #include <pcl/common/common_headers.h>
 #include <pcl/features/normal_3d.h>
 #include <pcl/io/pcd_io.h>
-//#include <pcl/visualization/pcl_visualizer.h>
 #include <pcl/console/parse.h>
 #include <pcl/io/io.h>
 
@@ -26,7 +25,7 @@ using namespace cv;
 //////////////////////////////////////////////////////////////////////////
 //********************4.0(Discard things before 4.0)********************//
 //////////////////////////////////////////////////////////////////////////
-
+namespace sigma{
 //Object
 class Object{
 public:
@@ -38,88 +37,145 @@ public:
 		ObjectID = 0;
 		ParentNodeID = 0;
 	}
+	
+	Object(int _ObjectID, int _ParentNodeID)
+	{
+		ObjectID = _ObjectID;
+		ParentNodeID = _ParentNodeID;
+	}
 };
 
 //Geometry
 class Geometry{
 public:
 	string ID;
-	double WorldPositionX;
-	double WorldPositionY;
-	double WorldPositionZ;
-	double Time;
+	double Posx_est;
+	double Posy_est;
+	double Posz_est;
+	double Attix_est;
+	double Attiy_est;
+	double Attiz_est;
+	double Attiw_est;
+	double Posx_phys;
+	double Posy_phys;
+	double Posz_phys;
+	double Attix_phys;
+	double Attiy_phys;
+	double Attiz_phys;
+	double Attiw_phys;
+	unsigned int Time_s;
+	unsigned int Time_ms;
 	
 	Geometry()
 	{
 		ID = "";
-		WorldPositionX = 0;
-		WorldPositionY = 0;
-		WorldPositionZ = 0;
-		Time = 0;
+		Posx_est = 0.0f;
+		Posy_est = 0.0f;
+		Posz_est = 0.0f;
+		Attix_est = 0.0f;
+		Attiy_est = 0.0f;
+		Attiz_est = 0.0f;
+		Attiw_est = 0.0f;
+		Posx_phys = 0.0f;
+		Posy_phys = 0.0f;
+		Posz_phys = 0.0f;
+		Attix_phys = 0.0f;
+		Attiy_phys = 0.0f;
+		Attiz_phys = 0.0f;
+		Attiw_phys = 0.0f;
+		Time_s = 0;
+		Time_ms = 0;
 	}
 };
 
-namespace fv{
-class TransformA {
+class Transform {
 public:
+	double Posx;
+	double Posy;
+	double Posz;
+	double Attix;
+	double Attiy;
+	double Attiz;
+	double Attiw;
+	unsigned int Time_s;
+	unsigned int Time_ms;
 
-    TransformA() {
+	Transform() {
+		Posx = 0.0f;
+		Posy = 0.0f;
+		Posz = 0.0f;
+		Attix = 0.0f;
+		Attiy = 0.0f;
+		Attiz = 0.0f;
+		Attiw = 0.0f;	
+		Time_s = 0;
+		Time_ms = 0;
+	};
 
-    };
+    	Transform(const double Posx,  const double Posy,  const double Posz,
+                  const double Attix, const double Attiy, const double Attiz, const double Attiw,
+	          const unsigned int Time_s, const unsigned int Time_ms) :
+                  Posx(Posx), Posy(Posy), Posz(Posz),
+                  Attix(Attix), Attiy(Attiy), Attiz(Attiz), Attiw(Attiw),
+		  Time_s(Time_s), Time_ms(Time_ms){};
 
-    TransformA(const double WorldPositionX, const double WorldPositionY, const double WorldPositionZ,
-        const double Time, const double AttitudeX, const double AttitudeY, const double AttitudeZ, const double AttitudeW) :
-        WorldPositionX(WorldPositionX), WorldPositionY(WorldPositionY), WorldPositionZ(WorldPositionZ),
-        Time(Time), AttitudeX(AttitudeX), AttitudeY(AttitudeY), AttitudeZ(AttitudeZ), AttitudeW(AttitudeW){
+	void printf()
+	{
+		cout << "Posx: " << Posx << endl;
+		cout << "Posy: " << Posy << endl;
+		cout << "Posz: " << Posz << endl;
+		cout << "Attix: " << Attix << endl;
+		cout << "Attiy: " << Attiy << endl;
+		cout << "Attiz: " << Attiz << endl;
+		cout << "Attiw: " << Attiw << endl;
+		cout << "Time_s: " << Time_s << endl;
+		cout << "Time_ms: " << Time_ms << endl;
+	}
 
-    };
-
-    ~TransformA() {
-
-    };
-
-    double WorldPositionX;
-    double WorldPositionY;
-    double WorldPositionZ;
-    double Time;
-    double AttitudeX;
-    double AttitudeY;
-    double AttitudeZ;
-    double AttitudeW;
+	~Transform() {};
 };
-}
 
 class ResourceMeta {
 
 public:
-
-   	ResourceMeta() {
-
-    	};
-
-  	  ResourceMeta(const std::string &ID, const int ParentObjectID, const int Type,
-        	const std::string Ext, const fv::TransformA &transform, const std::string Path, const std::string Parameters) :
-       		ID(ID), ParentObjectID(ParentObjectID), Type(Type),
-       		Ext(Ext), transform(transform), Path(Path), Parameters(Parameters){
-
-  	  };
-
-   	 ~ResourceMeta() {
-
-  	  }
-
-	virtual void loadResourceFile(string full) {}
-
-	std::string ID;
+	string ID;
     	int ParentObjectID;
     	int Type;
-   	std::string Ext;
-   	fv::TransformA transform;
-   	std::string Path;
-    	std::string Parameters;
+   	string Ext;
+   	sigma::Transform transform;
+   	string Path;
+    	string Parameters;
+
+   	ResourceMeta() {
+		ID = "";
+		ParentObjectID = 0;
+		Type = 0;
+		Ext = "";
+		transform = {};
+		Path = "";
+		Parameters = ""; 
+	};
+
+  	ResourceMeta(const string &ID, const int ParentObjectID, const int Type,
+        	     const string Ext, const sigma::Transform &transform, const string Path, const string Parameters) :
+       		     ID(ID), ParentObjectID(ParentObjectID), Type(Type),
+       		     Ext(Ext), transform(transform), Path(Path), Parameters(Parameters){};
+
+	void printf()
+	{
+		cout << "ResourceID: " << ID << endl;
+		cout << "ParentObjectID: " << ParentObjectID << endl;
+		cout << "Type: " << Type << endl;
+		cout << "Ext: " << Ext << endl;
+		transform.printf();
+		cout << "Path: " << Path << endl;
+		cout << "Parameters: " << Parameters << endl;
+	}
+
+   	 ~ResourceMeta() {}
+
+	//virtual void loadResourceFile(string full) {}
 };
-
-
 
 //Origin Radius Range
 class Vector4
@@ -128,19 +184,20 @@ public:
 	double x;
 	double y;
 	double z;
-	double t;
+	unsigned int t_s;
+	unsigned int t_ms;
 
 	Vector4()
 	{
-		x = 0.0; y = 0.0; z = 0.0; t = 0;
+		x = 0.0; y = 0.0; z = 0.0; t_s = 0; t_ms =0;
 	}
-	Vector4(double coordinateX,double coordinateY,double coordinateZ,double time)
+	Vector4(double coordinateX,double coordinateY,double coordinateZ,unsigned int _s,unsigned int _ms)
 	{
-		x = coordinateX; y = coordinateY; z = coordinateZ; t = time;
+		x = coordinateX; y = coordinateY; z = coordinateZ; t_s = _s; t_ms = _ms;
 	}
-	void setVector4(double coordinateX,double coordinateY,double coordinateZ,double time)
+	void setVector4(double coordinateX,double coordinateY,double coordinateZ,unsigned int _s,unsigned int _ms)
 	{
-		x = coordinateX; y = coordinateY; z = coordinateZ; t = time;
+		x = coordinateX; y = coordinateY; z = coordinateZ; t_s = _s; t_ms = _ms;
 	}
 };
 
@@ -168,39 +225,58 @@ public:
 	
 };
 
-class WorldPosition
+class Position
 {
 public:
-	double WorldPositionX, WorldPositionY, WorldPositionZ;
-	WorldPosition()
+	double Posx, Posy, Posz;
+	Position()
 	{
-		WorldPositionX = 0.0f; WorldPositionY = 0.0f; WorldPositionZ = 0.0f;
+		Posx = 0.0f; Posy = 0.0f; Posz = 0.0f;
 	}
-	WorldPosition(double x,double y,double z)
+	Position(double x,double y,double z)
 	{
-		WorldPositionX = x; WorldPositionY = y; WorldPositionZ = z;
+		Posx = x; Posy = y; Posz = z;
 	}
-	void setWorldPostion(double x,double y,double z)
+	void setPosition(double x,double y,double z)
 	{
-		WorldPositionX = x; WorldPositionY = y; WorldPositionZ = z;
+		Posx = x; Posy = y; Posz = z;
 	}
 };
 
 class Attitude
 {
 public:
-	double AttitudeX, AttitudeY, AttitudeZ, AttitudeW;
+	double Attitudex, Attitudey, Attitudez, Attitudew;
 	Attitude()
 	{
-		AttitudeX = 0.0f; AttitudeY = 0.0f; AttitudeZ = 0.0f; AttitudeW = 0.0f;
+		Attitudex = 0.0f; Attitudey = 0.0f; Attitudez = 0.0f; Attitudew = 0.0f;
 	}
 	Attitude(double x, double y, double z, double w)
 	{
-		AttitudeX = x; AttitudeY = y; AttitudeZ = z; AttitudeW = w;
+		Attitudex = x; Attitudey = y; Attitudez = z; Attitudew = w;
 	}
 	void setAttitude(double x, double y, double z, double w)
 	{
-		AttitudeX = x; AttitudeY = y; AttitudeZ = z; AttitudeW = w;
+		Attitudex = x; Attitudey = y; Attitudez = z; Attitudew = w;
+	}
+};
+
+class Time
+{
+public:
+	unsigned int s;
+	unsigned int ms;
+	Time()
+	{
+		s = 0;  ms = 0;
+	}
+	Time(unsigned int _s, unsigned int _ms)
+	{
+		s = _s;  ms = _ms;
+	}
+	void setTime(unsigned int _s, unsigned int _ms)
+	{
+		s = _s;  ms = _ms;
 	}
 };
 
@@ -221,7 +297,7 @@ public:
 		targetX = x; targetY = y; targetZ = z; 
 	}		
 };
-
+}
 //Load
 
 
@@ -229,7 +305,7 @@ public:
 
 //Expandable
 //Image
-class ImageResource:public ResourceMeta
+/*class ImageResource:public ResourceMeta
 {
 public:
 	Mat ImageData;
@@ -239,10 +315,10 @@ public:
 	}
 
 
-};
+};*/
 
 //PointCloud
-class PointCloudResource:public ResourceMeta
+/*class PointCloudResource:public ResourceMeta
 {
 public:
 	pcl::PointCloud<pcl::PointXYZ> PointCloud;
@@ -250,18 +326,18 @@ public:
 	{
 		pcl::io::loadPCDFile<pcl::PointXYZ>(full, this->PointCloud);
 	}
-};
+};*/
 
 //SAVE
-class Data_new
+/*class Data_new
 {
 public:
 	virtual void saveResourceFile(string full){}
-};
+};*/
 
 //Expandable
 //Image
-class ImageData_new:public Data_new
+/*class ImageData_new:public Data_new
 {
 public:
 	Mat ImageData;
@@ -269,10 +345,10 @@ public:
 	{
 		cv::imwrite(full,this->ImageData);
 	}
-};
+};*/
 
 //PointCloud
-class PointCloudData_new:public Data_new
+/*class PointCloudData_new:public Data_new
 {
 public:
 	pcl::PointCloud<pcl::PointXYZ> PointCloud;
@@ -280,21 +356,6 @@ public:
 	{
 		pcl::io::savePCDFile(full, this->PointCloud);
 	}
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+};*/
 
 #endif

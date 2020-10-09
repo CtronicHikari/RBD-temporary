@@ -149,7 +149,7 @@ public:
  * @param const std::vector<ResourceMeta> resourcemeta 保存するvector
  * @param const std::string path 保存するディレクトリパス
  */
-extern bool xmlFileGenerator(const std::vector<ResourceMeta> resourcemetas, const std::string path);
+extern bool xmlFileGenerator(const std::vector<sigma::ResourceMeta> resourcemetas, const std::string path);
 
 /**
  * @fn
@@ -157,7 +157,7 @@ extern bool xmlFileGenerator(const std::vector<ResourceMeta> resourcemetas, cons
  * @std::vector<ResourceMeta> & resourcemetametas xmlファイルを読み，resourcemetametasのvectorに格納
  * @param const std::string path 保存してあるディレクトリパス
  */
-extern void xmlFileParser(std::vector<ResourceMeta>& resourcemetas, const std::string path);
+extern void xmlFileParser(std::vector<sigma::ResourceMeta>& resourcemetas, const std::string path);
 
 /**
  * @fn

@@ -1,6 +1,6 @@
 #include "Common.h"
 
-extern bool xmlFileGenerator(const std::vector<ResourceMeta> resourcemetas, const std::string path) {
+extern bool xmlFileGenerator(const std::vector<sigma::ResourceMeta> resourcemetas, const std::string path) {
 
 	//•Û‘¶‚·‚é‚à‚Ì‚ª‚ ‚é‚©‚Ç‚¤‚©
 	if (resourcemetas.empty()) {
@@ -33,14 +33,15 @@ extern bool xmlFileGenerator(const std::vector<ResourceMeta> resourcemetas, cons
 		child.add("Parameters", v.Parameters);
 
 		boost::property_tree::ptree& child2 = child.add("transform", "");
-		child2.add("AttitudeW", v.transform.AttitudeW);
-		child2.add("AttitudeX", v.transform.AttitudeX);
-		child2.add("AttitudeY", v.transform.AttitudeY);
-		child2.add("AttitudeZ", v.transform.AttitudeZ);
-		child2.add("Time", v.transform.Time);
-		child2.add("WorldPositionX", v.transform.WorldPositionX);
-		child2.add("WorldPositionY", v.transform.WorldPositionY);
-		child2.add("WorldPositionZ", v.transform.WorldPositionZ);
+		child2.add("Attiw", v.transform.Attiw);
+		child2.add("Attix", v.transform.Attix);
+		child2.add("Attiy", v.transform.Attiy);
+		child2.add("Attiz", v.transform.Attiz);
+		child2.add("Time_s", v.transform.Time_s);
+		child2.add("Time_ms", v.transform.Time_ms);
+		child2.add("Posx", v.transform.Posx);
+		child2.add("Posy", v.transform.Posy);
+		child2.add("Posz", v.transform.Posz);
 	}
 
 	const int indent = resourcemetas.size();
@@ -50,7 +51,7 @@ extern bool xmlFileGenerator(const std::vector<ResourceMeta> resourcemetas, cons
 	return true;
 };
 
-void xmlFileParser(std::vector<ResourceMeta>& resourcemetametas, const std::string path) {
+void xmlFileParser(std::vector<sigma::ResourceMeta>& resourcemetametas, const std::string path) {
 
 	boost::property_tree::ptree pt;
 
@@ -59,17 +60,18 @@ void xmlFileParser(std::vector<ResourceMeta>& resourcemetametas, const std::stri
 
 		for (auto tree : pt) {
 
-			fv::TransformA t(
-				tree.second.get<double>("transform.WorldPositionX"),
-				tree.second.get<double>("transform.WorldPositionY"),
-				tree.second.get<double>("transform.WorldPositionZ"),
-				tree.second.get<double>("transform.Time"),
-				tree.second.get<double>("transform.AttitudeX"),
-				tree.second.get<double>("transform.AttitudeY"),
-				tree.second.get<double>("transform.AttitudeZ"),
-				tree.second.get<double>("transform.AttitudeW"));
+			sigma::Transform t(
+				tree.second.get<double>("transform.Posx"),
+				tree.second.get<double>("transform.Posy"),
+				tree.second.get<double>("transform.Posz"),
+				tree.second.get<unsigned int>("transform.Time_s"),
+				tree.second.get<unsigned int>("transform.Time_ms"),
+				tree.second.get<double>("transform.Attix"),
+				tree.second.get<double>("transform.Attiy"),
+				tree.second.get<double>("transform.Attiz"),
+				tree.second.get<double>("transform.Attiw"));
 
-			ResourceMeta r(tree.second.get<std::string>("ID"),
+			sigma::ResourceMeta r(tree.second.get<std::string>("ID"),
 				tree.second.get<int>("ParentObjectID"),
 				tree.second.get<int>("Type"),
 				tree.second.get<std::string>("Ext"),

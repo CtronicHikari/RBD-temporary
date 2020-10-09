@@ -4,33 +4,30 @@
 
 #include<mysql/mysql.h>
 #include<string>
-#include<iostream>
-#include <stdio.h>
-#include <stdlib.h>
-#include <sstream>
-#include <typeinfo>
+#include<stdio.h>
+#include<stdlib.h>
+#include<vector>
 #include"MyClass.h"
 #include"EncodeTool.h"
 
-#include<ctime>
-#include<cstdlib>
-
-#include<unistd.h> 
-#include<sys/types.h> 
-#include<sys/wait.h> 
-#include<stdio.h> 
-#include<stdlib.h> 
-#include<fcntl.h> 
-#include<limits.h> 
-#include<iostream>
-#include<vector>
-#include<cstring>
+//#include<ctime>
+//#include<cstdlib>
+//#include<unistd.h> 
+//#include<sys/types.h> 
+//#include<sys/wait.h> 
+//#include<stdio.h> 
+//#include<stdlib.h> 
+//#include<fcntl.h> 
+//#include<limits.h> 
+//#include<iostream>
+//#include <typeinfo>
+//#include<cstring>
 using namespace std;
 
 class DBConnect{
 public:
 	const char * db = "server"; //DataBase name
-	const char * server = "127.0.0.1"; //server ip
+	const char * server = "192.168.6.138"; //server ip
 	const char * user = "root"; //user
 	const char * password = "root"; //password
 	const unsigned int port = 3306; //port
@@ -40,87 +37,31 @@ public:
 	MYSQL_RES * result = NULL;
 	MYSQL_ROW sql_row;
 	MYSQL_FIELD *fd;
-	double StartTime = 0;
-
-	vector<string> Hashres;
-	string com01 = "echo -n '";
-	string com02 = "";
-    	string com03 = "'|md5sum|cut -d ' ' -f1";
-	string resCom;
-	int count;
-	char shellcommand[200];
-
 	EncodeTool encodeTool;
-	
-	//Connect&Disconnect  //OK
+
+	//Connect&Disconnect
 	const void Connect();
 	const void Disconnect();
-	//Add Object & Geometry & Connect  //OK
-	const void addObject(int ObjectID, int ParentObejctID, string GeometryID);
-	const string addGeometry(WorldPosition worldPostion, double Time);
-	const void addConnectOG(int ObjectID, string GeometryID); //Abolition
-	const void addConnectRG(string ResourceID, string GeometryID);
-	const void addResource(string GeometryID, int ParentObjectID, int Type, Attitude attitude, string path_temp, string Parameters);
-	//New Connect OG
-	
-	const void add_link_geo_obj(int ObjectID, string GeometryID);
-	const void add_link_geo_obj(int ObjectID, WorldPosition worldPosition, double Time);
-	const void add_link_geo_obj(int ObjectID, std::vector<ResourceMeta> ReferenceList, std::vector<float> Weights, double Time = -1, long int NoVibrations = -1);
-	const void add_link_geo_obj(int ObjectID, std::vector<Geometry> ReferenceList, std::vector<float> Weights, double Time = -1, long int NoVibrations = -1);
-	double GetSenserFrequency();
-	double SetStartTime(double NewTime);
-	
-	//Geometry Search Functions  //OK
-	const std::vector<Geometry> loadGeometry(Vector4 Origin, Vector4 Range, int Mode); 
-	//object Search Functions  //OK
-	const std::vector<Object> loadObject(Vector4 Origin, Vector4 Range, int Mode);
-	//Read Resource's Information Support Function
-	ResourceMeta readResourceInformation_new(MYSQL_ROW src);  //Wait
-	std::vector<ResourceMeta> resourceFilter(std::vector<ResourceMeta> src,std::vector<int> count);  //Wait
-	//Resouce Search Function
-	std::vector<ResourceMeta> loadResourceMeta(Vector4 Origin, Vector4 Range, int Mode, int Type=0);
-	std::vector<ResourceMeta> loadResourceMeta(int ObjectID, int Type=0);
-	std::vector<ResourceMeta>* loadResourceMeta(std::vector<Object> Objects, int Type=0);
-	std::vector<ResourceMeta> loadResourceMeta(double x, double y, double z, int Type=0);
-	std::vector<ResourceMeta> loadResourceMeta(string ID , int Type=0);
-	//Load Resource's Functions (Expandable)
-	std::vector<ImageResource> loadImageResource(std::vector<ResourceMeta> src); //Wait
-	std::vector<PointCloudResource> loadPointCloudResource(std::vector<ResourceMeta> src);  //Wait
-	//Frustum Search
-	std::vector<ResourceMeta> loadResourceMeta(Vector4 Origin, Frustum frustum, int Type=0);
-	std::vector<ResourceMeta> loadResourceMeta(Vector4 Origin, Vector4 Range, Target target, double theta, int Type=0);
-	std::vector<ResourceMeta> loadResourceMeta(Vector4 Origin, Vector4 Range, Target target, double alpha, double beta, int Type=0);
+	//Add Object & Geometry & Resource
+	const void addObject(sigma::Object *Object, string GeometryID);
+	const string addGeometry(sigma::Position *pos_est, sigma::Attitude *atti_est, sigma::Position *pos_phys, sigma::Attitude *atti_phys, sigma::Time *time);
+	const string addResource(int ParentObjectID, int Type, string Parameters, string GeometryID, string file_name, string save_path="./data");
+	//Link Object/Resrouce & Geometry
+	const void link_Geo_and_Obj(int ObjectID, string GeometryID);
+	////Object's Geometry TODO
+	const void link_Geo_and_Res(string ResourceID, string GeometryID);
 
-	void *string2char(string theString,char re[])
-	{
-		strcpy(re,theString.c_str());
-	}
-
-
-	//execute shell command
-	//执行一个shell命令，输出结果逐行存储在resvec中，并返回行数
-	int32_t linuxshell(const char *cmd, vector<string> &resvec) {
-   		resvec.clear();
-  	  	FILE *pp = popen(cmd, "r"); //建立管道,读取模式,”w“为写入模式
-  	  	if (!pp) {
-   	     		return -1;
-   	 	}
-   	 	char tmp[1024]; //设置一个合适的长度，以存储每一行输出
-   		while (fgets(tmp, sizeof(tmp), pp) != NULL) {
-   	     		if (tmp[strlen(tmp) - 1] == '\n') {
-    				tmp[strlen(tmp) - 1] = '\0'; //去除换行符
-    	    		}
-			resvec.push_back(tmp);
-    		}
-   	 	pclose(pp); //关闭管道
-    		return resvec.size();
-	}
-
+	//Search func
+	const std::vector<sigma::Geometry> loadGeometry(sigma::Vector4 *Origin, sigma::Vector4 *Range, int Mode);
+	const std::vector<sigma::Object> loadObject(sigma::Vector4 *Origin, sigma::Vector4 *Range, int Mode);
+	sigma::ResourceMeta readResourceInformation(MYSQL_ROW src);
+	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, int Mode, int Type=0);
+	std::vector<sigma::ResourceMeta> loadResourceMeta(int ObjectID, int Type=0);
+	std::vector<sigma::ResourceMeta>* loadResourceMeta(std::vector<sigma::Object> Objects, int Type=0);
+	std::vector<sigma::ResourceMeta> loadResourceMeta(string GeometryID , int Type=0);
+	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double theta, int Type=0);
+	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double alpha, double beta, int Type=0);
 	
 };
-	
-	
-
-
 #endif
 

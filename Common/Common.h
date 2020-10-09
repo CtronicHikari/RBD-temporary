@@ -6,6 +6,7 @@
 #include <boost/lexical_cast.hpp>
 #include <vector>
 #include <iostream>
+#include <MyClass.h>
 #define GLM_ENABLE_EXPERIMENTAL 1
 #include <glm/glm.hpp>
 #include <glm/gtx/string_cast.hpp>
@@ -14,7 +15,7 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "OpenCV.h"
 
-class Transform {
+/*class Transform {
 public:
 
     Transform() {
@@ -40,10 +41,43 @@ public:
     double AttitudeY;
     double AttitudeZ;
     double AttitudeW;
-};
+};*/
+/*class Transform {
+public:
+	double Posx;
+	double Posy;
+	double Posz;
+	double Attix;
+	double Attiy;
+	double Attiz;
+	double Attiw;
+	unsigned int Time_s;
+	unsigned int Time_ms;
+
+	Transform() {
+		Posx = 0.0f;
+		Posy = 0.0f;
+		Posz = 0.0f;
+		Attix = 0.0f;
+		Attiy = 0.0f;
+		Attiz = 0.0f;
+		Attiw = 0.0f;	
+		Time_s = 0;
+		Time_ms = 0;
+	};
+
+    	Transform(const double Posx,  const double Posy,  const double Posz,
+                  const double Attix, const double Attiy, const double Attiz, const double Attiw,
+	          const unsigned int Time_s, const unsigned int Time_ms) :
+                  Posx(Posx), Posy(Posy), Posz(Posz),
+                  Attix(Attix), Attiy(Attiy), Attiz(Attiz), Attiw(Attiw),
+		  Time_s(Time_s), Time_ms(Time_ms){};
+
+	~Transform() {};
+};*/
 
 
-class ResourceMeta {
+/*class ResourceMeta {
 
 public:
 
@@ -69,7 +103,35 @@ public:
     Transform transform;
     std::string Path;
     std::string Paraments;
-};
+};*/
+/*class ResourceMeta {
+
+public:
+	string ID;
+    	int ParentObjectID;
+    	int Type;
+   	string Ext;
+   	sigma::Transform transform;
+   	string Path;
+    	string Parameters;
+
+   	ResourceMeta() {
+		ID = "";
+		ParentObjectID = 0;
+		Type = 0;
+		Ext = "";
+		transform = {};
+		Path = "";
+		Parameters = ""; 
+	};
+
+  	ResourceMeta(const string &ID, const int ParentObjectID, const int Type,
+        	     const string Ext, const sigma::Transform &transform, const string Path, const string Parameters) :
+       		     ID(ID), ParentObjectID(ParentObjectID), Type(Type),
+       		     Ext(Ext), transform(transform), Path(Path), Parameters(Parameters){};
+
+   	 ~ResourceMeta() {}
+};*/
 
 class intrinsicPara {
 
@@ -98,9 +160,9 @@ public:
 	double k2;
 	double k3;
 
-    //サイズ
-    int width;
-    int height;
+    	//サイズ
+    	int width;
+    	int height;
 };
 
 class extrinsicPara {
@@ -148,7 +210,7 @@ public:
  * @param const std::vector<ResourceMeta> resourcemeta 保存するvector
  * @param const std::string path 保存するディレクトリパス
  */
-extern bool xmlFileGenerator(const std::vector<ResourceMeta> resourcemetas, const std::string path);
+extern bool xmlFileGenerator(const std::vector<sigma::ResourceMeta> resourcemetas, const std::string path);
 
 /**
  * @fn
@@ -156,7 +218,7 @@ extern bool xmlFileGenerator(const std::vector<ResourceMeta> resourcemetas, cons
  * @std::vector<ResourceMeta> & resourcemetametas xmlファイルを読み，resourcemetametasのvectorに格納
  * @param const std::string path 保存してあるディレクトリパス
  */
-extern void xmlFileParser(std::vector<ResourceMeta>& resourcemetas, const std::string path);
+extern void xmlFileParser(std::vector<sigma::ResourceMeta>& resourcemetas, const std::string path);
 
 /**
  * @fn

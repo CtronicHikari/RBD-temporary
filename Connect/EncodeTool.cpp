@@ -266,3 +266,118 @@ void EncodeTool::toEulerAngle(double x,double y,double z,double w, double& roll,
 //    return yaw;
 }
 
+uint32_t* EncodeTool::fill(string str)
+{
+	uint32_t groupCount = ((str.length() + 8) / 64) + 1;      
+	strlength = groupCount * step;
+	uint32_t *strByte = new uint32_t[strlength];
+	for (uint32_t i = 0; i < strlength; i++)
+		strByte[i] = 0;
+	for (uint32_t i = 0; i <str.length(); i++)
+	{
+		strByte[i >> 2] |= (str[i]) << ((i % 4) * 8);
+	}
+	strByte[str.length() >> 2] |= 0x80 << (((str.length() % 4)) * 8);
+	size_t length = str.length() * 8;
+	memmove(&strByte[strlength - 2], &length, sizeof(size_t));
+	return strByte;
+}
+
+void EncodeTool::mainLoop(uint32_t M[])
+{
+
+	uint32_t f, g;
+ 	uint32_t a = atemp;
+	uint32_t b = btemp;
+	uint32_t c = ctemp;
+	uint32_t d = dtemp;
+	for (uint32_t i = 0; i < 64; i++)
+	{
+		if (i<16) {
+			f = F(b, c, d);
+			g = i;
+		}
+		else if (i<32)
+		{
+			f = G(b, c, d);
+			g = (5 * i + 1) % 16;
+		}
+		else if (i<48) {
+			f = H(b, c, d);
+			g = (3 * i + 5) % 16;
+		}
+		else {
+			f = I(b, c, d);
+			g = (7 * i) % 16;
+		}
+		uint32_t tmp = d;
+		d = c;
+		c = b;
+		b = b + shift((a + f + k[i] + M[g]), s[i]);
+		a = tmp;
+	}
+	atemp = a + atemp;
+	btemp = b + btemp;
+	ctemp = c + ctemp;
+	dtemp = d + dtemp;
+}
+
+string EncodeTool::changeHex(int a)
+{
+	const char str16[] = "0123456789abcdef";
+	int b;
+	string str1;
+	string str = "";
+	for (int i = 0; i<4; i++)
+	{
+		str1 = "";
+		b = ((a >> i * 8) % (1 << 8)) & 0xff;
+		for (int j = 0; j < 2; j++)
+		{
+			str1.insert(0, 1, str16[b % 16]);
+			b = b / 16;
+		}
+		str += str1;
+	}
+	return str;
+}
+
+string EncodeTool::getMD5(string source)
+{
+	atemp = A;
+	btemp = B;
+	ctemp = C;
+	dtemp = D;
+	uint32_t *strByte = fill(source);
+	for (uint32_t i = 0; i<strlength / step; i++)
+	{
+		uint32_t num[step];
+		for (uint32_t j = 0; j<step; j++)
+			num[j] = strByte[i * step + j];
+ 
+		mainLoop(num);
+	}
+	return changeHex(atemp).append(changeHex(btemp)).append(changeHex(ctemp)).append(changeHex(dtemp));
+}
+
+unsigned EncodeTool::string_to_unsigned(char *s)
+{
+	unsigned result = 0;
+	for (int i = strlen(s) - 1; i >= 0; --i){
+		unsigned temp = 0;
+		int k = strlen(s) - i - 1;
+		if (isdigit(s[i])){
+			temp = s[i] - '0';
+			while (k--){
+				temp *= 10;
+			}
+			result += temp;
+		}
+		else{
+			break;
+		}
+	}
+	return result;
+}
+
+

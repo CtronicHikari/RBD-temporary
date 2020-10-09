@@ -1,0 +1,2 @@
+/usr/bin/ar qc libConnect.a  CMakeFiles/Connect.dir/Common.cpp.o CMakeFiles/Connect.dir/Connect.cpp.o CMakeFiles/Connect.dir/EncodeTool.cpp.o
+/usr/bin/ranlib libConnect.a
