@@ -28,20 +28,20 @@ extern bool xmlFileGenerator(const std::vector<sigma::ResourceMeta> resourcemeta
 		child.add("ID", v.ID);
 		child.add("ParentObjectID", v.ParentObjectID);
 		child.add("Type", v.Type);
-		child.add("Ext", v.Ext);
+		child.add("Format", v.Format);
 		child.add("Path", v.Path);
 		child.add("Parameters", v.Parameters);
 
 		boost::property_tree::ptree& child2 = child.add("transform", "");
-		child2.add("Attiw", v.transform.Attiw);
-		child2.add("Attix", v.transform.Attix);
-		child2.add("Attiy", v.transform.Attiy);
-		child2.add("Attiz", v.transform.Attiz);
-		child2.add("Time_s", v.transform.Time_s);
-		child2.add("Time_ms", v.transform.Time_ms);
-		child2.add("Posx", v.transform.Posx);
-		child2.add("Posy", v.transform.Posy);
-		child2.add("Posz", v.transform.Posz);
+		child2.add("Attiw", v.transform.atti.Attitudew);
+		child2.add("Attix", v.transform.atti.Attitudex);
+		child2.add("Attiy", v.transform.atti.Attitudey);
+		child2.add("Attiz", v.transform.atti.Attitudez);
+		child2.add("Time_s", v.transform.time.s);
+		child2.add("Time_ns", v.transform.time.ns);
+		child2.add("Posx", v.transform.pos.Posx);
+		child2.add("Posy", v.transform.pos.Posy);
+		child2.add("Posz", v.transform.pos.Posz);
 	}
 
 	const int indent = resourcemetas.size();
@@ -61,20 +61,20 @@ void xmlFileParser(std::vector<sigma::ResourceMeta>& resourcemetametas, const st
 		for (auto tree : pt) {
 
 			sigma::Transform t(
-				tree.second.get<double>("transform.Posx"),
-				tree.second.get<double>("transform.Posy"),
-				tree.second.get<double>("transform.Posz"),
-				tree.second.get<unsigned int>("transform.Time_s"),
-				tree.second.get<unsigned int>("transform.Time_ms"),
-				tree.second.get<double>("transform.Attix"),
-				tree.second.get<double>("transform.Attiy"),
-				tree.second.get<double>("transform.Attiz"),
-				tree.second.get<double>("transform.Attiw"));
+				tree.second.get<double>("transform.pos.Posx"),
+				tree.second.get<double>("transform.pos.Posy"),
+				tree.second.get<double>("transform.pos.Posz"),
+				tree.second.get<unsigned int>("transform.time.s"),
+				tree.second.get<unsigned int>("transform.time.ns"),
+				tree.second.get<double>("transform.atti.Attitudex"),
+				tree.second.get<double>("transform.atti.Attitudey"),
+				tree.second.get<double>("transform.atti.Attitudez"),
+				tree.second.get<double>("transform.atti.Attitudew"));
 
 			sigma::ResourceMeta r(tree.second.get<std::string>("ID"),
 				tree.second.get<int>("ParentObjectID"),
 				tree.second.get<int>("Type"),
-				tree.second.get<std::string>("Ext"),
+				tree.second.get<int>("Format"),
 				t,
 				tree.second.get<std::string>("Path"),
 				tree.second.get<std::string>("Parameters"));

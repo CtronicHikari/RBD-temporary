@@ -43,13 +43,15 @@ public:
 	const void Connect();
 	const void Disconnect();
 	//Add Object & Geometry & Resource
-	const void addObject(sigma::Object *Object, string GeometryID);
+	const void addObject(sigma::Object *Object);
 	const string addGeometry(sigma::Position *pos_est, sigma::Attitude *atti_est, sigma::Position *pos_phys, sigma::Attitude *atti_phys, sigma::Time *time);
-	const string addResource(int ParentObjectID, int Type, string Parameters, string GeometryID, string file_name, string save_path="./data");
+	const string addResource(string ResourceID, int ParentObjectID, int Type, int Format, string Parameters, string save_path="./data");
 	//Link Object/Resrouce & Geometry
 	const void link_Geo_and_Obj(int ObjectID, string GeometryID);
-	////Object's Geometry TODO
 	const void link_Geo_and_Res(string ResourceID, string GeometryID);
+
+ 	const string addGeometry(string ID, int breed, sigma::Vector3 *Offset, sigma::Time *time); //TODO  //breed:0.None  1.ObjectID   2.ResourceID
+	string make_ResourceID(int ParentObjectID, int Type, int Format, int size, sigma::Position *pos, sigma::Attitude *atti, sigma::Time *time); //TODO
 
 	//Search func
 	const std::vector<sigma::Geometry> loadGeometry(sigma::Vector4 *Origin, sigma::Vector4 *Range, int Mode);
@@ -59,8 +61,8 @@ public:
 	std::vector<sigma::ResourceMeta> loadResourceMeta(int ObjectID, int Type=0);
 	std::vector<sigma::ResourceMeta>* loadResourceMeta(std::vector<sigma::Object> Objects, int Type=0);
 	std::vector<sigma::ResourceMeta> loadResourceMeta(string GeometryID , int Type=0);
-	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double theta, int Type=0);
-	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double alpha, double beta, int Type=0);
+	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double theta, int Mode, int Type=0);
+	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double alpha, double beta, int Mode, int Type=0);
 	
 };
 #endif

@@ -24,13 +24,13 @@ const void DBConnect::Disconnect()
 //********************************
 //Add Object & Geometry & Connect
 //********************************
-const void DBConnect::addObject(sigma::Object *Object, string GeometryID)
+const void DBConnect::addObject(sigma::Object *Object)
 {
 	char sql[200];
 	int sql_len = sprintf(sql, "insert into server.object(OID,POID) values('%d','%d')", Object->ObjectID, Object->ParentNodeID);
 	res = mysql_real_query(pcon, sql, sql_len);
 
-	//TODO
+	//link_Geo_and_Obj(Object->ObjectID, GeometryID);
 }
 
 const string DBConnect::addGeometry(sigma::Position *pos_est, sigma::Attitude *atti_est, sigma::Position *pos_phys, sigma::Attitude *atti_phys, sigma::Time *time)
@@ -40,39 +40,49 @@ const string DBConnect::addGeometry(sigma::Position *pos_est, sigma::Attitude *a
 	int sql_len;
 	if(pos_est == NULL || atti_est == NULL)
 	{
-		ID += to_string(pos_phys->Posx) + "_" + to_string(pos_phys->Posy) + "_" + to_string(pos_phys->Posz) +"_";
-		ID += to_string(atti_phys->Attitudex) + "_" + to_string(atti_phys->Attitudey) + "_" + to_string(atti_phys->Attitudez) + "_" + to_string(atti_phys->Attitudew) + "_";
-		ID += to_string(time->s) + "." + to_string(time->ms);
+		sigma::Position *pos__est = new sigma::Position(pos_phys->Posx, pos_phys->Posy, pos_phys->Posz);
+		sigma::Attitude *atti__est = new sigma::Attitude(atti_phys->Attitudex, atti_phys->Attitudey, atti_phys->Attitudez, atti_phys->Attitudew);
+		ID += to_string(pos__est->Posx) + "_" + to_string(pos__est->Posy) + "_" + to_string(pos__est->Posz) +"_";
+		ID += to_string(atti__est->Attitudex) + "_" + to_string(atti__est->Attitudey) + "_" + to_string(atti__est->Attitudez) + "_" + to_string(atti__est->Attitudew) + "_";
+		ID += to_string(time->s) + "." + to_string(time->ns);
 		ID = encodeTool.getMD5(ID);
-		sql_len = sprintf(sql, "insert into server.geometry(ID,Posx_phys,Posy_phys,Posz_phys,Attix_phys,Attiy_phys,Attiz_phys,Attiw_phys,Time_s,Time_ms) values('%s','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%u','%u')", ID.c_str(), pos_phys->Posx, pos_phys->Posy, pos_phys->Posz, atti_phys->Attitudex,atti_phys->Attitudey,atti_phys->Attitudez,atti_phys->Attitudew,time->s,time->ms);
+		sql_len = sprintf(sql, "insert into server.geometry(ID,Posx_est,Posy_est,Posz_est,Attix_est,Attiy_est,Attiz_est,Attiw_est,Posx_phys,Posy_phys,Posz_phys,Attix_phys,Attiy_phys,Attiz_phys,Attiw_phys,Time_s,Time_ns) values('%s','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%u','%u')", ID.c_str(), pos__est->Posx, pos__est->Posy, pos__est->Posz, atti__est->Attitudex, atti__est->Attitudey, atti__est->Attitudez, atti__est->Attitudew, pos_phys->Posx, pos_phys->Posy, pos_phys->Posz, atti_phys->Attitudex,atti_phys->Attitudey,atti_phys->Attitudez,atti_phys->Attitudew,time->s,time->ns);
 		res = mysql_real_query(pcon,sql,sql_len);
 	}
 	else
 	{
 		ID += to_string(pos_est->Posx) + "_" + to_string(pos_est->Posy) + "_" + to_string(pos_est->Posz) +"_";
 		ID += to_string(atti_est->Attitudex) + "_" + to_string(atti_est->Attitudey) + "_" + to_string(atti_est->Attitudez) + "_" + to_string(atti_est->Attitudew) + "_";
-		ID += to_string(time->s) + "." + to_string(time->ms);
+		ID += to_string(time->s) + "." + to_string(time->ns);
 		ID = encodeTool.getMD5(ID);
-		sql_len = sprintf(sql, "insert into server.geometry(ID,Posx_est,Posy_est,Posz_est,Attix_est,Attiy_est,Attiz_est,Attiw_est,Posx_phys,Posy_phys,Posz_phys,Attix_phys,Attiy_phys,Attiz_phys,Attiw_phys,Time_s,Time_ms) values('%s','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%u','%u')", ID.c_str(), pos_est->Posx, pos_est->Posy, pos_est->Posz, atti_est->Attitudex, atti_est->Attitudey, atti_est->Attitudez, atti_est->Attitudew, pos_phys->Posx, pos_phys->Posy, pos_phys->Posz, atti_phys->Attitudex,atti_phys->Attitudey,atti_phys->Attitudez,atti_phys->Attitudew,time->s,time->ms);
+		sql_len = sprintf(sql, "insert into server.geometry(ID,Posx_est,Posy_est,Posz_est,Attix_est,Attiy_est,Attiz_est,Attiw_est,Posx_phys,Posy_phys,Posz_phys,Attix_phys,Attiy_phys,Attiz_phys,Attiw_phys,Time_s,Time_ns) values('%s','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%u','%u')", ID.c_str(), pos_est->Posx, pos_est->Posy, pos_est->Posz, atti_est->Attitudex, atti_est->Attitudey, atti_est->Attitudez, atti_est->Attitudew, pos_phys->Posx, pos_phys->Posy, pos_phys->Posz, atti_phys->Attitudex,atti_phys->Attitudey,atti_phys->Attitudez,atti_phys->Attitudew,time->s,time->ns);
 		res = mysql_real_query(pcon,sql,sql_len);
 	}	
 	return ID;
 }
 
-const string DBConnect::addResource(int ParentObjectID, int Type, string Parameters, string GeometryID, string file_name, string save_path) // /home/guan/new_image/MOV_0168_21.png
+const string DBConnect::addGeometry(string ID, int breed, sigma::Vector3 *Offset, sigma::Time *time)
+{
+	
+}
+
+const string DBConnect::addResource(string ResourceID, string GeometryID, int ParentObjectID, int Type, int Format, string Parameters, string save_path)
 {
 	int sql_len;
 	char sql[500];
 	string ID = "";
-
-	std::vector<string> splittedName = encodeTool.ParametersSplitter(file_name,'/');
-	std::vector<string> splittedID = encodeTool.ParametersSplitter(splittedName[splittedName.size()-1],'.');
-	ID = encodeTool.getMD5(splittedID[0] + "_" + GeometryID) + "." + splittedID[1];
 	
-	sql_len = sprintf(sql, "insert into server.resources(ID,POID,Type,Ext,Path,Para) values('%s','%d','%d','%s','%s','%s')",ID.c_str(),ParentObjectID,Type,splittedID[1].c_str(),save_path.c_str(),Parameters.c_str());
+	sql_len = sprintf(sql, "insert into server.resource(ID,POID,Type,Format,Path,Para) values('%s','%d','%d','%d','%s','%s')",ResourceID.c_str(),ParentObjectID,Type,Format,save_path.c_str(),Parameters.c_str());
 	res = mysql_real_query(pcon, sql, sql_len);
 
+	//link_Geo_and_Res(ResourceID, GeometryID);
+
 	return ID;
+}
+
+string DBConnect::make_ResourceID(int ParentObjectID, int Type, int Format, int size, sigma::Position *pos, sigma::Attitude *atti, sigma::Time *time)
+{
+	//TODO
 }
 
 const void DBConnect::link_Geo_and_Obj(int ObjectID, string GeometryID)
@@ -99,66 +109,66 @@ const std::vector<sigma::Geometry> DBConnect::loadGeometry(sigma::Vector4 *Origi
 
 	if(Mode == 1)  //Sphere: If no _est use _phys
 	{
-		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->t_s > 0)
+		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),(POW(Posx_phys-'%f',2)/POW('%f',2))+(POW(Posy_phys-'%f',2)/POW('%f',2))+(POW(Posz_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),(POW(Posx_phys-'%f',2)/POW('%f',2))+(POW(Posy_phys-'%f',2)/POW('%f',2))+(POW(Posz_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
 		
-		else if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1,(POW(Posx_phys-'%f',2)/POW('%f',2))+(POW(Posy_phys-'%f',2)/POW('%f',2))+(POW(Posz_phys-'%f',2)/POW('%f',2))<1);", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),(POW(Posx_phys-'%f',2)/POW('%f',2))+(POW(Posy_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),(POW(Posx_phys-'%f',2)/POW('%f',2))+(POW(Posy_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))<1,(POW(Posx_phys-'%f',2)/POW('%f',2))+(POW(Posy_phys-'%f',2)/POW('%f',2))<1);", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->x, Range->x/2, Origin->y, Range->y/2);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),(POW(Posx_phys-'%f',2)/POW('%f',2))+(POW(Posz_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),(POW(Posx_phys-'%f',2)/POW('%f',2))+(POW(Posz_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1,(POW(Posx_phys-'%f',2)/POW('%f',2))+(POW(Posz_phys-'%f',2)/POW('%f',2))<1);", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->x, Range->x/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),(POW(Posy_phys-'%f',2)/POW('%f',2))+(POW(Posz_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),(POW(Posy_phys-'%f',2)/POW('%f',2))+(POW(Posz_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1,(POW(Posy_phys-'%f',2)/POW('%f',2))+(POW(Posz_phys-'%f',2)/POW('%f',2))<1);", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->y, Range->y/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),(POW(Posx_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->x, Range->x/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),(POW(Posx_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->x, Range->x/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posx_est-'%f',2)/POW('%f',2))<1,(POW(Posx_phys-'%f',2)/POW('%f',2))<1);", Origin->x, Range->x/2, Origin->x, Range->x/2);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posy_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),(POW(Posy_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posy_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),(POW(Posy_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posy_est-'%f',2)/POW('%f',2))<1,(POW(Posy_phys-'%f',2)/POW('%f',2))<1);", Origin->y, Range->y/2,Origin->y, Range->y/2);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),(POW(Posz_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),(POW(Posz_phys-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,(POW(Posz_est-'%f',2)/POW('%f',2))<1,(POW(Posz_phys-'%f',2)/POW('%f',2))<1);", Origin->z, Range->z/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
 		else
 		{
@@ -167,66 +177,66 @@ const std::vector<sigma::Geometry> DBConnect::loadGeometry(sigma::Vector4 *Origi
 	}
 	else if(Mode == 2) //Cube: If no _est use _phys
 	{
-		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->t_s > 0)
+		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),ABS(Posx_phys-'%f')<='%f' AND ABS(Posy_phys-'%f')<='%f' AND ABS(Posz_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),ABS(Posx_phys-'%f')<='%f' AND ABS(Posy_phys-'%f')<='%f' AND ABS(Posz_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
 		
-		else if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f',ABS(Posx_phys-'%f')<='%f' AND ABS(Posy_phys-'%f')<='%f' AND ABS(Posz_phys-'%f')<='%f');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),ABS(Posx_phys-'%f')<='%f' AND ABS(Posy_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),ABS(Posx_phys-'%f')<='%f' AND ABS(Posy_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f',ABS(Posx_phys-'%f')<='%f' AND ABS(Posy_phys-'%f')<='%f');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->x, Range->x/2, Origin->y, Range->y/2);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),ABS(Posx_phys-'%f')<='%f' AND ABS(Posz_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),ABS(Posx_phys-'%f')<='%f' AND ABS(Posz_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f',ABS(Posx_phys-'%f')<='%f' AND ABS(Posz_phys-'%f')<='%f');", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->x, Range->x/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),ABS(Posy_phys-'%f')<='%f' AND ABS(Posz_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),ABS(Posy_phys-'%f')<='%f' AND ABS(Posz_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f',ABS(Posy_phys-'%f')<='%f' AND ABS(Posz_phys-'%f')<='%f');", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->y, Range->y/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),ABS(Posx_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->x, Range->x/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),ABS(Posx_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->x, Range->x/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->x, Range->x/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posx_est-'%f')<='%f',ABS(Posx_phys-'%f')<='%f');", Origin->x, Range->x/2, Origin->x, Range->x/2);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posy_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),ABS(Posy_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posy_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),ABS(Posy_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posy_est-'%f')<='%f',ABS(Posy_phys-'%f')<='%f');", Origin->y, Range->y/2, Origin->y, Range->y/2);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),ABS(Posz_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),ABS(Posz_phys-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,ABS(Posz_est-'%f')<='%f',ABS(Posz_phys-'%f')<='%f');", Origin->z, Range->z/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'),IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u'));", Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Posx_est IS NOT NULL,IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'),IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u'));", Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
 		else
 		{
@@ -235,66 +245,66 @@ const std::vector<sigma::Geometry> DBConnect::loadGeometry(sigma::Vector4 *Origi
 	}
 	else if(Mode == 3)  //Sphere: Only use _est
 	{
-		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->t_s > 0)
+		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
 		
-		else if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1;", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->time.s, Origin->time.s, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posy_est-'%f',2)/POW('%f',2))<1;", Origin->x, Range->x/2, Origin->y, Range->y/2);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1;", Origin->x, Range->x/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posy_est-'%f',2)/POW('%f',2))+(POW(Posz_est-'%f',2)/POW('%f',2))<1;", Origin->y, Range->y/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posx_est-'%f',2)/POW('%f',2))<1;", Origin->x, Range->x/2);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posy_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posy_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posy_est-'%f',2)/POW('%f',2))<1;", Origin->y, Range->y/2);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posz_est-'%f',2)/POW('%f',2))<1 AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where (POW(Posz_est-'%f',2)/POW('%f',2))<1;", Origin->z, Range->z/2);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
 		else
 		{
@@ -303,66 +313,66 @@ const std::vector<sigma::Geometry> DBConnect::loadGeometry(sigma::Vector4 *Origi
 	}	
 	else if(Mode == 4) //Cube: Only use _est
 	{
-		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->t_s > 0)
+		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
 		
-		else if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f';", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y > 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND ABS(Posy_est-'%f')<='%f');", Origin->x, Range->x/2, Origin->y, Range->y/2);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f';", Origin->x, Range->x/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->y, Range->y/2, Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posy_est-'%f')<='%f' AND ABS(Posz_est-'%f')<='%f';", Origin->y, Range->y/2, Origin->z, Range->z/2);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->x, Range->x/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x > 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posx_est-'%f')<='%f';", Origin->x, Range->x/2);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posy_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->y, Range->y/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posy_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->y, Range->y/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y > 0 && Range->z <= 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posy_est-'%f')<='%f';", Origin->y, Range->y/2);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->z, Range->z/2, Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posz_est-'%f')<='%f' AND IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->z, Range->z/2, Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->t_s <= 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z > 0 && Range->time.s <= 0)
 		{
 			sql_len = sprintf(sql, "select * from server.geometry where ABS(Posz_est-'%f')<='%f';", Origin->z, Range->z/2);
 		}
-		else if(Range->x <= 0 && Range->y <= 0 && Range->z <= 0 && Range->t_s > 0)
+		else if(Range->x <= 0 && Range->y <= 0 && Range->z <= 0 && Range->time.s > 0)
 		{
-			sql_len = sprintf(sql, "select * from server.geometry where IF(Time_s='%u',Time_ms>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ms<='%u',Time_s<='%u');", Origin->t_s, Origin->t_ms, Origin->t_s, Range->t_s, Range->t_ms, Range->t_s);
+			sql_len = sprintf(sql, "select * from server.geometry where IF(Time_s='%u',Time_ns>='%u',Time_s>='%u') AND IF(Time_s='%u',Time_ns<='%u',Time_s<='%u');", Origin->time.s, Origin->time.ns, Origin->time.s, Range->time.s, Range->time.ns, Range->time.s);
 		}
 		else
 		{
@@ -383,22 +393,22 @@ const std::vector<sigma::Geometry> DBConnect::loadGeometry(sigma::Vector4 *Origi
 	while(sql_row = mysql_fetch_row(result))
 	{
 		src.ID = sql_row[0];
-		src.Posx_est = sql_row[1]==NULL ? 0.0f : strtod(sql_row[1],NULL);
-		src.Posy_est = sql_row[2]==NULL ? 0.0f : strtod(sql_row[2],NULL);
-		src.Posz_est = sql_row[3]==NULL ? 0.0f : strtod(sql_row[3],NULL);
-		src.Attix_est = sql_row[4]==NULL ? 0.0f : strtod(sql_row[4],NULL);
-		src.Attiy_est = sql_row[5]==NULL ? 0.0f : strtod(sql_row[5],NULL);
-		src.Attiz_est = sql_row[6]==NULL ? 0.0f : strtod(sql_row[6],NULL);
-		src.Attiw_est = sql_row[7]==NULL ? 0.0f : strtod(sql_row[7],NULL);
-		src.Posx_phys = strtod(sql_row[8],NULL);
-		src.Posy_phys = strtod(sql_row[9],NULL);
-		src.Posz_phys = strtod(sql_row[10],NULL);
-		src.Attix_phys = strtod(sql_row[11],NULL);
-		src.Attiy_phys = strtod(sql_row[12],NULL);
-		src.Attiz_phys = strtod(sql_row[13],NULL);
-		src.Attiw_phys = strtod(sql_row[14],NULL);
-		src.Time_s = encodeTool.string_to_unsigned(sql_row[15]);
-		src.Time_ms = encodeTool.string_to_unsigned(sql_row[16]);
+		src.pos_est.Posx = sql_row[1]==NULL ? 0.0f : strtod(sql_row[1],NULL);
+		src.pos_est.Posy = sql_row[2]==NULL ? 0.0f : strtod(sql_row[2],NULL);
+		src.pos_est.Posz = sql_row[3]==NULL ? 0.0f : strtod(sql_row[3],NULL);
+		src.atti_est.Attitudex = sql_row[4]==NULL ? 0.0f : strtod(sql_row[4],NULL);
+		src.atti_est.Attitudey = sql_row[5]==NULL ? 0.0f : strtod(sql_row[5],NULL);
+		src.atti_est.Attitudez = sql_row[6]==NULL ? 0.0f : strtod(sql_row[6],NULL);
+		src.atti_est.Attitudew = sql_row[7]==NULL ? 0.0f : strtod(sql_row[7],NULL);
+		src.pos_phys.Posx = strtod(sql_row[8],NULL);
+		src.pos_phys.Posy = strtod(sql_row[9],NULL);
+		src.pos_phys.Posz = strtod(sql_row[10],NULL);
+		src.atti_phys.Attitudex = strtod(sql_row[11],NULL);
+		src.atti_phys.Attitudey = strtod(sql_row[12],NULL);
+		src.atti_phys.Attitudez = strtod(sql_row[13],NULL);
+		src.atti_phys.Attitudew = strtod(sql_row[14],NULL);
+		src.time.s = encodeTool.string_to_unsigned(sql_row[15]);
+		src.time.ns = encodeTool.string_to_unsigned(sql_row[16]);
 		Geometries.push_back(src);
 	}
 	return Geometries;
@@ -455,7 +465,7 @@ sigma::ResourceMeta DBConnect::readResourceInformation(MYSQL_ROW src)
 	dst.ID = src[0];
 	temp = src[1];  	dst.ParentObjectID = atoi(temp.c_str());
 	temp = src[2];  	dst.Type = atoi(temp.c_str());
-	dst.Ext = src[3];
+	temp = src[3];		dst.Format = atoi(temp.c_str());
 	dst.Path = src[4];
 	dst.Parameters = src[5];
 
@@ -472,15 +482,15 @@ sigma::ResourceMeta DBConnect::readResourceInformation(MYSQL_ROW src)
 	result = mysql_store_result(pcon);
 	while(sql_row = mysql_fetch_row(result))
 	{
-		dst.transform.Posx = sql_row[1]==NULL ? strtod(sql_row[8],NULL) : strtod(sql_row[1],NULL);
-		dst.transform.Posy = sql_row[2]==NULL ? strtod(sql_row[9],NULL) : strtod(sql_row[2],NULL);
-		dst.transform.Posz = sql_row[3]==NULL ? strtod(sql_row[10],NULL) : strtod(sql_row[3],NULL);
-		dst.transform.Attix = sql_row[4]==NULL ? strtod(sql_row[11],NULL) : strtod(sql_row[4],NULL);
-		dst.transform.Attiy = sql_row[5]==NULL ? strtod(sql_row[12],NULL) : strtod(sql_row[5],NULL);
-		dst.transform.Attiz = sql_row[6]==NULL ? strtod(sql_row[13],NULL) : strtod(sql_row[6],NULL);
-		dst.transform.Attiw = sql_row[7]==NULL ? strtod(sql_row[14],NULL) : strtod(sql_row[7],NULL);
-		dst.transform.Time_s = encodeTool.string_to_unsigned(sql_row[15]);
-		dst.transform.Time_ms = encodeTool.string_to_unsigned(sql_row[16]);
+		dst.transform.pos.Posx = sql_row[1]==NULL ? strtod(sql_row[8],NULL) : strtod(sql_row[1],NULL);
+		dst.transform.pos.Posy = sql_row[2]==NULL ? strtod(sql_row[9],NULL) : strtod(sql_row[2],NULL);
+		dst.transform.pos.Posz = sql_row[3]==NULL ? strtod(sql_row[10],NULL) : strtod(sql_row[3],NULL);
+		dst.transform.atti.Attitudex = sql_row[4]==NULL ? strtod(sql_row[11],NULL) : strtod(sql_row[4],NULL);
+		dst.transform.atti.Attitudey = sql_row[5]==NULL ? strtod(sql_row[12],NULL) : strtod(sql_row[5],NULL);
+		dst.transform.atti.Attitudez = sql_row[6]==NULL ? strtod(sql_row[13],NULL) : strtod(sql_row[6],NULL);
+		dst.transform.atti.Attitudew = sql_row[7]==NULL ? strtod(sql_row[14],NULL) : strtod(sql_row[7],NULL);
+		dst.transform.time.s = encodeTool.string_to_unsigned(sql_row[15]);
+		dst.transform.time.ns = encodeTool.string_to_unsigned(sql_row[16]);
 	}
 
 	return dst;
@@ -513,9 +523,9 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 	for(i=0;i<RIDs.size();i++)
 	{
 		if(Type != 0)
-			sql_len = sprintf(sql, "select * from server.Resources where ID='%s' and Type='%d';", RIDs[i].c_str(), Type);
+			sql_len = sprintf(sql, "select * from server.resource where ID='%s' and Type='%d';", RIDs[i].c_str(), Type);
 		else
-			sql_len = sprintf(sql, "select * from server.Resources where ID='%s';", RIDs[i].c_str());
+			sql_len = sprintf(sql, "select * from server.resource where ID='%s';", RIDs[i].c_str());
 		res = mysql_real_query(pcon, sql, sql_len);
 		result = mysql_store_result(pcon);
 		while(sql_row = mysql_fetch_row(result))
@@ -537,9 +547,9 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(int ObjectID, int T
 	int sql_len;
 
 	if(Type != 0)
-		sql_len = sprintf(sql, "select * from server.Resources where POID='%d' and Type='%d';", ObjectID, Type);
+		sql_len = sprintf(sql, "select * from server.resource where POID='%d' and Type='%d';", ObjectID, Type);
 	else
-		sql_len = sprintf(sql, "select * from server.Resources where POID='%d';", ObjectID);
+		sql_len = sprintf(sql, "select * from server.resource where POID='%d';", ObjectID);
 	res = mysql_real_query(pcon, sql, sql_len);
 	result = mysql_store_result(pcon);
 	while(sql_row = mysql_fetch_row(result))
@@ -587,9 +597,9 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(string GeometryID, 
 	for(i=0;i<RIDs.size();i++)
 	{
 		if(Type != 0)
-			sql_len = sprintf(sql, "select * from server.Resources where ID='%s' and Type='%d';", RIDs[i].c_str(), Type);
+			sql_len = sprintf(sql, "select * from server.resource where ID='%s' and Type='%d';", RIDs[i].c_str(), Type);
 		else
-			sql_len = sprintf(sql, "select * from server.Resources where ID='%s';", RIDs[i].c_str());
+			sql_len = sprintf(sql, "select * from server.resource where ID='%s';", RIDs[i].c_str());
 		res = mysql_real_query(pcon, sql, sql_len);
 		result = mysql_store_result(pcon);
 		while(sql_row = mysql_fetch_row(result))
@@ -601,7 +611,7 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(string GeometryID, 
 	return ResourceMetas;
 }
 
-std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double theta, int Type)
+std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double theta, int Mode, int Type)
 {
 	
 	std::vector<sigma::ResourceMeta> ResourceMetas;
@@ -615,24 +625,24 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 	double cos_temp_theta;
 	double roll,pitch,yaw;
 	
-	Geometries = loadGeometry(Origin,Range,4);
+	Geometries = loadGeometry(Origin,Range,Mode);
 
 	for(i = 0;i < Geometries.size();i++)
 	{
-		double tmp = (Geometries[i].Posx_est==0) ? Geometries[i].Posx_phys : Geometries[i].Posx_est;
-		dir_x = target->targetX - tmp;
-		tmp = (Geometries[i].Posy_est==0) ? Geometries[i].Posy_phys : Geometries[i].Posy_est;
-		dir_y = target->targetY - tmp;
-		tmp = (Geometries[i].Posz_est==0) ? Geometries[i].Posz_phys : Geometries[i].Posz_est;
-		dir_z = target->targetZ - tmp;
+		//double tmp = (Geometries[i].Posx_est==0) ? Geometries[i].Posx_phys : Geometries[i].Posx_est;
+		dir_x = target->targetX - Geometries[i].pos_est.Posx;
+		//tmp = (Geometries[i].Posy_est==0) ? Geometries[i].Posy_phys : Geometries[i].Posy_est;
+		dir_y = target->targetY - Geometries[i].pos_est.Posy;
+		//tmp = (Geometries[i].Posz_est==0) ? Geometries[i].Posz_phys : Geometries[i].Posz_est;
+		dir_z = target->targetZ - Geometries[i].pos_est.Posz;
 		temp_ResourceMetas = loadResourceMeta(Geometries[i].ID, Type);
 		
 		for(j=0;j<temp_ResourceMetas.size();j++)
 		{
-			double Rx = temp_ResourceMetas[j].transform.Attix;
-			double Ry = temp_ResourceMetas[j].transform.Attiy;
-			double Rz = temp_ResourceMetas[j].transform.Attiz;
-			double Rw = temp_ResourceMetas[j].transform.Attiw;
+			double Rx = temp_ResourceMetas[j].transform.atti.Attitudex;
+			double Ry = temp_ResourceMetas[j].transform.atti.Attitudey;
+			double Rz = temp_ResourceMetas[j].transform.atti.Attitudez;
+			double Rw = temp_ResourceMetas[j].transform.atti.Attitudew;
 	
 			encodeTool.R = encodeTool.Quaternion2RotationMatrix(Rx,Ry,Rz,Rw);
 			encodeTool.init_vector << 0,0,1;
@@ -648,7 +658,7 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 	return ResourceMetas;
 }
 //********************************
-std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double alpha, double beta, int Type)
+std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double alpha, double beta, int Mode,int Type)
 {
 	
 	std::vector<sigma::ResourceMeta> ResourceMetas;
@@ -663,16 +673,16 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 	double resultA,resultB;
 	double roll,pitch,yaw;
 	
-	Geometries = loadGeometry(Origin,Range,4);
+	Geometries = loadGeometry(Origin,Range,Mode);
 
 	for(i = 0;i < Geometries.size();i++)
 	{
-		double tmp = (Geometries[i].Posx_est==0) ? Geometries[i].Posx_phys : Geometries[i].Posx_est;
-		dir_x = target->targetX - tmp;
-		tmp = (Geometries[i].Posy_est==0) ? Geometries[i].Posy_phys : Geometries[i].Posy_est;
-		dir_y = target->targetY - tmp;
-		tmp = (Geometries[i].Posz_est==0) ? Geometries[i].Posz_phys : Geometries[i].Posz_est;
-		dir_z = target->targetZ - tmp;
+		//double tmp = (Geometries[i].Posx_est==0) ? Geometries[i].Posx_phys : Geometries[i].Posx_est;
+		dir_x = target->targetX - Geometries[i].pos_est.Posx;
+		//tmp = (Geometries[i].Posy_est==0) ? Geometries[i].Posy_phys : Geometries[i].Posy_est;
+		dir_y = target->targetY - Geometries[i].pos_est.Posy;
+		//tmp = (Geometries[i].Posz_est==0) ? Geometries[i].Posz_phys : Geometries[i].Posz_est;
+		dir_z = target->targetZ - Geometries[i].pos_est.Posz;
 		temp_ResourceMetas = loadResourceMeta(Geometries[i].ID, Type);
 		
 		for(j=0;j<temp_ResourceMetas.size();j++)
@@ -682,10 +692,10 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 			Eigen::Vector3d vector_weight_with_z(0,0,0),vector_weight_notwith_z(0,0,0);
 			Eigen::Matrix3d rotMatrix,R;
 			
-			double Rx = temp_ResourceMetas[j].transform.Attix;
-			double Ry = temp_ResourceMetas[j].transform.Attiy;
-			double Rz = temp_ResourceMetas[j].transform.Attiz;
-			double Rw = temp_ResourceMetas[j].transform.Attiw;
+			double Rx = temp_ResourceMetas[j].transform.atti.Attitudex;
+			double Ry = temp_ResourceMetas[j].transform.atti.Attitudey;
+			double Rz = temp_ResourceMetas[j].transform.atti.Attitudez;
+			double Rw = temp_ResourceMetas[j].transform.atti.Attitudew;
 	
 			R = encodeTool.Quaternion2RotationMatrix(Rx,Ry,Rz,Rw);
 			init_vector << 0,0,1;

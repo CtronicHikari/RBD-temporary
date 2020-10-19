@@ -3,19 +3,17 @@
 #define MYCLASS_H
 
 #include <iostream>
-#include <stdio.h>
-#include <string.h>
+#include <string>
 #include <vector>
-#include <opencv2/opencv.hpp>
-#include <pcl/common/common_headers.h>
-#include <pcl/common/common_headers.h>
-#include <pcl/features/normal_3d.h>
-#include <pcl/io/pcd_io.h>
-#include <pcl/console/parse.h>
-#include <pcl/io/io.h>
+//#include <opencv2/opencv.hpp>
+//#include <pcl/common/common_headers.h>
+//#include <pcl/common/common_headers.h>
+//#include <pcl/features/normal_3d.h>
+//#include <pcl/io/pcd_io.h>
+//#include <pcl/console/parse.h>
+//#include <pcl/io/io.h>
 
 using namespace std;
-using namespace cv;
 
 #define PICTURE 0
 #define POINTCLOUD 1
@@ -43,186 +41,6 @@ public:
 		ObjectID = _ObjectID;
 		ParentNodeID = _ParentNodeID;
 	}
-};
-
-//Geometry
-class Geometry{
-public:
-	string ID;
-	double Posx_est;
-	double Posy_est;
-	double Posz_est;
-	double Attix_est;
-	double Attiy_est;
-	double Attiz_est;
-	double Attiw_est;
-	double Posx_phys;
-	double Posy_phys;
-	double Posz_phys;
-	double Attix_phys;
-	double Attiy_phys;
-	double Attiz_phys;
-	double Attiw_phys;
-	unsigned int Time_s;
-	unsigned int Time_ms;
-	
-	Geometry()
-	{
-		ID = "";
-		Posx_est = 0.0f;
-		Posy_est = 0.0f;
-		Posz_est = 0.0f;
-		Attix_est = 0.0f;
-		Attiy_est = 0.0f;
-		Attiz_est = 0.0f;
-		Attiw_est = 0.0f;
-		Posx_phys = 0.0f;
-		Posy_phys = 0.0f;
-		Posz_phys = 0.0f;
-		Attix_phys = 0.0f;
-		Attiy_phys = 0.0f;
-		Attiz_phys = 0.0f;
-		Attiw_phys = 0.0f;
-		Time_s = 0;
-		Time_ms = 0;
-	}
-};
-
-class Transform {
-public:
-	double Posx;
-	double Posy;
-	double Posz;
-	double Attix;
-	double Attiy;
-	double Attiz;
-	double Attiw;
-	unsigned int Time_s;
-	unsigned int Time_ms;
-
-	Transform() {
-		Posx = 0.0f;
-		Posy = 0.0f;
-		Posz = 0.0f;
-		Attix = 0.0f;
-		Attiy = 0.0f;
-		Attiz = 0.0f;
-		Attiw = 0.0f;	
-		Time_s = 0;
-		Time_ms = 0;
-	};
-
-    	Transform(const double Posx,  const double Posy,  const double Posz,
-                  const double Attix, const double Attiy, const double Attiz, const double Attiw,
-	          const unsigned int Time_s, const unsigned int Time_ms) :
-                  Posx(Posx), Posy(Posy), Posz(Posz),
-                  Attix(Attix), Attiy(Attiy), Attiz(Attiz), Attiw(Attiw),
-		  Time_s(Time_s), Time_ms(Time_ms){};
-
-	void printf()
-	{
-		cout << "Posx: " << Posx << endl;
-		cout << "Posy: " << Posy << endl;
-		cout << "Posz: " << Posz << endl;
-		cout << "Attix: " << Attix << endl;
-		cout << "Attiy: " << Attiy << endl;
-		cout << "Attiz: " << Attiz << endl;
-		cout << "Attiw: " << Attiw << endl;
-		cout << "Time_s: " << Time_s << endl;
-		cout << "Time_ms: " << Time_ms << endl;
-	}
-
-	~Transform() {};
-};
-
-class ResourceMeta {
-
-public:
-	string ID;
-    	int ParentObjectID;
-    	int Type;
-   	string Ext;
-   	sigma::Transform transform;
-   	string Path;
-    	string Parameters;
-
-   	ResourceMeta() {
-		ID = "";
-		ParentObjectID = 0;
-		Type = 0;
-		Ext = "";
-		transform = {};
-		Path = "";
-		Parameters = ""; 
-	};
-
-  	ResourceMeta(const string &ID, const int ParentObjectID, const int Type,
-        	     const string Ext, const sigma::Transform &transform, const string Path, const string Parameters) :
-       		     ID(ID), ParentObjectID(ParentObjectID), Type(Type),
-       		     Ext(Ext), transform(transform), Path(Path), Parameters(Parameters){};
-
-	void printf()
-	{
-		cout << "ResourceID: " << ID << endl;
-		cout << "ParentObjectID: " << ParentObjectID << endl;
-		cout << "Type: " << Type << endl;
-		cout << "Ext: " << Ext << endl;
-		transform.printf();
-		cout << "Path: " << Path << endl;
-		cout << "Parameters: " << Parameters << endl;
-	}
-
-   	 ~ResourceMeta() {}
-
-	//virtual void loadResourceFile(string full) {}
-};
-
-//Origin Radius Range
-class Vector4
-{
-public:
-	double x;
-	double y;
-	double z;
-	unsigned int t_s;
-	unsigned int t_ms;
-
-	Vector4()
-	{
-		x = 0.0; y = 0.0; z = 0.0; t_s = 0; t_ms =0;
-	}
-	Vector4(double coordinateX,double coordinateY,double coordinateZ,unsigned int _s,unsigned int _ms)
-	{
-		x = coordinateX; y = coordinateY; z = coordinateZ; t_s = _s; t_ms = _ms;
-	}
-	void setVector4(double coordinateX,double coordinateY,double coordinateZ,unsigned int _s,unsigned int _ms)
-	{
-		x = coordinateX; y = coordinateY; z = coordinateZ; t_s = _s; t_ms = _ms;
-	}
-};
-
-//Frustum
-class Frustum
-{
-public:
-	float dir_x, dir_y, dir_z;
-	float nearDis, farDis;
-	float theta, alpha;
-	double t;
-
-	Frustum()
-	{
-		dir_x = 0.0; dir_y = 0.0; dir_z = 0.0; nearDis = 0.0; farDis = 0.0; theta = 0.0; alpha = 0.0; t = 0.0;
-	}
-	Frustum(float dirX, float dirY, float dirZ, float near, float far, float angle1, float angle2, double time)
-	{
-		dir_x = dirX; dir_y = dirY; dir_z = dirZ; nearDis = near; farDis = far; theta = angle1; alpha = angle2; t = time;
-	}
-	void setFrustum(float dirX, float dirY, float dirZ, float near, float far, float angle1, float angle2,double time)
-	{
-		dir_x = dirX; dir_y = dirY; dir_z = dirZ; nearDis = near; farDis = far; theta = angle1; alpha = angle2; t = time;
-	}
-	
 };
 
 class Position
@@ -265,20 +83,166 @@ class Time
 {
 public:
 	unsigned int s;
-	unsigned int ms;
+	unsigned int ns;
 	Time()
 	{
-		s = 0;  ms = 0;
+		s = 0;  ns = 0;
 	}
-	Time(unsigned int _s, unsigned int _ms)
+	Time(unsigned int _s, unsigned int _ns)
 	{
-		s = _s;  ms = _ms;
+		s = _s;  ns = _ns;
 	}
-	void setTime(unsigned int _s, unsigned int _ms)
+	void setTime(unsigned int _s, unsigned int _ns)
 	{
-		s = _s;  ms = _ms;
+		s = _s;  ns = _ns;
 	}
 };
+
+//Geometry
+class Geometry{
+public:
+	string ID;
+	Position pos_est;
+	Attitude atti_est;
+	Position pos_phys;
+	Attitude atti_phys;
+	Time time;
+	
+	Geometry()
+	{
+		ID = "";
+		pos_est.setPosition(0.0,0.0,0.0);
+		atti_est.setAttitude(0.0,0.0,0.0,0.0);
+		pos_phys.setPosition(0.0,0.0,0.0);
+		atti_phys.setAttitude(0.0,0.0,0.0,0.0);
+		time.setTime(0,0);
+	}
+};
+
+class Transform {
+public:
+	Position pos;
+	Attitude atti;
+	Time time;
+
+	Transform() {
+		pos.setPosition(0.0,0.0,0.0);
+		atti.setAttitude(0.0,0.0,0.0,0.0);
+		time.setTime(0,0);
+	};
+
+    	Transform(const double Posx,  const double Posy,  const double Posz,
+                  const double Attix, const double Attiy, const double Attiz, const double Attiw,
+	          const unsigned int Time_s, const unsigned int Time_ns)
+	{
+		pos.Posx = Posx; pos.Posy = Posy; pos.Posz = Posz;
+		atti.Attitudex = Attix; atti.Attitudey = Attiy; atti.Attitudez = Attiz; atti.Attitudew = Attiw;
+		time.s = Time_s; time.ns = Time_ns;
+	}
+
+	~Transform() {};
+};
+
+class ResourceMeta {
+
+public:
+	string ID;
+    	int ParentObjectID;
+    	int Type;
+   	int Format;
+   	Transform transform;
+   	string Path;
+    	string Parameters;
+
+   	ResourceMeta() {
+		ID = "";
+		ParentObjectID = 0;
+		Type = 0;
+		Format = 0;
+		transform = {};
+		Path = "";
+		Parameters = ""; 
+	};
+
+  	ResourceMeta(const string &ID, const int ParentObjectID, const int Type,
+        	     const int Format, const sigma::Transform &transform, const string Path, const string Parameters) :
+       		     ID(ID), ParentObjectID(ParentObjectID), Type(Type),
+       		     Format(Format), transform(transform), Path(Path), Parameters(Parameters){};
+
+   	 ~ResourceMeta() {}
+
+	//virtual void loadResourceFile(string full) {}
+};
+
+//Origin Radius Range
+class Vector4
+{
+public:
+	double x;
+	double y;
+	double z;
+	Time time;
+
+	Vector4()
+	{
+		x = 0.0; y = 0.0; z = 0.0; time.s = 0; time.ns =0;
+	}
+	Vector4(double coordinateX,double coordinateY,double coordinateZ,unsigned int _s,unsigned int _ns)
+	{
+		x = coordinateX; y = coordinateY; z = coordinateZ; time.s = _s; time.ns = _ns;
+	}
+	void setVector4(double coordinateX,double coordinateY,double coordinateZ,unsigned int _s,unsigned int _ns)
+	{
+		x = coordinateX; y = coordinateY; z = coordinateZ; time.s = _s; time.ns = _ns;
+	}
+};
+
+class Vector3
+{
+public:
+	double x;
+	double y;
+	double z;
+
+	Vector3()
+	{
+		x = 0.0; y = 0.0; z = 0.0;
+	}
+	Vector3(double coordinateX,double coordinateY,double coordinateZ)
+	{
+		x = coordinateX; y = coordinateY; z = coordinateZ;
+	}
+	void setVector3(double coordinateX,double coordinateY,double coordinateZ)
+	{
+		x = coordinateX; y = coordinateY; z = coordinateZ;
+	}
+};
+
+//Frustum
+class Frustum
+{
+public:
+	float dir_x, dir_y, dir_z;
+	float nearDis, farDis;
+	float theta, alpha;
+	double t;
+
+	Frustum()
+	{
+		dir_x = 0.0; dir_y = 0.0; dir_z = 0.0; nearDis = 0.0; farDis = 0.0; theta = 0.0; alpha = 0.0; t = 0.0;
+	}
+	Frustum(float dirX, float dirY, float dirZ, float near, float far, float angle1, float angle2, double time)
+	{
+		dir_x = dirX; dir_y = dirY; dir_z = dirZ; nearDis = near; farDis = far; theta = angle1; alpha = angle2; t = time;
+	}
+	void setFrustum(float dirX, float dirY, float dirZ, float near, float far, float angle1, float angle2,double time)
+	{
+		dir_x = dirX; dir_y = dirY; dir_z = dirZ; nearDis = near; farDis = far; theta = angle1; alpha = angle2; t = time;
+	}
+	
+};
+
+
 
 class Target
 {

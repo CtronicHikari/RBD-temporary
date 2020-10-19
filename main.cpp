@@ -9,15 +9,15 @@ int main() {
 	DBConnect dbConnect;  
 	dbConnect.Connect(); 
 
-	sigma::Object* obj = new sigma::Object(1,0);
+	//sigma::Object* obj = new sigma::Object(1,0);
 
 
 
 	
-	std::vector<sigma::Geometry> Geometries;
-	std::vector<sigma::Object> Objects;
-	sigma::Vector4 *Origin = new sigma::Vector4(0.0f,0.0f,0.0f,0,0);
-	sigma::Vector4 *Range = new sigma::Vector4(10.0f,10.0f,10.0f,2,2);
+	//std::vector<sigma::Geometry> Geometries;
+	//std::vector<sigma::Object> Objects;
+	//sigma::Vector4 *Origin = new sigma::Vector4(0.0f,0.0f,0.0f,0,0);
+	//sigma::Vector4 *Range = new sigma::Vector4(10.0f,10.0f,10.0f,2,2);
 
 	//dbConnect.addObject(obj, GeometryID);
 	//GeometryID = dbConnect.addGeometry(NULL,NULL,pos_phys2,atti_phys2,time);
@@ -54,7 +54,7 @@ int main() {
 	*/
 
 	//-----------------------------------------------------------------------------------------------------------------------------------------
-	
+/*	
 	std::string path = "data/";
 
 	const boost::filesystem::path path2(path);
@@ -129,7 +129,7 @@ int main() {
 
 		
 		/////////////////////////////////////////////////////////////////
-	}
+	}*/
 
 	/*
 	Vector4 Origin,Range;
