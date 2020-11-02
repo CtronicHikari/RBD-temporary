@@ -2,7 +2,6 @@
 #ifndef ENCODETOOL_H
 #define ENCODETOOL_H
 
-
 #include<iostream>
 #include<string.h>
 #include<stdio.h>
@@ -58,12 +57,29 @@ public:
 
 	Eigen::Quaterniond euler2Quaternion(const double roll, const double pitch, const double yaw);
 	Eigen::Vector3d Quaterniond2Euler(const double x,const double y,const double z,const double w);
-
-	Eigen::Matrix3d Quaternion2RotationMatrix(const double x,const double y,const double z,const double w);
+	Eigen::Matrix3d Quaternion2RotationMatrix(const double x,const double y,const double z,const double w);  //Only used this, and it is right
 	Eigen::Quaterniond rotationMatrix2Quaterniond(Eigen::Matrix3d R);
 	Eigen::Matrix3d euler2RotationMatrix(const double roll, const double pitch, const double yaw);
 	Eigen::Vector3d RotationMatrix2euler(Eigen::Matrix3d R);
 	void toEulerAngle(double x,double y,double z,double w, double& roll, double& pitch, double& yaw);
+
+	//Rotation vector
+	Eigen::AngleAxisd rv_init(double radian, Eigen::Vector3d AxisOfRotation);
+	Eigen::Matrix3d rv2Maxtrix(Eigen::AngleAxisd rv);
+	Eigen::Vector3d rv2Euler(Eigen::AngleAxisd rv);
+	Eigen::Quaterniond rv2Quaternion(Eigen::AngleAxisd rv);
+	//Rotation matrix
+	Eigen::Vector3d rm2Euler(Eigen::Matrix3d rm);
+	Eigen::AngleAxisd rm2RotationVector(Eigen::Matrix3d rm);
+	Eigen::Quaterniond rm2Quaternion(Eigen::Matrix3d rm);
+	//Euler Angle
+	Eigen::Matrix3d ea2Matrix(Eigen::Vector3d ea);
+	Eigen::Quaterniond ea2Quaternion(Eigen::Vector3d ea);
+	Eigen::AngleAxisd ea2RotationVector(Eigen::Vector3d ea);
+	//Quaternion
+	Eigen::AngleAxisd q2RotationVector(Eigen::Quaterniond q);
+	Eigen::Matrix3d q2Matrix(Eigen::Quaterniond q);
+	Eigen::Vector3d q2Euler(Eigen::Quaterniond q);
 
 	Eigen::Vector3d init_vector,temp_vector,temp_dir_vector;
 	Eigen::Vector3d x_axiz,y_axiz,z_axiz,temp;

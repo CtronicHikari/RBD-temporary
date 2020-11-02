@@ -9,52 +9,9 @@ int main() {
 	DBConnect dbConnect;  
 	dbConnect.Connect(); 
 
-	//sigma::Object* obj = new sigma::Object(1,0);
-
-
-
-	
-	//std::vector<sigma::Geometry> Geometries;
-	//std::vector<sigma::Object> Objects;
-	//sigma::Vector4 *Origin = new sigma::Vector4(0.0f,0.0f,0.0f,0,0);
-	//sigma::Vector4 *Range = new sigma::Vector4(10.0f,10.0f,10.0f,2,2);
-
-	//dbConnect.addObject(obj, GeometryID);
-	//GeometryID = dbConnect.addGeometry(NULL,NULL,pos_phys2,atti_phys2,time);
-	//GeometryID = dbConnect.addGeometry(pos_est1,atti_est1,pos_phys1,atti_phys1,time);
-	//ResourceID = dbConnect.addResource(1,1,"dummy-Paraments","dummy-GeometryID","/load_path_A/load_path_A/abc.jpg","/save_path_A/save_path_B");
-	//dbConnect.link_Geo_and_Obj(2,GeometryID);
-	//dbConnect.link_Geo_and_Res(ResourceID,GeometryID);
-	//Geometries = dbConnect.loadGeometry(Origin,Range,3);
-	//cout << Geometries.size() << endl;
-	//Objects = dbConnect.loadObject(Origin,Range,1);
-	//cout << Objects.size() << endl;
-	/*
-	for(int i=0;i<Geometries.size();i++)
-	{
-		cout << Geometries[i].ID << " ";
-		cout << Geometries[i].Posx_est << " ";
-		cout << Geometries[i].Posy_est << " ";
-		cout << Geometries[i].Posz_est << " ";
-		cout << Geometries[i].Attix_est << " ";
-		cout << Geometries[i].Attiy_est << " ";
-		cout << Geometries[i].Attiz_est << " ";
-		cout << Geometries[i].Attiw_est << " ";
-		cout << Geometries[i].Posx_phys << " ";
-		cout << Geometries[i].Posy_phys << " ";
-		cout << Geometries[i].Posz_phys << " ";
-		cout << Geometries[i].Attix_phys << " ";
-		cout << Geometries[i].Attiy_phys << " ";
-		cout << Geometries[i].Attiz_phys << " ";
-		cout << Geometries[i].Attiw_phys << " ";
-		cout << Geometries[i].Time_s << " ";
-		cout << Geometries[i].Time_ms << endl;
-		cout << endl;
-	}
-	*/
-
 	//-----------------------------------------------------------------------------------------------------------------------------------------
-/*	
+	//Resource Registration
+	/*
 	std::string path = "data/";
 
 	const boost::filesystem::path path2(path);
@@ -78,7 +35,6 @@ int main() {
 	std::vector<sigma::ResourceMeta> resourcemetas(pairie.size());
 
 	for (int i = 0; i < pairie.size(); ++i) {
-	//for (int i = 0; i < 1; ++i) {
 
 		const boost::filesystem::path src(pairie[i].path);  //sfm-data.xml:root_path+filename.png
 
@@ -97,58 +53,48 @@ int main() {
 
 		std::string para = strGeneratorCSV(intrinsicpara[pairie[i].i_id]);
 
-		sigma::ResourceMeta r(str, i, 1, ext[1], t, path, para);
+		sigma::ResourceMeta r(str, i, 1, 1, t, path, para);
 
-		//cv::Mat img(intrinsicpara[pairie[i].i_id].height, intrinsicpara[pairie[i].i_id].width, CV_8UC3, cv::Scalar(i * 2, 0, 0));
-		//cv::imwrite(r.Path, img);
 		resourcemetas[i] = r;
 
 		////////////////////////////////////
 		sigma::Position *pos_phys = new sigma::Position(9.99f,9.99f,9.99f);
-		sigma::Position *pos_est = new sigma::Position(t.Posx,t.Posy,t.Posz);
+		sigma::Position *pos_est = new sigma::Position(t.pos.Posx,t.pos.Posy,t.pos.Posz);
 		sigma::Attitude *atti_phys = new sigma::Attitude(9.99f,9.99f,9.99f,9.99f);
-		sigma::Attitude *atti_est = new sigma::Attitude(t.Attix,t.Attiy,t.Attiz,t.Attiw);
-		sigma::Time *time = new sigma::Time(t.Time_s,t.Time_ms);
+		sigma::Attitude *atti_est = new sigma::Attitude(t.atti.Attitudex,t.atti.Attitudey,t.atti.Attitudez,t.atti.Attitudew);
+		sigma::Time *time = new sigma::Time(t.time.s,t.time.ns);
 		string GeometryID = dbConnect.addGeometry(pos_est,atti_est,pos_phys,atti_phys,time);
-		vector<string> filename = dbConnect.encodeTool.ParametersSplitter(pairie[i].path,'/');
-		string ResourceID = dbConnect.addResource(r.ParentObjectID, r.Type, r.Parameters, GeometryID, filename[filename.size()-1], path);
+		string ResourceID = dbConnect.make_ResourceID(r.ParentObjectID, pos_est, atti_est, time); 
+		dbConnect.addResource(ResourceID, r.ParentObjectID, r.Type, r.Type, r.Parameters, path);
 		dbConnect.link_Geo_and_Res(ResourceID, GeometryID);
 		cv::Mat img =  cv::imread(pairie[i].path);
-		cv::imwrite(path + ResourceID, img);
-
-		////Prepare WorldPosition & Attitude information
-		//encodeTool.Q = encodeTool.euler2Quaternion(45.0, 45.0, 45.0);
-		//attitude.setAttitude(quaternion.x, quaternion.y, quaternion.z, quaternion.w);
-		//worldposition.setWorldPostion(extrinsicpara[pairie[i].e_id].t[0], extrinsicpara[pairie[i].e_id].t[1], extrinsicpara[pairie[i].e_id].t[2]);
-		//attitude.setAttitude(t.AttitudeX, t.AttitudeY, t.AttitudeZ, t.AttitudeW);
-		//worldposition.setWorldPostion(t.WorldPositionX, t.WorldPositionY, t.WorldPositionZ);
-
-		////addGeomtry() ->  addObject()  ->  addResource()
-		//GeometryID = dbConnect.addGeometry(worldposition,t.Time);
-		//dbConnect.addResource(GeometryID,resourcemetas[i].ParentObjectID,1, attitude, resourcemetas[i].Path, resourcemetas[i].Parameters);
-
-		
+		string filename = path + ResourceID + ".png";
+		cv::imwrite(filename, img);
 		/////////////////////////////////////////////////////////////////
-	}*/
-
-	/*
-	Vector4 Origin,Range;
-	Origin.setVector4(0.0f,0.0f,0.0f,0);
-	Range.setVector4(5.0f,5.0f,5.0f,123);
-	Target target;
-	target.setTarget(1.6f,1.5f,0.0f);
-	std::vector<ResourceMeta> TestResourceMetaResults;
-	TestResourceMetaResults = dbConnect.loadResourceMeta(Origin, Range, target, M_PI/180.0f*10.0f, M_PI/180.0f*30.0f);
-	cout << TestResourceMetaResults.size() << endl;
-
-	dbConnect.Disconnect(); //RDB Disconnect
-	//èëÇ´èoÇµ
-	xmlFileGenerator(TestResourceMetaResults, path);
+	}
+	//End Resource Registration
 	*/
+
+	//Posture Search
+	/*
+	sigma::Vector4 *Origin = new sigma::Vector4(0.0f,0.0f,0.0f,0, 0);
+	sigma::Vector4 *Range = new sigma::Vector4(5.0f,5.0f,5.0f,123, 0);
+	sigma::Target *target = new sigma::Target(1.6f,1.5f,0.0f);
+	std::vector<sigma::ResourceMeta> TestResourceMetaResults;
+	TestResourceMetaResults = dbConnect.loadResourceMeta(Origin, Range, target, M_PI/180.0f*10.0f, M_PI/180.0f*30.0f, 1);
+	cout << TestResourceMetaResults.size() << endl;
+	*/
+	//End Posture Search
+	
+
+
+	//xml Test
+	/*
+	xmlFileGenerator(TestResourceMetaResults, path);
+	
 	//xmlFileGenerator(resourcemetas2, path);
 
 	//std::vector<ResourceMeta> resourcemetas2;
-
 	//ì«Ç›çûÇ›
 	//xmlFileParser(resourcemetas2, path);
 	/*
@@ -169,9 +115,8 @@ int main() {
 		std::cout << "  AttitudeZ:" << v.transform.AttitudeZ << std::endl;
 		std::cout << "  AttitudeW:" << v.transform.AttitudeW << std::endl;
 	}*/
+	//End xml Test
 	
-
-
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	
 

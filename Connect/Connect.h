@@ -44,14 +44,14 @@ public:
 	const void Disconnect();
 	//Add Object & Geometry & Resource
 	const void addObject(sigma::Object *Object);
-	const string addGeometry(sigma::Position *pos_est, sigma::Attitude *atti_est, sigma::Position *pos_phys, sigma::Attitude *atti_phys, sigma::Time *time);
-	const string addResource(string ResourceID, int ParentObjectID, int Type, int Format, string Parameters, string save_path="./data");
+	const string addGeometry(sigma::Position *pos_est, sigma::Attitude *atti_est, sigma::Position *pos_obs, sigma::Attitude *atti_obs, sigma::Time *time);
+	const void addResource(string ResourceID, int ParentObjectID, int Type, int Format, string Parameters, string save_path="./data");
 	//Link Object/Resrouce & Geometry
 	const void link_Geo_and_Obj(int ObjectID, string GeometryID);
 	const void link_Geo_and_Res(string ResourceID, string GeometryID);
 
- 	const string addGeometry(string ID, int breed, sigma::Vector3 *Offset, sigma::Time *time); //TODO  //breed:0.None  1.ObjectID   2.ResourceID
-	string make_ResourceID(int ParentObjectID, int Type, int Format, int size, sigma::Position *pos, sigma::Attitude *atti, sigma::Time *time); //TODO
+ 	const string addGeometryForObject(string ID, int style, sigma::Position *pos_offset, sigma::Attitude *atti_offset, sigma::Time *time); //TODO  //style:1.By Object   2.By Resource
+	string make_ResourceID(int ParentObjectID, sigma::Position *pos, sigma::Attitude *atti, sigma::Time *time);
 
 	//Search func
 	const std::vector<sigma::Geometry> loadGeometry(sigma::Vector4 *Origin, sigma::Vector4 *Range, int Mode);
@@ -60,6 +60,7 @@ public:
 	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, int Mode, int Type=0);
 	std::vector<sigma::ResourceMeta> loadResourceMeta(int ObjectID, int Type=0);
 	std::vector<sigma::ResourceMeta>* loadResourceMeta(std::vector<sigma::Object> Objects, int Type=0);
+	//
 	std::vector<sigma::ResourceMeta> loadResourceMeta(string GeometryID , int Type=0);
 	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double theta, int Mode, int Type=0);
 	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double alpha, double beta, int Mode, int Type=0);

@@ -104,8 +104,8 @@ public:
 	string ID;
 	Position pos_est;
 	Attitude atti_est;
-	Position pos_phys;
-	Attitude atti_phys;
+	Position pos_obs;
+	Attitude atti_obs;
 	Time time;
 	
 	Geometry()
@@ -113,8 +113,8 @@ public:
 		ID = "";
 		pos_est.setPosition(0.0,0.0,0.0);
 		atti_est.setAttitude(0.0,0.0,0.0,0.0);
-		pos_phys.setPosition(0.0,0.0,0.0);
-		atti_phys.setAttitude(0.0,0.0,0.0,0.0);
+		pos_obs.setPosition(0.0,0.0,0.0);
+		atti_obs.setAttitude(0.0,0.0,0.0,0.0);
 		time.setTime(0,0);
 	}
 };

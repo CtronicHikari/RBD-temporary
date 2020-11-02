@@ -33,20 +33,20 @@ const void DBConnect::addObject(sigma::Object *Object)
 	//link_Geo_and_Obj(Object->ObjectID, GeometryID);
 }
 
-const string DBConnect::addGeometry(sigma::Position *pos_est, sigma::Attitude *atti_est, sigma::Position *pos_phys, sigma::Attitude *atti_phys, sigma::Time *time)
+const string DBConnect::addGeometry(sigma::Position *pos_est, sigma::Attitude *atti_est, sigma::Position *pos_obs, sigma::Attitude *atti_obs, sigma::Time *time)
 {
 	string ID = "";
 	char sql[5000];
 	int sql_len;
 	if(pos_est == NULL || atti_est == NULL)
 	{
-		sigma::Position *pos__est = new sigma::Position(pos_phys->Posx, pos_phys->Posy, pos_phys->Posz);
-		sigma::Attitude *atti__est = new sigma::Attitude(atti_phys->Attitudex, atti_phys->Attitudey, atti_phys->Attitudez, atti_phys->Attitudew);
+		sigma::Position *pos__est = new sigma::Position(pos_obs->Posx, pos_obs->Posy, pos_obs->Posz);
+		sigma::Attitude *atti__est = new sigma::Attitude(atti_obs->Attitudex, atti_obs->Attitudey, atti_obs->Attitudez, atti_obs->Attitudew);
 		ID += to_string(pos__est->Posx) + "_" + to_string(pos__est->Posy) + "_" + to_string(pos__est->Posz) +"_";
 		ID += to_string(atti__est->Attitudex) + "_" + to_string(atti__est->Attitudey) + "_" + to_string(atti__est->Attitudez) + "_" + to_string(atti__est->Attitudew) + "_";
 		ID += to_string(time->s) + "." + to_string(time->ns);
 		ID = encodeTool.getMD5(ID);
-		sql_len = sprintf(sql, "insert into server.geometry(ID,Posx_est,Posy_est,Posz_est,Attix_est,Attiy_est,Attiz_est,Attiw_est,Posx_phys,Posy_phys,Posz_phys,Attix_phys,Attiy_phys,Attiz_phys,Attiw_phys,Time_s,Time_ns) values('%s','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%u','%u')", ID.c_str(), pos__est->Posx, pos__est->Posy, pos__est->Posz, atti__est->Attitudex, atti__est->Attitudey, atti__est->Attitudez, atti__est->Attitudew, pos_phys->Posx, pos_phys->Posy, pos_phys->Posz, atti_phys->Attitudex,atti_phys->Attitudey,atti_phys->Attitudez,atti_phys->Attitudew,time->s,time->ns);
+		sql_len = sprintf(sql, "insert into server.geometry(ID,Posx_est,Posy_est,Posz_est,Attix_est,Attiy_est,Attiz_est,Attiw_est,Posx_obs,Posy_obs,Posz_obs,Attix_obs,Attiy_obs,Attiz_obs,Attiw_obs,Time_s,Time_ns) values('%s','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%u','%u')", ID.c_str(), pos__est->Posx, pos__est->Posy, pos__est->Posz, atti__est->Attitudex, atti__est->Attitudey, atti__est->Attitudez, atti__est->Attitudew, pos_obs->Posx, pos_obs->Posy, pos_obs->Posz, atti_obs->Attitudex,atti_obs->Attitudey,atti_obs->Attitudez,atti_obs->Attitudew,time->s,time->ns);
 		res = mysql_real_query(pcon,sql,sql_len);
 	}
 	else
@@ -55,34 +55,35 @@ const string DBConnect::addGeometry(sigma::Position *pos_est, sigma::Attitude *a
 		ID += to_string(atti_est->Attitudex) + "_" + to_string(atti_est->Attitudey) + "_" + to_string(atti_est->Attitudez) + "_" + to_string(atti_est->Attitudew) + "_";
 		ID += to_string(time->s) + "." + to_string(time->ns);
 		ID = encodeTool.getMD5(ID);
-		sql_len = sprintf(sql, "insert into server.geometry(ID,Posx_est,Posy_est,Posz_est,Attix_est,Attiy_est,Attiz_est,Attiw_est,Posx_phys,Posy_phys,Posz_phys,Attix_phys,Attiy_phys,Attiz_phys,Attiw_phys,Time_s,Time_ns) values('%s','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%u','%u')", ID.c_str(), pos_est->Posx, pos_est->Posy, pos_est->Posz, atti_est->Attitudex, atti_est->Attitudey, atti_est->Attitudez, atti_est->Attitudew, pos_phys->Posx, pos_phys->Posy, pos_phys->Posz, atti_phys->Attitudex,atti_phys->Attitudey,atti_phys->Attitudez,atti_phys->Attitudew,time->s,time->ns);
+		sql_len = sprintf(sql, "insert into server.geometry(ID,Posx_est,Posy_est,Posz_est,Attix_est,Attiy_est,Attiz_est,Attiw_est,Posx_obs,Posy_obs,Posz_obs,Attix_obs,Attiy_obs,Attiz_obs,Attiw_obs,Time_s,Time_ns) values('%s','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%.20f','%u','%u')", ID.c_str(), pos_est->Posx, pos_est->Posy, pos_est->Posz, atti_est->Attitudex, atti_est->Attitudey, atti_est->Attitudez, atti_est->Attitudew, pos_obs->Posx, pos_obs->Posy, pos_obs->Posz, atti_obs->Attitudex,atti_obs->Attitudey,atti_obs->Attitudez,atti_obs->Attitudew,time->s,time->ns);
 		res = mysql_real_query(pcon,sql,sql_len);
 	}	
 	return ID;
 }
 
-const string DBConnect::addGeometry(string ID, int breed, sigma::Vector3 *Offset, sigma::Time *time)
+const string DBConnect::addGeometryForObject(string ID, int style, sigma::Position *pos_offset, sigma::Attitude *atti_offset, sigma::Time *time)
 {
 	
 }
 
-const string DBConnect::addResource(string ResourceID, string GeometryID, int ParentObjectID, int Type, int Format, string Parameters, string save_path)
+const void DBConnect::addResource(string ResourceID, int ParentObjectID, int Type, int Format, string Parameters, string save_path)
 {
 	int sql_len;
 	char sql[500];
-	string ID = "";
 	
-	sql_len = sprintf(sql, "insert into server.resource(ID,POID,Type,Format,Path,Para) values('%s','%d','%d','%d','%s','%s')",ResourceID.c_str(),ParentObjectID,Type,Format,save_path.c_str(),Parameters.c_str());
+	sql_len = sprintf(sql, "insert into server.resource(ID,OID,Type,Format,Path,Para) values('%s','%d','%d','%d','%s','%s')",ResourceID.c_str(),ParentObjectID,Type,Format,save_path.c_str(),Parameters.c_str());
 	res = mysql_real_query(pcon, sql, sql_len);
-
-	//link_Geo_and_Res(ResourceID, GeometryID);
-
-	return ID;
 }
 
-string DBConnect::make_ResourceID(int ParentObjectID, int Type, int Format, int size, sigma::Position *pos, sigma::Attitude *atti, sigma::Time *time)
+string DBConnect::make_ResourceID(int ParentObjectID, sigma::Position *pos, sigma::Attitude *atti, sigma::Time *time)
 {
-	//TODO
+	string ID = "";
+	ID += to_string(ParentObjectID) + "_";
+	ID += to_string(pos->Posx) + "_" + to_string(pos->Posy) + "_" + to_string(pos->Posz) +"_";
+	ID += to_string(atti->Attitudex) + "_" + to_string(atti->Attitudey) + "_" + to_string(atti->Attitudez) + "_" + to_string(atti->Attitudew) + "_";
+	ID += to_string(time->s) + "." + to_string(time->ns);
+	ID = encodeTool.getMD5(ID);
+	return ID;
 }
 
 const void DBConnect::link_Geo_and_Obj(int ObjectID, string GeometryID)
@@ -106,8 +107,8 @@ const std::vector<sigma::Geometry> DBConnect::loadGeometry(sigma::Vector4 *Origi
 	string temp;
 	int sql_len;
 	char sql[1000];
-
-	if(Mode == 1)  //Sphere: If no _est use _phys
+	
+	/*if(Mode == 1)  //Sphere: If no _est use _phys
 	{
 		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
@@ -242,8 +243,8 @@ const std::vector<sigma::Geometry> DBConnect::loadGeometry(sigma::Vector4 *Origi
 		{
 			sql_len = sprintf(sql, "select * from server.geometry;");
 		}
-	}
-	else if(Mode == 3)  //Sphere: Only use _est
+	}*/
+	if(Mode == 1)  //Sphere: Only use _est
 	{
 		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
@@ -311,7 +312,7 @@ const std::vector<sigma::Geometry> DBConnect::loadGeometry(sigma::Vector4 *Origi
 			sql_len = sprintf(sql, "select * from server.geometry;");
 		}
 	}	
-	else if(Mode == 4) //Cube: Only use _est
+	else if(Mode == 2) //Cube: Only use _est
 	{
 		if(Range->x > 0 && Range->y > 0 && Range->z > 0 && Range->time.s > 0)
 		{
@@ -400,13 +401,13 @@ const std::vector<sigma::Geometry> DBConnect::loadGeometry(sigma::Vector4 *Origi
 		src.atti_est.Attitudey = sql_row[5]==NULL ? 0.0f : strtod(sql_row[5],NULL);
 		src.atti_est.Attitudez = sql_row[6]==NULL ? 0.0f : strtod(sql_row[6],NULL);
 		src.atti_est.Attitudew = sql_row[7]==NULL ? 0.0f : strtod(sql_row[7],NULL);
-		src.pos_phys.Posx = strtod(sql_row[8],NULL);
-		src.pos_phys.Posy = strtod(sql_row[9],NULL);
-		src.pos_phys.Posz = strtod(sql_row[10],NULL);
-		src.atti_phys.Attitudex = strtod(sql_row[11],NULL);
-		src.atti_phys.Attitudey = strtod(sql_row[12],NULL);
-		src.atti_phys.Attitudez = strtod(sql_row[13],NULL);
-		src.atti_phys.Attitudew = strtod(sql_row[14],NULL);
+		src.pos_obs.Posx = strtod(sql_row[8],NULL);
+		src.pos_obs.Posy = strtod(sql_row[9],NULL);
+		src.pos_obs.Posz = strtod(sql_row[10],NULL);
+		src.atti_obs.Attitudex = strtod(sql_row[11],NULL);
+		src.atti_obs.Attitudey = strtod(sql_row[12],NULL);
+		src.atti_obs.Attitudez = strtod(sql_row[13],NULL);
+		src.atti_obs.Attitudew = strtod(sql_row[14],NULL);
 		src.time.s = encodeTool.string_to_unsigned(sql_row[15]);
 		src.time.ns = encodeTool.string_to_unsigned(sql_row[16]);
 		Geometries.push_back(src);
@@ -547,9 +548,9 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(int ObjectID, int T
 	int sql_len;
 
 	if(Type != 0)
-		sql_len = sprintf(sql, "select * from server.resource where POID='%d' and Type='%d';", ObjectID, Type);
+		sql_len = sprintf(sql, "select * from server.resource where OID='%d' and Type='%d';", ObjectID, Type);
 	else
-		sql_len = sprintf(sql, "select * from server.resource where POID='%d';", ObjectID);
+		sql_len = sprintf(sql, "select * from server.resource where OID='%d';", ObjectID);
 	res = mysql_real_query(pcon, sql, sql_len);
 	result = mysql_store_result(pcon);
 	while(sql_row = mysql_fetch_row(result))
@@ -677,11 +678,9 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 
 	for(i = 0;i < Geometries.size();i++)
 	{
-		//double tmp = (Geometries[i].Posx_est==0) ? Geometries[i].Posx_phys : Geometries[i].Posx_est;
 		dir_x = target->targetX - Geometries[i].pos_est.Posx;
-		//tmp = (Geometries[i].Posy_est==0) ? Geometries[i].Posy_phys : Geometries[i].Posy_est;
 		dir_y = target->targetY - Geometries[i].pos_est.Posy;
-		//tmp = (Geometries[i].Posz_est==0) ? Geometries[i].Posz_phys : Geometries[i].Posz_est;
+
 		dir_z = target->targetZ - Geometries[i].pos_est.Posz;
 		temp_ResourceMetas = loadResourceMeta(Geometries[i].ID, Type);
 		

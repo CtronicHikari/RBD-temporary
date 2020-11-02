@@ -380,4 +380,83 @@ unsigned EncodeTool::string_to_unsigned(char *s)
 	return result;
 }
 
+Eigen::AngleAxisd EncodeTool::rv_init(double radian, Eigen::Vector3d AxisOfRotation)
+{
+	Eigen::AngleAxisd rv(radian, AxisOfRotation);
+	return rv;	
+}
+Eigen::Matrix3d EncodeTool::rv2Maxtrix(Eigen::AngleAxisd rv)
+{
+	Eigen::Matrix3d rotation_matrix = Eigen::Matrix3d::Identity();
+	rotation_matrix = rv.matrix();
+	return rotation_matrix;
+}
+Eigen::Vector3d EncodeTool::rv2Euler(Eigen::AngleAxisd rv)
+{
+	Eigen::Vector3d eulerAngle = rv.matrix().eulerAngles(2,1,0);
+	return eulerAngle;
+}
 
+Eigen::Quaterniond EncodeTool::rv2Quaternion(Eigen::AngleAxisd rv)
+{
+	Eigen::Quaterniond quaternion(rv);
+}
+
+Eigen::Vector3d EncodeTool::rm2Euler(Eigen::Matrix3d rm)
+{
+	Eigen::Vector3d euler = rm.eulerAngles(2,1,0);
+	return euler;
+}
+Eigen::AngleAxisd EncodeTool::rm2RotationVector(Eigen::Matrix3d rm)
+{
+	Eigen::AngleAxisd rv;
+	rv.fromRotationMatrix(rm);
+	return rv;
+}
+Eigen::Quaterniond EncodeTool::rm2Quaternion(Eigen::Matrix3d rm)
+{
+	Eigen::Quaterniond q(rm);
+	return q;
+}
+
+Eigen::Matrix3d EncodeTool::ea2Matrix(Eigen::Vector3d ea)
+{
+	Eigen::Matrix3d rm;
+	rm = Eigen::AngleAxisd(ea[0], Eigen::Vector3d::UnitZ()) * 
+             Eigen::AngleAxisd(ea[1], Eigen::Vector3d::UnitY()) * 
+             Eigen::AngleAxisd(ea[2], Eigen::Vector3d::UnitX());
+	return rm;
+}
+Eigen::Quaterniond EncodeTool::ea2Quaternion(Eigen::Vector3d ea)
+{
+	Eigen::Quaterniond q;
+	q = Eigen::AngleAxisd(ea[0], Eigen::Vector3d::UnitZ()) * 
+            Eigen::AngleAxisd(ea[1], Eigen::Vector3d::UnitY()) * 
+            Eigen::AngleAxisd(ea[2], Eigen::Vector3d::UnitX());
+	return q;
+}
+Eigen::AngleAxisd EncodeTool::ea2RotationVector(Eigen::Vector3d ea)
+{
+	Eigen::AngleAxisd rv;
+	rv = Eigen::AngleAxisd(ea[0], Eigen::Vector3d::UnitZ()) * 
+             Eigen::AngleAxisd(ea[1], Eigen::Vector3d::UnitY()) * 
+             Eigen::AngleAxisd(ea[2], Eigen::Vector3d::UnitX());
+	return rv;
+}
+
+Eigen::AngleAxisd EncodeTool::q2RotationVector(Eigen::Quaterniond q)
+{
+	Eigen::AngleAxisd rv(q);
+	return rv;
+}
+Eigen::Matrix3d EncodeTool::q2Matrix(Eigen::Quaterniond q)
+{
+	Eigen::Matrix3d matrix;
+	matrix = q.matrix();
+	return matrix;
+}
+Eigen::Vector3d EncodeTool::q2Euler(Eigen::Quaterniond q)
+{
+	Eigen::Vector3d euler = q.matrix().eulerAngles(2,1,0);
+	return euler;
+}
