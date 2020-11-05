@@ -55,14 +55,9 @@ public:
 	string changeHex(int a);
 	string getMD5(string source);
 
-	Eigen::Quaterniond euler2Quaternion(const double roll, const double pitch, const double yaw);
-	Eigen::Vector3d Quaterniond2Euler(const double x,const double y,const double z,const double w);
-	Eigen::Matrix3d Quaternion2RotationMatrix(const double x,const double y,const double z,const double w);  //Only used this, and it is right
-	Eigen::Quaterniond rotationMatrix2Quaterniond(Eigen::Matrix3d R);
-	Eigen::Matrix3d euler2RotationMatrix(const double roll, const double pitch, const double yaw);
-	Eigen::Vector3d RotationMatrix2euler(Eigen::Matrix3d R);
-	void toEulerAngle(double x,double y,double z,double w, double& roll, double& pitch, double& yaw);
-
+	//Old Conversion method
+	Eigen::Matrix3d Quaternion2RotationMatrix(const double x,const double y,const double z,const double w);
+	//New Conversion method
 	//Rotation vector
 	Eigen::AngleAxisd rv_init(double radian, Eigen::Vector3d AxisOfRotation);
 	Eigen::Matrix3d rv2Maxtrix(Eigen::AngleAxisd rv);
@@ -80,14 +75,18 @@ public:
 	Eigen::AngleAxisd q2RotationVector(Eigen::Quaterniond q);
 	Eigen::Matrix3d q2Matrix(Eigen::Quaterniond q);
 	Eigen::Vector3d q2Euler(Eigen::Quaterniond q);
+	//Blend Quaternions without order
+	Eigen::Quaterniond Blend2Rotations(Eigen::Quaterniond quaternion1, Eigen::Quaterniond quaternion2);
+	Eigen::Quaterniond lnQuaternion(Eigen::Quaterniond quaternion);
+	Eigen::Quaterniond addQuaternion(Eigen::Quaterniond quaternion1, Eigen::Quaterniond quaternion2);
+	Eigen::Quaterniond expQuaternion(Eigen::Quaterniond quaternion);
 
 	Eigen::Vector3d init_vector,temp_vector,temp_dir_vector;
 	Eigen::Vector3d x_axiz,y_axiz,z_axiz,temp;
 	Eigen::Matrix3d R;
-	Eigen::Quaterniond Q;
-	Eigen::Quaterniond T;
+	Eigen::Quaterniond Q,T,N;
 
-	
+	//For MD5
 	const uint32_t k[64] = {
 	0xd76aa478,0xe8c7b756,0x242070db,0xc1bdceee,
 	0xf57c0faf,0x4787c62a,0xa8304613,0xfd469501,0x698098d8,
@@ -115,23 +114,5 @@ public:
 	uint32_t ctemp;
 	uint32_t dtemp;
 };
-
-	/*cout<<"E to Q"<<endl;
-	tool.euler2Quaternion(0,0,0);
-	cout<<"Q to E"<<endl;
-	tool.Quaterniond2Euler(0,0,0,1);
-	cout<<"Q to R"<<endl;
-	tool.Quaternion2RotationMatrix(0,0,0,1);
-	cout<<"R to Q"<<endl;
-  	tool.x_axiz << 1,0,0;
-  	tool.y_axiz << 0,1,0;
-  	tool.z_axiz << 0,0,1;
-  	tool.R << tool.x_axiz,tool.y_axiz,tool.z_axiz;
-  	tool.rotationMatrix2Quaterniond(tool.R);
-	cout<<"E to R"<<endl;
-	tool.euler2RotationMatrix(0,0,0);
-	cout<<"R to E"<<endl;
-	tool.RotationMatrix2euler(tool.R);
-	cout << "All transform is done!" << endl;*/
 
 #endif 

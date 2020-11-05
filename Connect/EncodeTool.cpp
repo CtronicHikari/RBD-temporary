@@ -188,26 +188,6 @@ std::vector<string> EncodeTool::splitter(string target, char delimeter)
 	return temp;
 }
 
-Eigen::Quaterniond EncodeTool::euler2Quaternion(const double roll, const double pitch, const double yaw)
-{
-	Eigen::AngleAxisd rollAngle(roll, Eigen::Vector3d::UnitZ());
-    	Eigen::AngleAxisd yawAngle(yaw, Eigen::Vector3d::UnitY());
-    	Eigen::AngleAxisd pitchAngle(pitch, Eigen::Vector3d::UnitX());
- 
-    	Eigen::Quaterniond q = rollAngle * yawAngle * pitchAngle;
-   	return q;
-}
-
-Eigen::Vector3d EncodeTool::Quaterniond2Euler(const double x,const double y,const double z,const double w)
-{
-	Eigen::Quaterniond q;
-    	q.x() = x;
-   	q.y() = y;
-   	q.z() = z;
-   	q.w() = w;
-   	Eigen::Vector3d euler = q.toRotationMatrix().eulerAngles(2, 1, 0);
-}
-
 Eigen::Matrix3d EncodeTool::Quaternion2RotationMatrix(const double x,const double y,const double z,const double w)
 {
 	Eigen::Quaterniond q;
@@ -219,52 +199,6 @@ Eigen::Matrix3d EncodeTool::Quaternion2RotationMatrix(const double x,const doubl
   	return R;
 }
 
-Eigen::Quaterniond EncodeTool::rotationMatrix2Quaterniond(Eigen::Matrix3d R)
-{
-	Eigen::Quaterniond q = Eigen::Quaterniond(R);
-  	q.normalize();
-  	return q;
-}
-
-Eigen::Matrix3d EncodeTool::euler2RotationMatrix(const double roll, const double pitch, const double yaw)
-{
-	Eigen::AngleAxisd rollAngle(roll, Eigen::Vector3d::UnitZ());
-    	Eigen::AngleAxisd yawAngle(yaw, Eigen::Vector3d::UnitY());
-   	Eigen::AngleAxisd pitchAngle(pitch, Eigen::Vector3d::UnitX());
-   	Eigen::Quaterniond q = rollAngle * yawAngle * pitchAngle;
-   	Eigen::Matrix3d R = q.matrix();
-   	return R;
-
-}
-
-Eigen::Vector3d EncodeTool::RotationMatrix2euler(Eigen::Matrix3d R)
-{
-	 Eigen::Matrix3d m;
-    	m = R;
-    	Eigen::Vector3d euler = m.eulerAngles(0, 1, 2);
-    	return euler;
-}
-
-void EncodeTool::toEulerAngle(double x,double y,double z,double w, double& roll, double& pitch, double& yaw)
-{
-// roll (x-axis rotation)
-    double sinr_cosp = +2.0 * (w * x + y * z);
-    double cosr_cosp = +1.0 - 2.0 * (x * x + y * y);
-    roll = atan2(sinr_cosp, cosr_cosp);
-
-// pitch (y-axis rotation)
-    double sinp = +2.0 * (w * y - z * x);
-    if (fabs(sinp) >= 1)
-        pitch = copysign(M_PI / 2, sinp); // use 90 degrees if out of range
-    else
-        pitch = asin(sinp);
-
-// yaw (z-axis rotation)
-    double siny_cosp = +2.0 * (w * z + x * y);
-    double cosy_cosp = +1.0 - 2.0 * (y * y + z * z);
-    yaw = atan2(siny_cosp, cosy_cosp);
-//    return yaw;
-}
 
 uint32_t* EncodeTool::fill(string str)
 {
@@ -460,3 +394,79 @@ Eigen::Vector3d EncodeTool::q2Euler(Eigen::Quaterniond q)
 	Eigen::Vector3d euler = q.matrix().eulerAngles(2,1,0);
 	return euler;
 }
+
+Eigen::Quaterniond EncodeTool::Blend2Rotations(Eigen::Quaterniond quaternion1, Eigen::Quaterniond quaternion2)
+{
+	Eigen::Quaterniond logQ1 = lnQuaternion(quaternion1);
+	Eigen::Quaterniond logQ2 = lnQuaternion(quaternion2);
+	Eigen::Quaterniond add = addQuaternion(logQ1,logQ2);
+	Eigen::Quaterniond blend = expQuaternion(add);
+
+	return blend;
+}
+
+Eigen::Quaterniond EncodeTool::lnQuaternion(Eigen::Quaterniond quaternion)
+{
+	//ln(p) = ln(|p|) + Sgn(u)*arg(p)  u:vector
+	double modulusOfP = sqrt(quaternion.x()*quaternion.x() + quaternion.y()*quaternion.y() + quaternion.z()*quaternion.z() + quaternion.w()*quaternion.w());
+	double w = log(modulusOfP); //ln(|p|)
+
+	double modulusOfU = sqrt(quaternion.x()*quaternion.x() + quaternion.y()*quaternion.y() + quaternion.z()*quaternion.z());
+	double SgnUx = quaternion.x()/modulusOfU;  //Sgn(u)
+	double SgnUy = quaternion.y()/modulusOfU;
+	double SgnUz = quaternion.z()/modulusOfU;
+
+	double argP = acos(quaternion.w()/modulusOfP);  //arg(p)
+
+	Eigen::Quaterniond lnQ(argP*SgnUx, argP*SgnUy, argP*SgnUz, w);
+	return lnQ;
+}
+
+Eigen::Quaterniond EncodeTool::addQuaternion(Eigen::Quaterniond quaternion1, Eigen::Quaterniond quaternion2)
+{
+
+	double x = quaternion1.x() + quaternion2.x();
+	double y = quaternion1.y() + quaternion2.y();
+	double z = quaternion1.z() + quaternion2.z();
+	double w = quaternion1.w() + quaternion2.w();
+
+	Eigen::Quaterniond addQ(x,y,z,w);
+	return addQ;
+}
+
+Eigen::Quaterniond EncodeTool::expQuaternion(Eigen::Quaterniond quaternion)
+{
+	//exp(p) = exp(w) + (cos(|u|)+Sgn(u)sin(|u|))
+	double expW = exp(quaternion.w());
+
+	double modulusU = sqrt(quaternion.x()*quaternion.x() + quaternion.y()*quaternion.y() + quaternion.z()*quaternion.z());
+	double cosU = cos(modulusU);
+	double sinU = sin(modulusU);
+
+	double w = expW * cosU;
+	double x = quaternion.x()/modulusU*expW*sinU;
+	double y = quaternion.y()/modulusU*expW*sinU;
+	double z = quaternion.z()/modulusU*expW*sinU;
+
+	Eigen::Quaterniond expQ(x,y,z,w);
+	return expQ;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

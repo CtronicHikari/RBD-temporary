@@ -63,7 +63,70 @@ const string DBConnect::addGeometry(sigma::Position *pos_est, sigma::Attitude *a
 
 const string DBConnect::addGeometryForObject(string ID, int style, sigma::Position *pos_offset, sigma::Attitude *atti_offset, sigma::Time *time)
 {
-	
+	string geoID = "";
+	int sql_len;
+	char sql[500];
+	string targetGID = "";
+	sigma::Geometry src;
+
+	if(style==1)
+	{
+		sql_len = sprintf(sql, "select GID from server.link_geo_and_obj where OID='%s';", ID.c_str());
+	}
+	else if(style==2)
+	{
+		sql_len = sprintf(sql, "select GID from server.link_geo_and_res where RID='%s';", ID.c_str());	
+	}
+	else
+	{
+		cout << "Get a wrong style" << endl;
+		return "";
+	}
+	res = mysql_real_query(pcon, sql, sql_len);
+	result = mysql_store_result(pcon);
+	while(sql_row = mysql_fetch_row(result))
+	{
+		targetGID = sql_row[0];
+	}
+	sql_len = sprintf(sql, "select * from server.geometry where ID='%s';", targetGID.c_str());
+	res = mysql_real_query(pcon, sql, sql_len);
+	result = mysql_store_result(pcon);
+	while(sql_row = mysql_fetch_row(result))
+	{
+		src.ID = sql_row[0];
+		src.pos_est.Posx = sql_row[1]==NULL ? 0.0f : strtod(sql_row[1],NULL);
+		src.pos_est.Posy = sql_row[2]==NULL ? 0.0f : strtod(sql_row[2],NULL);
+		src.pos_est.Posz = sql_row[3]==NULL ? 0.0f : strtod(sql_row[3],NULL);
+		src.atti_est.Attitudex = sql_row[4]==NULL ? 0.0f : strtod(sql_row[4],NULL);
+		src.atti_est.Attitudey = sql_row[5]==NULL ? 0.0f : strtod(sql_row[5],NULL);
+		src.atti_est.Attitudez = sql_row[6]==NULL ? 0.0f : strtod(sql_row[6],NULL);
+		src.atti_est.Attitudew = sql_row[7]==NULL ? 0.0f : strtod(sql_row[7],NULL);
+		src.pos_obs.Posx = strtod(sql_row[8],NULL);
+		src.pos_obs.Posy = strtod(sql_row[9],NULL);
+		src.pos_obs.Posz = strtod(sql_row[10],NULL);
+		src.atti_obs.Attitudex = strtod(sql_row[11],NULL);
+		src.atti_obs.Attitudey = strtod(sql_row[12],NULL);
+		src.atti_obs.Attitudez = strtod(sql_row[13],NULL);
+		src.atti_obs.Attitudew = strtod(sql_row[14],NULL);
+		src.time.s = encodeTool.string_to_unsigned(sql_row[15]);
+		src.time.ns = encodeTool.string_to_unsigned(sql_row[16]);
+	}
+
+	src.pos_est.Posx += pos_offset->Posx;
+	src.pos_est.Posy += pos_offset->Posy;
+	src.pos_est.Posz += pos_offset->Posz;
+	Eigen::Quaterniond temp(atti_offset->Attitudex, atti_offset->Attitudey, atti_offset->Attitudez, atti_offset->Attitudew);
+	Eigen::Quaterniond origin(src.atti_est.Attitudex, src.atti_est.Attitudey, src.atti_est.Attitudez, src.atti_est.Attitudew);
+	Eigen::Quaterniond newQuaternion = encodeTool.Blend2Rotations(temp, origin);
+	src.atti_est.Attitudex = newQuaternion.x();
+	src.atti_est.Attitudey = newQuaternion.y();
+	src.atti_est.Attitudez = newQuaternion.z();
+	src.atti_est.Attitudew = newQuaternion.w();
+	sigma::Position *pos = new sigma::Position(src.pos_est.Posx, src.pos_est.Posy, src.pos_est.Posz);
+	sigma::Attitude *atti = new sigma::Attitude(src.atti_est.Attitudex, src.atti_est.Attitudey, src.atti_est.Attitudez, src.atti_est.Attitudew);	
+	geoID = addGeometry(pos, atti, pos, atti, time);		
+
+	return geoID;	
 }
 
 const void DBConnect::addResource(string ResourceID, int ParentObjectID, int Type, int Format, string Parameters, string save_path)
