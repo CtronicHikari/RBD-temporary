@@ -76,21 +76,21 @@ int main() {
 	*/
 
 	//Posture Search
-	/*
+	
 	sigma::Vector4 *Origin = new sigma::Vector4(0.0f,0.0f,0.0f,0, 0);
 	sigma::Vector4 *Range = new sigma::Vector4(5.0f,5.0f,5.0f,123, 0);
 	sigma::Target *target = new sigma::Target(1.6f,1.5f,0.0f);
 	std::vector<sigma::ResourceMeta> TestResourceMetaResults;
 	TestResourceMetaResults = dbConnect.loadResourceMeta(Origin, Range, target, M_PI/180.0f*10.0f, M_PI/180.0f*30.0f, 1);
 	cout << TestResourceMetaResults.size() << endl;
-	*/
+	xmlFileGenerator(TestResourceMetaResults, "data/");
 	//End Posture Search
 	
 
 
 	//xml Test
-	/*
-	xmlFileGenerator(TestResourceMetaResults, path);
+	
+	//xmlFileGenerator(TestResourceMetaResults, path);
 	
 	//xmlFileGenerator(resourcemetas2, path);
 
