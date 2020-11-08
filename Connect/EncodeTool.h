@@ -100,6 +100,7 @@ public:
 	double ArcLengthOfMeridian(double phi);
 	//Determines the central meridian for the given UTM zone
 	inline double UTMCentralMeridian(int zone) { return DegToRad(-183.0 + (zone * 6.0)); }
+	double UTMCentralLatitude(char zone);
 	//Computes the footpoint latitude for use in converting transverse Mercator coordinates to ellipsoidal coordinates
 	//Inputs:y - The UTM northing coordinate, in meters
 	//Returns:The footpoint lattitude, in radians
@@ -121,7 +122,10 @@ public:
 	//southhemi - True if the point is in the southern hemisohere. flase otherwise
 	//Outputs:latlon - A 2-elemet array containing the latitude and longitude of the point, in radians.
 	void UTMXYToLatLon(double x, double y, int zone, bool southhemi, sigma::WGS84Corr &latlon);
-
+	//Converts a latitude/longitude pair to sigma coordinates
+	//Inputs:lat - Latitude of the point, in radians.  lon - Longitude of the point, in radians.
+	//Outputs:corr - simga Coordinates(Only No.zone and xy) (TODO:z and Time)
+	void LatLonToSIGMA(double lat, double lon, sigma::sigmaCorr &corr);
 
 	//Eigen variables
 	Eigen::Vector3d init_vector,temp_vector,temp_dir_vector;

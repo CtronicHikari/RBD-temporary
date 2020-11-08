@@ -273,11 +273,13 @@ typedef struct tagWGS84Coor
 		double log;
 	}WGS84Corr;
 
-typedef struct tagUTMNo
+typedef struct tagFrameWorkCoor
 	{
 		int number;
 		char symbol;
-	}UTMNo;
+		double x;
+		double y;
+	}sigmaCorr;
 }
 
 	

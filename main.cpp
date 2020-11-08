@@ -18,9 +18,15 @@ int main() {
 	sigma::WGS84Corr test2;
 	dbConnect.encodeTool.UTMXYToLatLon(368197.413240813, 3909421.90523154, 54, false, test2);
 	printf("%f  %f\n",dbConnect.encodeTool.RadToDeg(test2.lat), dbConnect.encodeTool.RadToDeg(test2.log));
-	cout << dbConnect.encodeTool.GetZoneNum(dbConnect.encodeTool.DegToRad(139.55001)) << "   " dbConnect.encodeTool.GetZoneChar(dbConnect.encodeTool.DegToRad(35.31934)) << endl;
+	cout << dbConnect.encodeTool.GetZoneNum(dbConnect.encodeTool.DegToRad(139.55001)) << "   ";
+	cout << dbConnect.encodeTool.GetZoneChar(dbConnect.encodeTool.DegToRad(35.31934)) << endl;
+	sigma::sigmaCorr tmp;
+	dbConnect.encodeTool.LatLonToSIGMA(dbConnect.encodeTool.DegToRad(35.31934), dbConnect.encodeTool.DegToRad(139.55001), tmp);
+	cout << tmp.number << "  "  << tmp.symbol << endl;
+	printf("%f    %f\n",tmp.x,tmp.y);
 	*/
 	//----------------------------------------
+	
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//Resource Registration
 	/*

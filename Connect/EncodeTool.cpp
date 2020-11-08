@@ -469,6 +469,22 @@ double EncodeTool::ArcLengthOfMeridian(double phi)
 	
 }
 
+double EncodeTool::UTMCentralLatitude(char zone)
+{
+	if(zone>=3 && zone<=8)  //C~H
+	{
+		return DegToRad((double)((int)(zone - 'A' + 1) * 8 - 100));
+	}
+	else if(zone>=10 && zone<=14)  //J~N
+	{
+		return DegToRad((double)(((int)(zone - 'A' + 1) - 1) * 8 - 100));
+	}
+	else //P~X
+	{
+		return DegToRad((double)(((int)(zone - 'A' + 1) - 2) * 8 - 100));
+	}
+}
+
 double EncodeTool::FootpointLatitude(double y)
 {
 	double y_, alpha_, beta_, gamma_, delta_, epsilon_, n;
@@ -589,7 +605,7 @@ char EncodeTool::GetZoneChar(double lat)
 	int step = (int)temp / 8;
 	char start1 = 'N';
 	char start2 = 'M';
-	char res;
+	char res; 
 	if(step == 0)
 	{
 		if(temp >= 0)
@@ -614,6 +630,23 @@ char EncodeTool::GetZoneChar(double lat)
 	return res;
 }
 
+void EncodeTool::LatLonToSIGMA(double lat, double lon, sigma::sigmaCorr &corr)
+{
+	double latitude = RadToDeg(lat);
+	double longitude = RadToDeg(lon);
+	corr.number = GetZoneNum(lon);
+	corr.symbol = GetZoneChar(lat);
+	
+	sigma::UTMCorr tmp, center_temp;
+	double temp_lat, temp_lon;
+	LatLonToUTMXY(lat, lon, corr.number, tmp);
+	temp_lon = UTMCentralMeridian(corr.number);
+	temp_lat = UTMCentralLatitude(corr.symbol);
+	LatLonToUTMXY(temp_lat, temp_lon, corr.number, center_temp);
+	
+	corr.x = tmp.x - center_temp.x;
+	corr.y = tmp.y - center_temp.y;
+}
 
 
 
