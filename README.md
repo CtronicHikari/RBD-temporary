@@ -8,4 +8,4 @@
 11/8
   -encodetool
     Additional Features：
-      Conversion between UTM coordinates and latitude and longitude
+      Conversion between UTM coordinates and latitude and longitude (Include only area number, x, y)(TODO: z and RosTime)
