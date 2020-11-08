@@ -80,7 +80,55 @@ public:
 	Eigen::Quaterniond lnQuaternion(Eigen::Quaterniond quaternion);
 	Eigen::Quaterniond addQuaternion(Eigen::Quaterniond quaternion1, Eigen::Quaterniond quaternion2);
 	Eigen::Quaterniond expQuaternion(Eigen::Quaterniond quaternion);
+	/*For FrameWork Coordinates*/
+	//Ellipsoid model constants (actual values here are for WGS84)
+	const double sm_a = 6378137.0;  //Ellipsoid model major axis
+	const double sm_b = 6356752.314; //Ellipsoid model minor axis
+	const double sm_EccSquared = 6.69437999013e-03;
+	const double UTMScaleFactor = 0.9996;
+	typedef struct tagUTMCoor
+	{
+		double x;
+		double y;
+	}UTMCorr;
+	typedef struct tagWGS84Coor
+	{
+		double lat;
+		double log;
+	}WGS84Corr;
+	//Converts degrees to radians & Convers radians to degrees
+	inline double DegToRad(double deg) { return (deg / 180.0 * M_PI); }
+	inline double RadToDeg(double rad) { return (rad / M_PI * 180.0); }
+	//Computes the ellipsoidal distance from the equator to a point at a given latitude.
+	//Inputs:phi - Latitude of the point, in radians.
+	//Returns:The ellipsoidal distance of the point from the equator, in meters
+	double ArcLengthOfMeridian(double phi);
+	//Determines the central meridian for the given UTM zone
+	inline double UTMCentralMeridian(int zone) { return DegToRad(-183.0 + (zone * 6.0)); }
+	//Computes the footpoint latitude for use in converting transverse Mercator coordinates to ellipsoidal coordinates
+	//Inputs:y - The UTM northing coordinate, in meters
+	//Returns:The footpoint lattitude, int radians
+	double FootpointLatitude(double y);
+	//Converts a latitude/longitude pair to x and y coordinates in the Transverse Mercator projection
+	//Inputs: phi - Latitude of the point, int radians.  lambda - Longitude of the point, in radians.  lambda0 - Longitude of the central meridian to be used, in radians.
+	//Outputs:xy - A 2-elementa array containing the x and y coordiantes of the point
+	void MapLatLonToXY(double phi, double lambda, double lambda0, UTMCorr &xy);
+	//Convers x and y coordinates in the Transvers Mercator projection to a latitude/longitude pair.
+	//Inputs:x - the easting of the point, in meters.  y - The northing of the point, in meters.
+	//Outputs: philambda - A 2-element containing the latitude and longitude in radians
+	void MapXYToLatLon(double x, double y, double lambda0, WGS84Corr &philambda);
+	//Converts a latitude/longitude pair to x and y coordinates in the Universal Transverse Mercator projection
+	//Inputs:lat - Latitude of the point, in radians.  lon - Longitude of the point, in radians. zone - UTM zone to be used for calculating values for x and y
+	//Outputs: xy - A 2-element arry where the UTM x and y values will be stored.
+	void LatLonToUTMXY(double lat, double lon, int zone, UTMCorr &xy);
+	//Convers x and y coordinates in the Universal Transverse Mercator projection to a latitude/longitude pair
+	//Inputs:x - The easting of the point, in meters.  y - The northing of the point, in meters. zone - The UTM zone in which the point lies.  
+	//southhemi - True if the point is in the southern hemisohere. flase otherwise
+	//Outputs:latlon - A 2-elemet array containing the latitude and longitude of the point, in radians.
+	void UTMXYToLatLon(double x, double y, int zone, bool southhemi, WGS84Corr &latlon);
 
+
+	//Eigen variables
 	Eigen::Vector3d init_vector,temp_vector,temp_dir_vector;
 	Eigen::Vector3d x_axiz,y_axiz,z_axiz,temp;
 	Eigen::Matrix3d R;
@@ -101,12 +149,10 @@ public:
 	0x432aff97,0xab9423a7,0xfc93a039,0x655b59c3,0x8f0ccc92,
 	0xffeff47d,0x85845dd1,0x6fa87e4f,0xfe2ce6e0,0xa3014314,
 	0x4e0811a1,0xf7537e82,0xbd3af235,0x2ad7d2bb,0xeb86d391 };
-
 	const uint32_t s[64] = { 7,12,17,22,7,12,17,22,7,12,17,22,7,
 	12,17,22,5,9,14,20,5,9,14,20,5,9,14,20,5,9,14,20,
 	4,11,16,23,4,11,16,23,4,11,16,23,4,11,16,23,6,10,
 	15,21,6,10,15,21,6,10,15,21,6,10,15,21 };
-	
 	constexpr static int step = 64 / sizeof(uint32_t);	
 	uint32_t strlength;
 	uint32_t atemp;
