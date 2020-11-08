@@ -261,7 +261,26 @@ public:
 		targetX = x; targetY = y; targetZ = z; 
 	}		
 };
+
+typedef struct tagUTMCoor
+	{
+		double x;
+		double y;
+	}UTMCorr;
+typedef struct tagWGS84Coor
+	{
+		double lat;
+		double log;
+	}WGS84Corr;
+
+typedef struct tagUTMNo
+	{
+		int number;
+		char symbol;
+	}UTMNo;
 }
+
+	
 //Load
 
 

@@ -86,19 +86,14 @@ public:
 	const double sm_b = 6356752.314; //Ellipsoid model minor axis
 	const double sm_EccSquared = 6.69437999013e-03;
 	const double UTMScaleFactor = 0.9996;
-	typedef struct tagUTMCoor
-	{
-		double x;
-		double y;
-	}UTMCorr;
-	typedef struct tagWGS84Coor
-	{
-		double lat;
-		double log;
-	}WGS84Corr;
+	
 	//Converts degrees to radians & Convers radians to degrees
 	inline double DegToRad(double deg) { return (deg / 180.0 * M_PI); }
 	inline double RadToDeg(double rad) { return (rad / M_PI * 180.0); }
+	//Get zone number by longitude,in radians
+	inline int GetZoneNum(double lon) { return (int)RadToDeg(lon)/6+31; }
+	//Get zone char by latitude,int radians
+	char GetZoneChar(double lat);
 	//Computes the ellipsoidal distance from the equator to a point at a given latitude.
 	//Inputs:phi - Latitude of the point, in radians.
 	//Returns:The ellipsoidal distance of the point from the equator, in meters
@@ -107,25 +102,25 @@ public:
 	inline double UTMCentralMeridian(int zone) { return DegToRad(-183.0 + (zone * 6.0)); }
 	//Computes the footpoint latitude for use in converting transverse Mercator coordinates to ellipsoidal coordinates
 	//Inputs:y - The UTM northing coordinate, in meters
-	//Returns:The footpoint lattitude, int radians
+	//Returns:The footpoint lattitude, in radians
 	double FootpointLatitude(double y);
 	//Converts a latitude/longitude pair to x and y coordinates in the Transverse Mercator projection
 	//Inputs: phi - Latitude of the point, int radians.  lambda - Longitude of the point, in radians.  lambda0 - Longitude of the central meridian to be used, in radians.
 	//Outputs:xy - A 2-elementa array containing the x and y coordiantes of the point
-	void MapLatLonToXY(double phi, double lambda, double lambda0, UTMCorr &xy);
+	void MapLatLonToXY(double phi, double lambda, double lambda0, sigma::UTMCorr &xy);
 	//Convers x and y coordinates in the Transvers Mercator projection to a latitude/longitude pair.
 	//Inputs:x - the easting of the point, in meters.  y - The northing of the point, in meters.
 	//Outputs: philambda - A 2-element containing the latitude and longitude in radians
-	void MapXYToLatLon(double x, double y, double lambda0, WGS84Corr &philambda);
+	void MapXYToLatLon(double x, double y, double lambda0, sigma::WGS84Corr &philambda);
 	//Converts a latitude/longitude pair to x and y coordinates in the Universal Transverse Mercator projection
 	//Inputs:lat - Latitude of the point, in radians.  lon - Longitude of the point, in radians. zone - UTM zone to be used for calculating values for x and y
 	//Outputs: xy - A 2-element arry where the UTM x and y values will be stored.
-	void LatLonToUTMXY(double lat, double lon, int zone, UTMCorr &xy);
+	void LatLonToUTMXY(double lat, double lon, int zone, sigma::UTMCorr &xy);
 	//Convers x and y coordinates in the Universal Transverse Mercator projection to a latitude/longitude pair
 	//Inputs:x - The easting of the point, in meters.  y - The northing of the point, in meters. zone - The UTM zone in which the point lies.  
 	//southhemi - True if the point is in the southern hemisohere. flase otherwise
 	//Outputs:latlon - A 2-elemet array containing the latitude and longitude of the point, in radians.
-	void UTMXYToLatLon(double x, double y, int zone, bool southhemi, WGS84Corr &latlon);
+	void UTMXYToLatLon(double x, double y, int zone, bool southhemi, sigma::WGS84Corr &latlon);
 
 
 	//Eigen variables

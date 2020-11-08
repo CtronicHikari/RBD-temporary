@@ -1705,6 +1705,8 @@ detail/func_vector_relational.inl
 /home/guan/文档/Manager/main.cpp
 iostream
 -
+stdio.h
+-
 Common.h
 /home/guan/文档/Manager/Common.h
 Connect.h

@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include "Common.h"
 #include "Connect.h"
 #include "EncodeTool.h"
@@ -9,6 +10,17 @@ int main() {
 	DBConnect dbConnect;  
 	dbConnect.Connect(); 
 
+	//------Coordinate conversion test--------
+	/*
+	sigma::UTMCorr test;
+	dbConnect.encodeTool.LatLonToUTMXY(dbConnect.encodeTool.DegToRad(35.31934), dbConnect.encodeTool.DegToRad(139.55001), 54, test);
+	printf("%f  %f\n",test.x, test.y);
+	sigma::WGS84Corr test2;
+	dbConnect.encodeTool.UTMXYToLatLon(368197.413240813, 3909421.90523154, 54, false, test2);
+	printf("%f  %f\n",dbConnect.encodeTool.RadToDeg(test2.lat), dbConnect.encodeTool.RadToDeg(test2.log));
+	cout << dbConnect.encodeTool.GetZoneNum(dbConnect.encodeTool.DegToRad(139.55001)) << "   " dbConnect.encodeTool.GetZoneChar(dbConnect.encodeTool.DegToRad(35.31934)) << endl;
+	*/
+	//----------------------------------------
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//Resource Registration
 	/*
@@ -76,7 +88,7 @@ int main() {
 	*/
 
 	//Posture Search
-	
+	/*
 	sigma::Vector4 *Origin = new sigma::Vector4(0.0f,0.0f,0.0f,0, 0);
 	sigma::Vector4 *Range = new sigma::Vector4(5.0f,5.0f,5.0f,123, 0);
 	sigma::Target *target = new sigma::Target(1.6f,1.5f,0.0f);
@@ -84,6 +96,7 @@ int main() {
 	TestResourceMetaResults = dbConnect.loadResourceMeta(Origin, Range, target, M_PI/180.0f*10.0f, M_PI/180.0f*30.0f, 1);
 	cout << TestResourceMetaResults.size() << endl;
 	xmlFileGenerator(TestResourceMetaResults, "data/");
+	*/
 	//End Posture Search
 	
 
