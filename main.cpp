@@ -21,12 +21,16 @@ int main() {
 	cout << dbConnect.encodeTool.GetZoneNum(dbConnect.encodeTool.DegToRad(139.55001)) << "   ";
 	cout << dbConnect.encodeTool.GetZoneChar(dbConnect.encodeTool.DegToRad(35.31934)) << endl;
 	sigma::sigmaCorr tmp;
-	dbConnect.encodeTool.LatLonToSIGMA(dbConnect.encodeTool.DegToRad(35.31934), dbConnect.encodeTool.DegToRad(139.55001), tmp);
+	dbConnect.encodeTool.LatLonToSIGMA(dbConnect.encodeTool.DegToRad(35.31934), dbConnect.encodeTool.DegToRad(139.55001), 30.0, tmp);
 	cout << tmp.number << "  "  << tmp.symbol << endl;
-	printf("%f    %f\n",tmp.x,tmp.y);
+	printf("%f    %f    %f\n",tmp.x,tmp.y,tmp.z);
 	*/
 	//----------------------------------------
-	
+	sigma::sigmaCorr tmp;
+	dbConnect.encodeTool.LatLonToSIGMA(dbConnect.encodeTool.DegToRad(35.31934), dbConnect.encodeTool.DegToRad(139.55001), 30.0, new sigma::Time(3,5), tmp);
+	cout << tmp.number << "  "  << tmp.symbol << endl;
+	printf("%f    %f    %f\n",tmp.position.Posx,tmp.position.Posy,tmp.position.Posz);
+	cout << tmp.time.s << "  " << tmp.time.ns << endl;
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//Resource Registration
 	/*

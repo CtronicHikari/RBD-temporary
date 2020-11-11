@@ -277,8 +277,8 @@ typedef struct tagFrameWorkCoor
 	{
 		int number;
 		char symbol;
-		double x;
-		double y;
+		Position position;
+		Time time;
 	}sigmaCorr;
 }
 

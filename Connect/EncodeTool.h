@@ -14,6 +14,7 @@
 #include <Eigen/Geometry>
 #include <Eigen/Core>
 #include <vector>
+#include <unordered_map>
 
 #include <algorithm>
 #include "MyClass.h"
@@ -86,6 +87,8 @@ public:
 	const double sm_b = 6356752.314; //Ellipsoid model minor axis
 	const double sm_EccSquared = 6.69437999013e-03;
 	const double UTMScaleFactor = 0.9996;
+	//Elevation of zone's central latitude and longitude
+	unordered_map<string,double> Elevation = {{"54R",0.0},{"53R",0.0},{"52R",0.0},{"54S",0.0},{"53S",0.0},{"52S",112.0},{"54T",0.0},{"53T",464.0},{"52T",367.0}};
 	
 	//Converts degrees to radians & Convers radians to degrees
 	inline double DegToRad(double deg) { return (deg / 180.0 * M_PI); }
@@ -123,9 +126,10 @@ public:
 	//Outputs:latlon - A 2-elemet array containing the latitude and longitude of the point, in radians.
 	void UTMXYToLatLon(double x, double y, int zone, bool southhemi, sigma::WGS84Corr &latlon);
 	//Converts a latitude/longitude pair to sigma coordinates
-	//Inputs:lat - Latitude of the point, in radians.  lon - Longitude of the point, in radians.
-	//Outputs:corr - simga Coordinates(Only No.zone and xy) (TODO:z and Time)
-	void LatLonToSIGMA(double lat, double lon, sigma::sigmaCorr &corr);
+	//Inputs:lat - Latitude of the point, in radians.  lon - Longitude of the point, in radians.  ele - GPS's elevation $GPGGA 9th data
+	//Outputs:corr - simga Coordinates(Only No.zone and xy)
+	void LatLonToSIGMA(double lat, double lon, double ele, sigma::Time *time, sigma::sigmaCorr &corr);
+
 
 	//Eigen variables
 	Eigen::Vector3d init_vector,temp_vector,temp_dir_vector;

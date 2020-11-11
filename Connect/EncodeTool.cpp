@@ -630,12 +630,13 @@ char EncodeTool::GetZoneChar(double lat)
 	return res;
 }
 
-void EncodeTool::LatLonToSIGMA(double lat, double lon, sigma::sigmaCorr &corr)
+void EncodeTool::LatLonToSIGMA(double lat, double lon, double ele, sigma::Time *time, sigma::sigmaCorr &corr)
 {
 	double latitude = RadToDeg(lat);
 	double longitude = RadToDeg(lon);
 	corr.number = GetZoneNum(lon);
 	corr.symbol = GetZoneChar(lat);
+	string zone = to_string(corr.number) + corr.symbol;
 	
 	sigma::UTMCorr tmp, center_temp;
 	double temp_lat, temp_lon;
@@ -644,8 +645,11 @@ void EncodeTool::LatLonToSIGMA(double lat, double lon, sigma::sigmaCorr &corr)
 	temp_lat = UTMCentralLatitude(corr.symbol);
 	LatLonToUTMXY(temp_lat, temp_lon, corr.number, center_temp);
 	
-	corr.x = tmp.x - center_temp.x;
-	corr.y = tmp.y - center_temp.y;
+	corr.position.Posx = tmp.x - center_temp.x;
+	corr.position.Posy = tmp.y - center_temp.y;
+	corr.position.Posz = ele - Elevation[zone];
+	corr.time.s = time->s;
+	corr.time.ns = time->ns;
 }
 
 
