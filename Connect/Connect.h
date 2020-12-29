@@ -7,6 +7,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<vector>
+#include<math.h>
 #include"MyClass.h"
 #include"EncodeTool.h"
 
@@ -27,7 +28,7 @@ using namespace std;
 class DBConnect{
 public:
 	const char * db = "server"; //DataBase name
-	const char * server = "192.168.6.138"; //server ip
+	const char * server = "127.0.0.1"; //server ip
 	const char * user = "root"; //user
 	const char * password = "root"; //password
 	const unsigned int port = 3306; //port
@@ -64,7 +65,8 @@ public:
 	std::vector<sigma::ResourceMeta> loadResourceMeta(string GeometryID , int Type=0);
 	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double theta, int Mode, int Type=0);
 	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double alpha, double beta, int Mode, int Type=0);
-	
+	//
+	std::vector<sigma::ResourceMeta> loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::BoudingBox *box, int Mode, int Type=0);
 };
 #endif
 

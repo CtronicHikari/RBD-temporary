@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <time.h>
 #include "Common.h"
 #include "Connect.h"
 #include "EncodeTool.h"
@@ -7,33 +8,26 @@
 using namespace std;
 
 int main() {
+	clock_t start,end;
 	DBConnect dbConnect;  
 	dbConnect.Connect(); 
 
+	
+
 	//------Coordinate conversion test--------
-	/*
-	sigma::UTMCorr test;
-	dbConnect.encodeTool.LatLonToUTMXY(dbConnect.encodeTool.DegToRad(35.31934), dbConnect.encodeTool.DegToRad(139.55001), 54, test);
-	printf("%f  %f\n",test.x, test.y);
-	sigma::WGS84Corr test2;
-	dbConnect.encodeTool.UTMXYToLatLon(368197.413240813, 3909421.90523154, 54, false, test2);
-	printf("%f  %f\n",dbConnect.encodeTool.RadToDeg(test2.lat), dbConnect.encodeTool.RadToDeg(test2.log));
-	cout << dbConnect.encodeTool.GetZoneNum(dbConnect.encodeTool.DegToRad(139.55001)) << "   ";
-	cout << dbConnect.encodeTool.GetZoneChar(dbConnect.encodeTool.DegToRad(35.31934)) << endl;
-	sigma::sigmaCorr tmp;
-	dbConnect.encodeTool.LatLonToSIGMA(dbConnect.encodeTool.DegToRad(35.31934), dbConnect.encodeTool.DegToRad(139.55001), 30.0, tmp);
-	cout << tmp.number << "  "  << tmp.symbol << endl;
-	printf("%f    %f    %f\n",tmp.x,tmp.y,tmp.z);
-	*/
+	
+	//sigma::sigmaCorr tmp;
+	//dbConnect.encodeTool.LatLonToSIGMA(dbConnect.encodeTool.DegToRad(32), dbConnect.encodeTool.DegToRad(143.9999999999999), 7.0, new sigma::Time(1606005570,500), tmp);
+	//cout << "Zone:" << tmp.number << tmp.symbol << endl;
+	//printf("X:%f    Y:%f    Z:%f\n",tmp.position.Posx,tmp.position.Posy,tmp.position.Posz);	
+	//printf("second:%u  tiny second:%u\n",tmp.time.s,tmp.time.ns);
+	
 	//----------------------------------------
-	sigma::sigmaCorr tmp;
-	dbConnect.encodeTool.LatLonToSIGMA(dbConnect.encodeTool.DegToRad(35.31934), dbConnect.encodeTool.DegToRad(139.55001), 30.0, new sigma::Time(3,5), tmp);
-	cout << tmp.number << "  "  << tmp.symbol << endl;
-	printf("%f    %f    %f\n",tmp.position.Posx,tmp.position.Posy,tmp.position.Posz);
-	cout << tmp.time.s << "  " << tmp.time.ns << endl;
+	//cout << dbConnect.encodeTool.Geohash_space(tmp, 4) << endl;
 	//-----------------------------------------------------------------------------------------------------------------------------------------
 	//Resource Registration
 	/*
+	start = clock();
 	std::string path = "data/";
 
 	const boost::filesystem::path path2(path);
@@ -48,15 +42,18 @@ int main() {
 			std::cout << "failed to make directory" << std::endl;
 		}
 	}
-
+	
 	std::vector<intrinsicPara> intrinsicpara;
 	std::vector<extrinsicPara> extrinsicpara;
 	std::vector<pairIE> pairie;
 	parameterFileParser(pairie, intrinsicpara, extrinsicpara, "sfm-data.xml");
 
 	std::vector<sigma::ResourceMeta> resourcemetas(pairie.size());
-
-	for (int i = 0; i < pairie.size(); ++i) {
+	end = clock();
+	cout << double(end - start) / CLOCKS_PER_SEC << "s" << endl;
+	/*
+	//for (int i = 0; i < pairie.size(); ++i) {
+	for (int i = 0; i < 1; ++i) {
 
 		const boost::filesystem::path src(pairie[i].path);  //sfm-data.xml:root_path+filename.png
 
@@ -85,10 +82,10 @@ int main() {
 		sigma::Attitude *atti_phys = new sigma::Attitude(9.99f,9.99f,9.99f,9.99f);
 		sigma::Attitude *atti_est = new sigma::Attitude(t.atti.Attitudex,t.atti.Attitudey,t.atti.Attitudez,t.atti.Attitudew);
 		sigma::Time *time = new sigma::Time(t.time.s,t.time.ns);
-		string GeometryID = dbConnect.addGeometry(pos_est,atti_est,pos_phys,atti_phys,time);
-		string ResourceID = dbConnect.make_ResourceID(r.ParentObjectID, pos_est, atti_est, time); 
-		dbConnect.addResource(ResourceID, r.ParentObjectID, r.Type, r.Type, r.Parameters, path);
-		dbConnect.link_Geo_and_Res(ResourceID, GeometryID);
+		//string GeometryID = dbConnect.addGeometry(pos_est,atti_est,pos_phys,atti_phys,time);
+		//string ResourceID = dbConnect.make_ResourceID(r.ParentObjectID, pos_est, atti_est, time); 
+		//dbConnect.addResource(ResourceID, r.ParentObjectID, r.Type, r.Type, r.Parameters, path);
+		//dbConnect.link_Geo_and_Res(ResourceID, GeometryID);
 		cv::Mat img =  cv::imread(pairie[i].path);
 		string filename = path + ResourceID + ".png";
 		cv::imwrite(filename, img);
@@ -98,17 +95,47 @@ int main() {
 	*/
 
 	//Posture Search
-	/*
+	
 	sigma::Vector4 *Origin = new sigma::Vector4(0.0f,0.0f,0.0f,0, 0);
-	sigma::Vector4 *Range = new sigma::Vector4(5.0f,5.0f,5.0f,123, 0);
-	sigma::Target *target = new sigma::Target(1.6f,1.5f,0.0f);
+	sigma::Vector4 *Range = new sigma::Vector4(-5.0f,-5.0f,-5.0f,1200, 0);
+	sigma::Target *target = new sigma::Target(0.23f,-0.025f,0.85f);
 	std::vector<sigma::ResourceMeta> TestResourceMetaResults;
-	TestResourceMetaResults = dbConnect.loadResourceMeta(Origin, Range, target, M_PI/180.0f*10.0f, M_PI/180.0f*30.0f, 1);
+	TestResourceMetaResults = dbConnect.loadResourceMeta(Origin, Range, target, 0.0f, 0.0f, 2);
 	cout << TestResourceMetaResults.size() << endl;
-	xmlFileGenerator(TestResourceMetaResults, "data/");
-	*/
+	xmlFileGenerator(TestResourceMetaResults, "data/Posture");
+	for(int i=0;i<TestResourceMetaResults.size();i++)
+	{
+		string tmp = "./data/" + TestResourceMetaResults[i].ID + ".png";
+		string tmp1 = "./data/Posture/" + TestResourceMetaResults[i].ID + ".png";
+		cv::Mat img =  cv::imread(tmp);
+		cv::imwrite(tmp1, img);
+	}
+	
 	//End Posture Search
 	
+	//Bouding Box Search
+	/*
+	//sigma::Vector4 *Origin = new sigma::Vector4(0.0f,-0.025f,0.85f,0, 0);
+	sigma::Vector4 *Origin = new sigma::Vector4(0.0f,0.0f,0.0f,0, 0);
+	sigma::Vector4 *Range = new sigma::Vector4(-1.0f,-1.0f,-1.0f,12000, 0);
+	//sigma::BoudingBox *box = new sigma::BoudingBox(3.0f, 2.1f, 1.1f, 1.0f, 0.8f, -1.0f);
+	sigma::BoudingBox *box = new sigma::BoudingBox(0.38f, -0.25f, 1.0f, 0.08f, 0.2f, 0.7f);
+	std::vector<sigma::ResourceMeta> TestResourceMetaResults;
+	TestResourceMetaResults = dbConnect.loadResourceMeta(Origin, Range, box, 2);
+	//TestResourceMetaResults = dbConnect.loadResourceMeta(Origin, Range, 2);
+	cout << TestResourceMetaResults.size() << endl;
+	xmlFileGenerator(TestResourceMetaResults, "data/BoudingBox");
+	for(int i=0;i<TestResourceMetaResults.size();i++)
+	//for(int i=0;i<1;i++)
+	{
+		string tmp = "./data/" + TestResourceMetaResults[i].ID + ".png";
+		string tmp1 = "./data/BoudingBox/" + TestResourceMetaResults[i].ID + ".png";
+		cv::Mat img =  cv::imread(tmp);
+		cv::imwrite(tmp1, img);
+	}
+	*/
+	
+	//End Posture Search
 
 
 	//xml Test
@@ -118,7 +145,7 @@ int main() {
 	//xmlFileGenerator(resourcemetas2, path);
 
 	//std::vector<ResourceMeta> resourcemetas2;
-	//ì«Ç›çûÇ›
+	//ÊíâÂÇíÂ¥¨ÂÇí
 	//xmlFileParser(resourcemetas2, path);
 	/*
 	std::cout << "----Load xml----" << std::endl;

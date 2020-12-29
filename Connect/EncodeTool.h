@@ -15,6 +15,7 @@
 #include <Eigen/Core>
 #include <vector>
 #include <unordered_map>
+#include <map>
 
 #include <algorithm>
 #include "MyClass.h"
@@ -102,7 +103,7 @@ public:
 	//Returns:The ellipsoidal distance of the point from the equator, in meters
 	double ArcLengthOfMeridian(double phi);
 	//Determines the central meridian for the given UTM zone
-	inline double UTMCentralMeridian(int zone) { return DegToRad(-183.0 + (zone * 6.0)); }
+	double UTMCentralMeridian(int zone); 
 	double UTMCentralLatitude(char zone);
 	//Computes the footpoint latitude for use in converting transverse Mercator coordinates to ellipsoidal coordinates
 	//Inputs:y - The UTM northing coordinate, in meters
@@ -129,14 +130,31 @@ public:
 	//Inputs:lat - Latitude of the point, in radians.  lon - Longitude of the point, in radians.  ele - GPS's elevation $GPGGA 9th data
 	//Outputs:corr - simga Coordinates(Only No.zone and xy)
 	void LatLonToSIGMA(double lat, double lon, double ele, sigma::Time *time, sigma::sigmaCorr &corr);
+	void SIGMAToLatLon(sigma::sigmaCorr corr, sigma::WGS84Corr &latlon);
+	//Framwork corrinate Index
+	//Binarization of latitude and longitude
+	//Inputs:w - The number to be converted to binary. left/right:Calculating the range of geohash step/max_step:Number of iterations
+	//step - Always 1. max_step - Determine the length of the geohash, the length of the geohash:max_step/5
+	string Geohash_w_bin(double w, double left, double right, int step, int max_step);
+	//Passes in longitude and latitude and returns the combined binary code.
+	string Geohash_merge(string Lon, string Lat);
+	//Binary encoding base 32
+	string Geohash_base32(string s);
+	//Converts latitude and longitude to base32 Returns base32 encoding , in radians. precision Must be an even number.
+	string Geohash_space(sigma::sigmaCorr corr, int precision=12);
 
 
 	//Eigen variables
-	Eigen::Vector3d init_vector,temp_vector,temp_dir_vector;
+	Eigen::Vector3d init_vector,temp_vector,temp_dir_vector,init_vectorx, init_vectory;
 	Eigen::Vector3d x_axiz,y_axiz,z_axiz,temp;
 	Eigen::Matrix3d R;
 	Eigen::Quaterniond Q,T,N;
 
+	//For Base32
+	map<string,string> base32 = {{"00000","0"},{"00001","1"},{"00010","2"},{"00011","3"},{"00100","4"},{"00101","5"},{"00110","6"},{"00111","7"},
+				{"01000","8"},{"01001","9"},{"01010","b"},{"01011","c"},{"01100","d"},{"01101","e"},{"01110","f"},{"01111","g"},
+				{"10000","h"},{"10001","j"},{"10010","k"},{"10011","m"},{"10100","n"},{"10101","p"},{"10110","q"},{"10111","r"},
+				{"11000","s"},{"11001","t"},{"11010","u"},{"11011","v"},{"11100","w"},{"11101","x"},{"11110","y"},{"11111","z"}};
 	//For MD5
 	const uint32_t k[64] = {
 	0xd76aa478,0xe8c7b756,0x242070db,0xc1bdceee,

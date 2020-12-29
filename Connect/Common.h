@@ -5,6 +5,7 @@
 #include <boost/foreach.hpp>
 #include <boost/lexical_cast.hpp>
 #include <boost/tokenizer.hpp>
+#include <boost/date_time/posix_time/posix_time.hpp>
 #include <vector>
 #include <iostream>
 #include <glm/glm.hpp>
@@ -14,94 +15,42 @@
 #include <glm/gtc/type_ptr.hpp>
 #include "OpenCV.h"
 #include "MyClass.h"
-/*
-class Transform {
-public:
 
-    Transform() {
+#define MAX_NUM 8.988465674311579538647e+307
 
-    };
+//TODO class Transform
 
-    Transform(const double WorldPositionX, const double WorldPositionY, const double WorldPositionZ,
-        const double Time, const double AttitudeX, const double AttitudeY, const double AttitudeZ, const double AttitudeW) :
-        WorldPositionX(WorldPositionX), WorldPositionY(WorldPositionY), WorldPositionZ(WorldPositionZ),
-        Time(Time), AttitudeX(AttitudeX), AttitudeY(AttitudeY), AttitudeZ(AttitudeZ), AttitudeW(AttitudeW){
-
-    };
-
-    ~Transform() {
-
-    };
-
-    double WorldPositionX;
-    double WorldPositionY;
-    double WorldPositionZ;
-    double Time;
-    double AttitudeX;
-    double AttitudeY;
-    double AttitudeZ;
-    double AttitudeW;
-};
-*/
-/*
-class ResourceMeta {
-
-public:
-
-    ResourceMeta() {
-
-    };
-
-    ResourceMeta(const std::string &ID, const int ParentObjectID, const int Type,
-        const std::string Ext, const Transform &transform, const std::string Path, const std::string Parameters) :
-        ID(ID), ParentObjectID(ParentObjectID), Type(Type),
-        Ext(Ext), transform(transform), Path(Path), Parameters(Parameters){
-
-    };
-
-    ~ResourceMeta() {
-
-    }
-
-	std::string ID;
-    int ParentObjectID;
-    int Type;
-    std::string Ext;
-    Transform transform;
-    std::string Path;
-    std::string Parameters;
-};
-*/
 class intrinsicPara {
 
 public:
 	intrinsicPara() :
-        focal(0.f), ppx(0.f), ppy(0.f), k1(0.f), k2(0.f), k3(0.f), width(0), height(0) {
+        focalx(0.f), focaly(0.f), ppx(0.f), ppy(0.f), k1(0.f), k2(0.f), k3(0.f), width(0), height(0) {
 	};
 
-	intrinsicPara(const double focal, const double ppx, const double ppy,
+	intrinsicPara(const double focalx, const double focaly, const double ppx, const double ppy,
 		const double k1, const double k2, const double k3, const int width, const int height) :
-		focal(focal), ppx(ppx), ppy(ppy), k1(k1), k2(k2), k3(k3), width(width), height(height){
+        focalx(focalx), focaly(focaly), ppx(ppx), ppy(ppy), k1(k1), k2(k2), k3(k3), width(width), height(height){
 	};
 
 	~intrinsicPara() {
 	};
 
-	//徟揰嫍棧
-	double focal;
+	//焦点距離
+    	double focalx;
+    	double focaly;
 
-	//庡揰
+	//主点
 	double ppx;
 	double ppy;
 
-	//榗傒學悢
+	//歪み係数
 	double k1;
 	double k2;
 	double k3;
 
-    //僒僀僘
-    int width;
-    int height;
+    	//サイズ
+    	int width;
+    	int height;
 };
 
 class extrinsicPara {
@@ -109,17 +58,17 @@ class extrinsicPara {
 public:
     extrinsicPara() {
 
-        r[0] = r[1] = r[2] = r[3] = r[4] = r[5] = r[6] = r[7] = r[8] = 0.f;
-        t[0] = t[1] = t[2] = 0.f;
+        r[0] = r[1] = r[2] = r[3] = r[4] = r[5] = r[6] = r[7] = r[8] = MAX_NUM;
+        t[0] = t[1] = t[2] = MAX_NUM;
     };
 
     ~extrinsicPara() {
     };
 
-    //夞揮
+    //回転
     double r[9];
 
-    //暲恑
+    //並進
     double t[3];
 };
 
@@ -133,76 +82,77 @@ public:
     ~pairIE() {
     };
 
-    //撪晹ID
+    //内部ID
     double i_id;
 
-    //奜晹ID
+    //外部ID
     double e_id;
 
-    //僼傽僀儖僷僗
+    //ファイルパス
     std::string path;
 };
 
 /**
  * @fn
- * @brief RDB偐傜僟僂儞儘乕僪偟偨儕僜乕僗偺儊僞忣曬傪xml僼傽僀儖偵曐懚
- * @param const std::vector<ResourceMeta> resourcemeta 曐懚偡傞vector
- * @param const std::string path 曐懚偡傞僨傿儗僋僩儕僷僗
+ * @brief RDBからダウンロードしたリソースのメタ情報をxmlファイルに保存
+ * @param const std::vector<ResourceMeta> resourcemeta 保存するvector
+ * @param const std::string path 保存するディレクトリパス
  */
 extern bool xmlFileGenerator(const std::vector<sigma::ResourceMeta> resourcemetas, const std::string path);
 
 /**
  * @fn
- * @brief RDB偐傜僟僂儞儘乕僪偟偨儕僜乕僗偺儊僞忣曬傪xml僼傽僀儖偵曐懚
- * @std::vector<ResourceMeta> & resourcemetametas xml僼傽僀儖傪撉傒丆resourcemetametas偺vector偵奿擺
- * @param const std::string path 曐懚偟偰偁傞僨傿儗僋僩儕僷僗
+ * @brief RDBからダウンロードしたリソースのメタ情報をxmlファイルに保存 ???
+ * @std::vector<ResourceMeta> & resourcemetametas xmlファイルを読み，resourcemetametasのvectorに格納
+ * @param const std::string path 保存してあるディレクトリパス
  */
 extern void xmlFileParser(std::vector<sigma::ResourceMeta>& resourcemetas, const std::string path);
 
 /**
  * @fn
- * @brief OpenMVG偱弌椡偟偨xml僼傽僀儖傪夝愅
- * @std::vector<pairIE>& pairie xml僼傽僀儖傪撉傒丆pairIE偺vector偵奿擺
- * @std::vector<intrinsicPara>& intrinsicpara xml僼傽僀儖傪撉傒丆intrinsicPara偺vector偵奿擺
- * @std::vector<extrinsicPara>& extrinsicpara xml僼傽僀儖傪撉傒丆extrinsicPara偺vector偵奿擺
- * @param const std::string path 曐懚偟偰偁傞僨傿儗僋僩儕僷僗
+ * @brief OpenMVGで出力したxmlファイルを解析
+ * @std::vector<pairIE>& pairie xmlファイルを読み，pairIEのvectorに格納
+ * @std::vector<intrinsicPara>& intrinsicpara xmlファイルを読み，intrinsicParaのvectorに格納
+ * @std::vector<extrinsicPara>& extrinsicpara xmlファイルを読み，extrinsicParaのvectorに格納
+ * @param const std::string path 保存してあるディレクトリパス
  */
 extern void parameterFileParser(std::vector<pairIE>& pairie, std::vector<intrinsicPara>& intrinsicpara, std::vector<extrinsicPara>& extrinsicpara, const std::string path);
 
 /**
  * @fn
- * @brief 僇儊儔偺撪晹僷儔儊乕僞偐傜暥帤楍傪嶌惉
+ * @brief カメラの内部パラメータから文字列を作成
  * @intrinsicPara _intrinsicpara intrinsicPara
- * @return 暥帤楍
+ * @return 文字列
  */
 extern std::string strGenerator(intrinsicPara& _intrinsicpara);
 
-//strGenerator偺csv斉
+//strGeneratorのcsv版
 extern std::string strGeneratorCSV(intrinsicPara &_intrinsicpara);
 
 /**
  * @fn
- * @brief strGenerator偱嶌惉偟偨暥帤楍傪夝愅
+ * @brief strGeneratorで作成した文字列を解析
  * @intrinsicPara _intrinsicpara intrinsicPara
- * @std::string str 嶌惉偟偨暥帤楍
+ * @std::string str 作成した文字列
  */
 extern void strParser(intrinsicPara& _intrinsicpara, std::string str);
 
-//strParser偺csv斉
+//strParserのcsv版
 extern void strParserCSV(intrinsicPara& _intrinsicpara, std::string str);
 
 /**
  * @fn
- * @brief 攝楍傪擖傟傞偲glm宍幃偺僋僅乕僞僯僆儞偑曉偭偰棃傞
- * @double* m 攝楍(3峴3楍)
+ * @brief 配列を入れるとglm形式のクォータニオンが返って来る
+ * @double* m 配列(3行3列)
  */
 extern glm::quat convertM2Q(double* m);
 
 /**
  * @fn
- * @brief 攝楍傪擖傟傞偲glm宍幃偺僋僅乕僞僯僆儞偑曉偭偰棃傞
- * @glm::quat q丂glm宍幃偺僋僅乕僞僯僆儞 
- * @double* m 攝楍(3峴3楍)
+ * @brief 配列を入れるとglm形式のクォータニオンが返って来る
+ * @glm::quat q　glm形式のクォータニオン 
+ * @double* m 配列(3行3列)
  */
 extern void convertQ2M(glm::quat q, double* m);
+
 

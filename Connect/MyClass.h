@@ -262,6 +262,27 @@ public:
 	}		
 };
 
+class BoudingBox
+{
+public:
+	Vector3 maxPoint, minPoint;
+	BoudingBox()
+	{
+		maxPoint.x = 0.0f; maxPoint.y = 0.0f; maxPoint.z = 0.0f;
+		minPoint.x = 0.0f; minPoint.y = 0.0f; minPoint.z = 0.0f;
+	}
+	BoudingBox(double maxx, double maxy, double maxz, double minx, double miny, double minz)
+	{
+		maxPoint.x = maxx; maxPoint.y = maxy; maxPoint.z = maxz;
+		minPoint.x = minx; minPoint.y = miny; minPoint.z = minz;
+	}
+	void setBoudingBox(double maxx, double maxy, double maxz, double minx, double miny, double minz)
+	{
+		maxPoint.x = maxx; maxPoint.y = maxy; maxPoint.z = maxz;
+		minPoint.x = minx; minPoint.y = miny; minPoint.z = minz;
+	}
+
+};
 typedef struct tagUTMCoor
 	{
 		double x;

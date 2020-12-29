@@ -471,11 +471,12 @@ double EncodeTool::ArcLengthOfMeridian(double phi)
 
 double EncodeTool::UTMCentralLatitude(char zone)
 {
-	if(zone>=3 && zone<=8)  //C~H
+	
+	if(zone-'A'>=3 && zone-'A'<=8)  //C~H
 	{
 		return DegToRad((double)((int)(zone - 'A' + 1) * 8 - 100));
 	}
-	else if(zone>=10 && zone<=14)  //J~N
+	else if(zone-'A'>=10 && zone-'A'<=14)  //J~N
 	{
 		return DegToRad((double)(((int)(zone - 'A' + 1) - 1) * 8 - 100));
 	}
@@ -484,6 +485,16 @@ double EncodeTool::UTMCentralLatitude(char zone)
 		return DegToRad((double)(((int)(zone - 'A' + 1) - 2) * 8 - 100));
 	}
 }
+
+double EncodeTool::UTMCentralMeridian(int zone)
+{
+	double tmp = -183.0 + (zone * 6.0);
+	if(tmp < 0) tmp -= 6;
+	return DegToRad(tmp); 
+}
+
+
+
 
 double EncodeTool::FootpointLatitude(double y)
 {
@@ -644,13 +655,110 @@ void EncodeTool::LatLonToSIGMA(double lat, double lon, double ele, sigma::Time *
 	temp_lon = UTMCentralMeridian(corr.number);
 	temp_lat = UTMCentralLatitude(corr.symbol);
 	LatLonToUTMXY(temp_lat, temp_lon, corr.number, center_temp);
+	printf("Pos    lat lon:(%f,%f)\n",RadToDeg(lat),RadToDeg(lon));
+	printf("Center lat lon:(%f,%f)\n",RadToDeg(temp_lat),RadToDeg(temp_lon));
+	cout << "------------------------" << endl;
 	
 	corr.position.Posx = tmp.x - center_temp.x;
 	corr.position.Posy = tmp.y - center_temp.y;
+	printf("Pos    Corr:(%f,%f)\n",tmp.x, tmp.y);
+	printf("Center Corr:(%f,%f)\n",center_temp.x, center_temp.y);
 	corr.position.Posz = ele - Elevation[zone];
 	corr.time.s = time->s;
 	corr.time.ns = time->ns;
 }
+
+void EncodeTool::SIGMAToLatLon(sigma::sigmaCorr corr, sigma::WGS84Corr &latlon)
+{
+	sigma::UTMCorr center_temp;
+	double temp_lat, temp_lon;
+	temp_lon = UTMCentralMeridian(corr.number);
+	temp_lat = UTMCentralLatitude(corr.symbol);
+	LatLonToUTMXY(temp_lat, temp_lon, corr.number, center_temp);
+
+	corr.position.Posx += center_temp.x;
+	corr.position.Posy += center_temp.y;
+	UTMXYToLatLon(corr.position.Posx, corr.position.Posy, corr.number, (corr.symbol<='M'), latlon);
+}
+
+string EncodeTool::Geohash_w_bin(double w, double left, double right, int step, int max_step)
+{
+	if(step > max_step)
+	{
+		return "";
+	}
+	double mid = (left + right) * 1.0 / 2;
+
+	if(w >= left && w <= mid)
+		return Geohash_w_bin(w, left, mid, step+1, max_step) + "0";
+	if(w > mid && w <= right)
+		return Geohash_w_bin(w, mid, right, step+1, max_step) + "1";
+}
+
+string EncodeTool::Geohash_merge(string Lon, string Lat)
+{
+	string s;
+	for(int i=0;i<Lon.size();i++)
+	{
+		s += Lon[i];
+		s += Lat[i];
+	}
+	return s;
+}
+
+string EncodeTool::Geohash_base32(string s)
+{
+	string temp;
+	string ans;
+	for(int i=0;i<s.size();i++)
+	{
+		temp += s[i];
+		if((i + 1) % 5 == 0)
+		{
+			ans += base32[temp];
+			temp = "";
+		}
+	}
+	return ans;
+}
+
+string EncodeTool::Geohash_space(sigma::sigmaCorr corr, int precision)
+{
+	sigma::WGS84Corr temp;
+	SIGMAToLatLon(corr,temp);
+
+	string s_w="", s_j="";
+	string s="", ss="";
+
+	double LatDeg = RadToDeg(temp.lat);
+	double LonDeg = RadToDeg(temp.log);
+
+	double left = (int)(LonDeg/6)*6;
+	double lower = (int)(LatDeg/8)*8;
+
+	s_w = Geohash_w_bin(LatDeg,lower,lower+8.0,1,precision/2*5);
+	s_j = Geohash_w_bin(LonDeg,left,left+6.0,1,precision/2*5);
+	//s_w = Geohash_w_bin(LatDeg,-90,90,1,precision/2*5);
+	//s_j = Geohash_w_bin(LonDeg,-180,180,1,precision/2*5);
+
+	reverse(s_w.begin(), s_w.end());
+	reverse(s_j.begin(), s_j.end());
+
+	s = Geohash_merge(s_j, s_w);
+	s = Geohash_base32(s);
+
+	return s;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 

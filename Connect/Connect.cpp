@@ -583,7 +583,7 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 			RIDs.push_back(temp);
 		}
 	}
-	
+	//cout << RIDs.size() << endl;
 	for(i=0;i<RIDs.size();i++)
 	{
 		if(Type != 0)
@@ -639,41 +639,7 @@ std::vector<sigma::ResourceMeta>* DBConnect::loadResourceMeta(std::vector<sigma:
 	return collection;
 }
 
-std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(string GeometryID, int Type)
-{
-	std::vector<sigma::ResourceMeta> ResourceMetas;
-	std::vector<string> RIDs;
-	sigma::ResourceMeta dst;
-	string temp;
-	char sql[300];
-	int sql_len,i;
 
-
-	sql_len = sprintf(sql, "select RID from server.link_geo_and_res where GID='%s';", GeometryID.c_str());
-	res = mysql_real_query(pcon, sql, sql_len);
-	result = mysql_store_result(pcon);
-	while(sql_row = mysql_fetch_row(result))
-	{
-		temp = sql_row[0];
-		RIDs.push_back(temp);
-	}
-	
-	for(i=0;i<RIDs.size();i++)
-	{
-		if(Type != 0)
-			sql_len = sprintf(sql, "select * from server.resource where ID='%s' and Type='%d';", RIDs[i].c_str(), Type);
-		else
-			sql_len = sprintf(sql, "select * from server.resource where ID='%s';", RIDs[i].c_str());
-		res = mysql_real_query(pcon, sql, sql_len);
-		result = mysql_store_result(pcon);
-		while(sql_row = mysql_fetch_row(result))
-		{
-			dst = readResourceInformation(sql_row);
-			ResourceMetas.push_back(dst);
-		}
-	}
-	return ResourceMetas;
-}
 
 std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double theta, int Mode, int Type)
 {
@@ -722,6 +688,159 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 	return ResourceMetas;
 }
 //********************************
+
+std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(string GeometryID, int Type)
+{
+	std::vector<sigma::ResourceMeta> ResourceMetas;
+	std::vector<string> RIDs;
+	sigma::ResourceMeta dst;
+	string temp;
+	char sql[300];
+	int sql_len,i;
+
+
+	sql_len = sprintf(sql, "select RID from server.link_geo_and_res where GID='%s';", GeometryID.c_str());
+	res = mysql_real_query(pcon, sql, sql_len);
+	result = mysql_store_result(pcon);
+	while(sql_row = mysql_fetch_row(result))
+	{
+		temp = sql_row[0];
+		RIDs.push_back(temp);
+	}
+	
+	for(i=0;i<RIDs.size();i++)
+	{
+		if(Type != 0)
+			sql_len = sprintf(sql, "select * from server.resource where ID='%s' and Type='%d';", RIDs[i].c_str(), Type);
+		else
+			sql_len = sprintf(sql, "select * from server.resource where ID='%s';", RIDs[i].c_str());
+		res = mysql_real_query(pcon, sql, sql_len);
+		result = mysql_store_result(pcon);
+		while(sql_row = mysql_fetch_row(result))
+		{
+			dst = readResourceInformation(sql_row);
+			ResourceMetas.push_back(dst);
+		}
+	}
+	return ResourceMetas;
+}
+
+std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::BoudingBox *box, int Mode, int Type)
+{
+	std::vector<sigma::ResourceMeta> ResourceMetas;
+	std::vector<sigma::ResourceMeta> temp_ResourceMetas;
+	std::vector<sigma::Geometry> Geometries;
+	std::vector<string> paras;
+	EncodeTool encodeTool;
+
+	double x0, y0, z0;  //camera origin
+	double x_, y_, z_;  //camera corr z-axis in app corr (x_, y_, z_)
+	double x_a, y_a, z_a; //camera corr x-axis in app corr (x_alpha, y_alpha, z_alpha)
+	double x_b, y_b, z_b; //camera corr y-axis in app corr (x_beta, y_beta, z_beta)
+	double theta; //Vertical angle of camera
+	double eta;   //Horizontal angle of view
+	//double imageSensor_x, imageSensor_y;  //camera image sensor size (Discard)
+	double resolution_w, resolution_h;
+	double focusDisx, focusDisy; //camera Focus Distance
+	//imageSensor_x = 30.2f; imageSensor_y = 16.7f;  //APS-H dummy (mm)
+
+	double A1, B1, C1;  double A2, B2, C2; double A3, B3, C3; double A4, B4, C4;
+	sigma::Vector3 P1, P2, P3, P4, P5, P6, P7, P8;
+	double dis1, dis2, dis3, dis4, dis5, dis6, dis7, dis8;
+	//The eight points of the bouding box
+	P1.setVector3(box->minPoint.x, box->maxPoint.y, box->minPoint.z);  P2.setVector3(box->minPoint.x, box->maxPoint.y, box->maxPoint.z);
+	P3.setVector3(box->maxPoint.x, box->maxPoint.y, box->minPoint.z);  P4.setVector3(box->maxPoint.x, box->maxPoint.y, box->maxPoint.z);
+	P5.setVector3(box->minPoint.x, box->minPoint.y, box->minPoint.z);  P6.setVector3(box->minPoint.x, box->minPoint.y, box->maxPoint.z);
+	P7.setVector3(box->maxPoint.x, box->minPoint.y, box->minPoint.z);  P8.setVector3(box->maxPoint.x, box->minPoint.y, box->maxPoint.z);
+	bool inner, inner_up, inner_down, inner_left, inner_right;
+
+	Geometries = loadGeometry(Origin,Range,Mode);
+	//cout << Geometries.size() << endl;
+	for(int i = 0;i < Geometries.size();i++)
+	{
+		x0 = Geometries[i].pos_est.Posx; y0 = Geometries[i].pos_est.Posy; z0 = Geometries[i].pos_est.Posz;
+		encodeTool.R = encodeTool.Quaternion2RotationMatrix(Geometries[i].atti_est.Attitudex,Geometries[i].atti_est.Attitudey,Geometries[i].atti_est.Attitudez,Geometries[i].atti_est.Attitudew);
+		encodeTool.init_vector << 0,0,1; encodeTool.init_vectorx << 1,0,0; encodeTool.init_vectory << 0,1,0;
+		encodeTool.init_vector = encodeTool.R * encodeTool.init_vector; 
+		encodeTool.init_vectorx = encodeTool.R * encodeTool.init_vectorx;
+		encodeTool.init_vectory = encodeTool.R * encodeTool.init_vectory;
+		x_ = encodeTool.init_vector.x();   y_ = encodeTool.init_vector.y();   z_ = encodeTool.init_vector.z();
+		x_a = encodeTool.init_vectorx.x(); y_a = encodeTool.init_vectorx.y(); z_a = encodeTool.init_vectorx.z();
+		x_b = encodeTool.init_vectory.x(); y_b = encodeTool.init_vectory.y(); z_b = encodeTool.init_vectory.z();
+		temp_ResourceMetas = loadResourceMeta(Geometries[i].ID, Type);
+		for(int j=0;j<temp_ResourceMetas.size();j++)
+		{
+			paras = encodeTool.splitter(temp_ResourceMetas[j].Parameters, ',');
+			focusDisx = encodeTool.str2double(paras[0].c_str());
+			focusDisy = encodeTool.str2double(paras[1].c_str());
+			resolution_w = encodeTool.str2double(paras[7].c_str());
+			resolution_h = encodeTool.str2double(paras[8].c_str());
+			theta = encodeTool.DegToRad(atan(resolution_h / (2 * focusDisx)));
+			eta =   encodeTool.DegToRad(atan(resolution_w / (2 * focusDisy)));
+			
+			//Equation of 4 faces
+			//Up A1*(x-x0)+B1*(y-y0)+C1*(z-z0) = 0
+			A1 = x_ - (x_ + x_b * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(theta)) / (1 + tan(theta) * tan(theta));
+			B1 = y_ - (y_ + y_b * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(theta)) / (1 + tan(theta) * tan(theta));
+			C1 = z_ - (z_ + z_b * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(theta)) / (1 + tan(theta) * tan(theta));
+			//Down A2*(x-x0)+B2*(y-y0)+C2*(z-z0) = 0
+			A2 = x_ - (x_ - x_b * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(theta)) / (1 + tan(theta) * tan(theta));
+			B2 = y_ - (y_ - y_b * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(theta)) / (1 + tan(theta) * tan(theta));
+			C2 = z_ - (z_ - z_b * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(theta)) / (1 + tan(theta) * tan(theta));
+			//Left A3*(x-x0)+B3*(y-y0)+C3*(z-z0) = 0
+			A3 = x_ - (x_ + x_a * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(eta)) / (1 + tan(eta) * tan(eta));
+			B3 = y_ - (y_ + y_a * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(eta)) / (1 + tan(eta) * tan(eta));
+			C3 = z_ - (z_ + z_a * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(eta)) / (1 + tan(eta) * tan(eta));
+			//Right A4*(x-x0)+B4*(y-y0)+C4*(z-z0) = 0
+			A4 = x_ - (x_ - x_a * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(eta)) / (1 + tan(eta) * tan(eta));
+			B4 = y_ - (y_ - y_a * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(eta)) / (1 + tan(eta) * tan(eta));
+			C4 = z_ - (z_ - z_a * sqrt(x_ * x_ + y_ * y_ + z_ * z_) * tan(eta)) / (1 + tan(eta) * tan(eta));
+
+			//Distance from the eight points of the collision box to the face
+			//Up
+			dis1 = A1 * (P1.x - x0) + B1 * (P1.y - y0) + C1 * (P1.z - z0);  dis2 = A1 * (P2.x - x0) + B1 * (P2.y - y0) + C1 * (P2.z - z0);
+			dis3 = A1 * (P3.x - x0) + B1 * (P3.y - y0) + C1 * (P3.z - z0);  dis4 = A1 * (P4.x - x0) + B1 * (P4.y - y0) + C1 * (P4.z - z0);
+			dis5 = A1 * (P5.x - x0) + B1 * (P5.y - y0) + C1 * (P5.z - z0);  dis6 = A1 * (P6.x - x0) + B1 * (P6.y - y0) + C1 * (P6.z - z0);
+			dis7 = A1 * (P7.x - x0) + B1 * (P7.y - y0) + C1 * (P7.z - z0);  dis8 = A1 * (P8.x - x0) + B1 * (P8.y - y0) + C1 * (P8.z - z0);
+			if(dis1<=0 && dis2<=0 && dis3<=0 && dis4<=0 && dis5<=0 && dis6<=0 && dis7<=0 && dis8<=0) inner_up = false;
+			else inner_up = true;
+			//Down
+			dis1 = A2 * (P1.x - x0) + B2 * (P1.y - y0) + C2 * (P1.z - z0);  dis2 = A2 * (P2.x - x0) + B2 * (P2.y - y0) + C2 * (P2.z - z0);
+			dis3 = A2 * (P3.x - x0) + B2 * (P3.y - y0) + C2 * (P3.z - z0);  dis4 = A2 * (P4.x - x0) + B2 * (P4.y - y0) + C2 * (P4.z - z0);
+			dis5 = A2 * (P5.x - x0) + B2 * (P5.y - y0) + C2 * (P5.z - z0);  dis6 = A2 * (P6.x - x0) + B2 * (P6.y - y0) + C2 * (P6.z - z0);
+			dis7 = A2 * (P7.x - x0) + B2 * (P7.y - y0) + C2 * (P7.z - z0);  dis8 = A2 * (P8.x - x0) + B2 * (P8.y - y0) + C2 * (P8.z - z0);
+			if(dis1<=0 && dis2<=0 && dis3<=0 && dis4<=0 && dis5<=0 && dis6<=0 && dis7<=0 && dis8<=0) inner_up = false;
+			else inner_up = true;
+			//Left
+			dis1 = A3 * (P1.x - x0) + B3 * (P1.y - y0) + C3 * (P1.z - z0);  dis2 = A3 * (P2.x - x0) + B3 * (P2.y - y0) + C3 * (P2.z - z0);
+			dis3 = A3 * (P3.x - x0) + B3 * (P3.y - y0) + C3 * (P3.z - z0);  dis4 = A3 * (P4.x - x0) + B3 * (P4.y - y0) + C3 * (P4.z - z0);
+			dis5 = A3 * (P5.x - x0) + B3 * (P5.y - y0) + C3 * (P5.z - z0);  dis6 = A3 * (P6.x - x0) + B3 * (P6.y - y0) + C3 * (P6.z - z0);
+			dis7 = A3 * (P7.x - x0) + B3 * (P7.y - y0) + C3 * (P7.z - z0);  dis8 = A3 * (P8.x - x0) + B3 * (P8.y - y0) + C3 * (P8.z - z0);
+			if(dis1<=0 && dis2<=0 && dis3<=0 && dis4<=0 && dis5<=0 && dis6<=0 && dis7<=0 && dis8<=0) inner_up = false;
+			else inner_up = true;
+			//Right
+			dis1 = A4 * (P1.x - x0) + B4 * (P1.y - y0) + C4 * (P1.z - z0);  dis2 = A4 * (P2.x - x0) + B4 * (P2.y - y0) + C4 * (P2.z - z0);
+			dis3 = A4 * (P3.x - x0) + B4 * (P3.y - y0) + C4 * (P3.z - z0);  dis4 = A4 * (P4.x - x0) + B4 * (P4.y - y0) + C4 * (P4.z - z0);
+			dis5 = A4 * (P5.x - x0) + B4 * (P5.y - y0) + C4 * (P5.z - z0);  dis6 = A4 * (P6.x - x0) + B4 * (P6.y - y0) + C4 * (P6.z - z0);
+			dis7 = A4 * (P7.x - x0) + B4 * (P7.y - y0) + C4 * (P7.z - z0);  dis8 = A4 * (P8.x - x0) + B4 * (P8.y - y0) + C4 * (P8.z - z0);
+			if(dis1<=0 && dis2<=0 && dis3<=0 && dis4<=0 && dis5<=0 && dis6<=0 && dis7<=0 && dis8<=0) inner_up = false;
+			else inner_up = true;
+
+			inner = (inner_up && inner_down) || (inner_left && inner_right);
+			//inner = (inner_up && inner_down) && (inner_left && inner_right);
+
+			if(inner)
+			{
+				ResourceMetas.push_back(temp_ResourceMetas[j]);				
+			}
+		}
+	}
+
+	
+
+	return ResourceMetas;
+}
+//********************************
 std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Origin, sigma::Vector4 *Range, sigma::Target *target, double alpha, double beta, int Mode,int Type)
 {
 	
@@ -736,6 +855,8 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 	double cos_temp_theta,cos_temp_theta_A,cos_temp_theta_B;
 	double resultA,resultB;
 	double roll,pitch,yaw;
+	double focusDisx,focusDisy,resolution_w,resolution_h,theta, eta;
+	vector<string> paras;
 	
 	Geometries = loadGeometry(Origin,Range,Mode);
 
@@ -753,6 +874,14 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 			Eigen::Vector3d temp_vector(0,0,0),init_vector(0,0,0);
 			Eigen::Vector3d vector_weight_with_z(0,0,0),vector_weight_notwith_z(0,0,0);
 			Eigen::Matrix3d rotMatrix,R;
+
+			paras = encodeTool.splitter(temp_ResourceMetas[j].Parameters, ',');
+			focusDisx = encodeTool.str2double(paras[0].c_str());
+			focusDisy = encodeTool.str2double(paras[1].c_str());
+			resolution_w = encodeTool.str2double(paras[7].c_str());
+			resolution_h = encodeTool.str2double(paras[8].c_str());
+			theta = encodeTool.DegToRad(atan(resolution_h / (2 * focusDisx)));
+			eta =   encodeTool.DegToRad(atan(resolution_w / (2 * focusDisy)));
 			
 			double Rx = temp_ResourceMetas[j].transform.atti.Attitudex;
 			double Ry = temp_ResourceMetas[j].transform.atti.Attitudey;
@@ -779,7 +908,7 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 			resultA = (vector_weight_notwith_z * cos_temp_theta_A).norm();
 			resultB = (vector_weight_notwith_z * cos_temp_theta_B).norm();
 
-			if(resultA <= sin(alpha) && resultB <= sin(beta) && resultA >=0 && resultB >= 0)
+			if(resultA <= sin(eta) && resultB <= sin(theta) && resultA >=0 && resultB >= 0)
 			{
 				ResourceMetas.push_back(temp_ResourceMetas[j]);				
 			}
@@ -787,3 +916,6 @@ std::vector<sigma::ResourceMeta> DBConnect::loadResourceMeta(sigma::Vector4 *Ori
 	}
 	return ResourceMetas;
 }
+
+
+

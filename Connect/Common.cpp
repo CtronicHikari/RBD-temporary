@@ -2,20 +2,20 @@
 
 extern bool xmlFileGenerator(const std::vector<sigma::ResourceMeta> resourcemetas, const std::string path) {
 
-	//曐懚偡傞傕偺偑偁傞偐偳偆偐
+	//保存するものがあるかどうか
 	if (resourcemetas.empty()) {
-		std::cout << "曐懚偡傞僼傽僀儖偑偁傝傑偣傫" << std::endl;
+		std::cout << "保存するファイルがありません" << std::endl;
 		return false;
 	}
 
 	boost::system::error_code error;
 	const bool result = boost::filesystem::exists(path, error);
 	if (!result || error) {
-		std::cout << "僼傽僀儖偑側偄偺偱嶌惉偟傑偡" << std::endl;
+		std::cout << "ファイルがないので作成します" << std::endl;
 
 		const bool result = boost::filesystem::create_directory(path, error);
 		if (!result || error) {
-			std::cout << "僨傿儗僋僩儕偺嶌惉偵幐攕" << std::endl;
+			std::cout << "ディレクトリの作成に失敗" << std::endl;
 
 			return false;
 		}
@@ -24,6 +24,8 @@ extern bool xmlFileGenerator(const std::vector<sigma::ResourceMeta> resourcemeta
 	boost::property_tree::ptree pt;
 	for (auto& v : resourcemetas) {
 
+		//std::cout << v.Path << "を書き出し中" << std::endl;
+			 
 		boost::property_tree::ptree& child = pt.add("resourcemeta", "");
 		child.add("ID", v.ID);
 		child.add("ParentObjectID", v.ParentObjectID);
@@ -33,24 +35,24 @@ extern bool xmlFileGenerator(const std::vector<sigma::ResourceMeta> resourcemeta
 		child.add("Parameters", v.Parameters);
 
 		boost::property_tree::ptree& child2 = child.add("transform", "");
-		child2.add("Attiw", v.transform.atti.Attitudew);
-		child2.add("Attix", v.transform.atti.Attitudex);
-		child2.add("Attiy", v.transform.atti.Attitudey);
-		child2.add("Attiz", v.transform.atti.Attitudez);
-		child2.add("Time_s", v.transform.time.s);
-		child2.add("Time_ns", v.transform.time.ns);
-		child2.add("Posx", v.transform.pos.Posx);
-		child2.add("Posy", v.transform.pos.Posy);
-		child2.add("Posz", v.transform.pos.Posz);
+		child2.add("AttitudeW", v.transform.atti.Attitudew);
+		child2.add("AttitudeX", v.transform.atti.Attitudex);
+		child2.add("AttitudeY", v.transform.atti.Attitudey);
+		child2.add("AttitudeZ", v.transform.atti.Attitudez);
+		child2.add("Second", v.transform.time.s);
+		child2.add("MilliSecond", v.transform.time.ns);
+		child2.add("WorldPositionX", v.transform.pos.Posx);
+		child2.add("WorldPositionY", v.transform.pos.Posy);
+		child2.add("WorldPositionZ", v.transform.pos.Posz);
 	}
 
+	//std::cout << "保存先:" << path << "/meta.xml" << std::endl;
 	const int indent = resourcemetas.size();
 	boost::property_tree::write_xml(path + "/meta.xml", pt, std::locale(),
 		boost::property_tree::xml_writer_make_settings<std::string>(' ', indent));
 
 	return true;
 };
-
 void xmlFileParser(std::vector<sigma::ResourceMeta>& resourcemetametas, const std::string path) {
 
 	boost::property_tree::ptree pt;
@@ -107,7 +109,7 @@ void parameterFileParser(std::vector<pairIE>& pairie, std::vector<intrinsicPara>
 
 				if (it.first == "root_path") folder = boost::lexical_cast<std::string>(it.second.data());
 
-				//撪晹偲奜晹偺儁傾
+				//内部と外部のペア
 				else if (it.first == "views") {
 					for (auto& it2 : it.second.get_child("")) {
 						for (auto& it3 : it2.second.get_child("")) {
@@ -147,14 +149,14 @@ void parameterFileParser(std::vector<pairIE>& pairie, std::vector<intrinsicPara>
 					}
 				}//else if (it.first == "views") {
 			}
-			//偙偺帪揰偱view id偼慡偰尒偰偄傞偺偱丆
+			//この時点でview idは全て見ているので，
 			intrinsicpara.resize(pairie.size());
 			extrinsicpara.resize(pairie.size());
 			int key = 0;
 
 			for (auto& it : tree.second.get_child("")) {
 				
-				//撪晹僷儔儊乕僞偺応崌
+				//内部パラメータの場合
 				if (it.first == "intrinsics") {
 
 					for (auto& it2 : it.second.get_child("")) {
@@ -185,7 +187,8 @@ void parameterFileParser(std::vector<pairIE>& pairie, std::vector<intrinsicPara>
 													}
 
 													else if (it6.first == "focal_length") {
-														ip.focal = boost::lexical_cast<double>(it6.second.data());
+														ip.focalx = boost::lexical_cast<double>(it6.second.data());
+														ip.focaly = boost::lexical_cast<double>(it6.second.data());
 													}
 
 													else if (it6.first == "principal_point") {
@@ -229,9 +232,9 @@ void parameterFileParser(std::vector<pairIE>& pairie, std::vector<intrinsicPara>
 							}
 						}
 					}
-				}//撪晹僷儔儊乕僞偺応崌
+				}//内部パラメータの場合
 
-				//奜晹僷儔儊乕僞偺応崌
+				//外部パラメータの場合
 				else if (it.first == "extrinsics") {
 
 					for (auto& it2 : it.second.get_child("")) {
@@ -322,7 +325,7 @@ void parameterFileParser(std::vector<pairIE>& pairie, std::vector<intrinsicPara>
 							}
 						}
 					}
-				}//奜晹僷儔儊乕僞偺応崌
+				}//外部パラメータの場合
 			}
 		}
 	}
@@ -344,14 +347,15 @@ std::string strGenerator(intrinsicPara& _intrinsicpara) {
 	//int height;仺4byte  寁56byte
 
 	char m[56];
-	std::memcpy(&m[0], &_intrinsicpara.focal, sizeof(double));
-	std::memcpy(&m[8], &_intrinsicpara.ppx, sizeof(double));
-	std::memcpy(&m[16], &_intrinsicpara.ppy, sizeof(double));
-	std::memcpy(&m[24], &_intrinsicpara.k1, sizeof(double));
-	std::memcpy(&m[32], &_intrinsicpara.k2, sizeof(double));
-	std::memcpy(&m[40], &_intrinsicpara.k3, sizeof(double));
-	std::memcpy(&m[44], &_intrinsicpara.width, sizeof(int));
-	std::memcpy(&m[48], &_intrinsicpara.height, sizeof(int));
+	std::memcpy(&m[0], &_intrinsicpara.focalx, sizeof(double));
+	std::memcpy(&m[8], &_intrinsicpara.focaly, sizeof(double));
+	std::memcpy(&m[16], &_intrinsicpara.ppx, sizeof(double));
+	std::memcpy(&m[24], &_intrinsicpara.ppy, sizeof(double));
+	std::memcpy(&m[32], &_intrinsicpara.k1, sizeof(double));
+	std::memcpy(&m[40], &_intrinsicpara.k2, sizeof(double));
+	std::memcpy(&m[48], &_intrinsicpara.k3, sizeof(double));
+	std::memcpy(&m[52], &_intrinsicpara.width, sizeof(int));
+	std::memcpy(&m[56], &_intrinsicpara.height, sizeof(int));
 
 	std::string tmp(m);
 
@@ -361,7 +365,8 @@ std::string strGenerator(intrinsicPara& _intrinsicpara) {
 
 std::string strGeneratorCSV(intrinsicPara& _intrinsicpara) {
 
-	std::string tmp = std::to_string(_intrinsicpara.focal);
+	std::string tmp = std::to_string(_intrinsicpara.focalx);
+	tmp += ("," + std::to_string(_intrinsicpara.focaly));
 	tmp += ("," + std::to_string(_intrinsicpara.ppx));
 	tmp += ("," + std::to_string(_intrinsicpara.ppy));
 	tmp += ("," + std::to_string(_intrinsicpara.k1));
@@ -378,15 +383,15 @@ std::string strGeneratorCSV(intrinsicPara& _intrinsicpara) {
 void strParser(intrinsicPara& _intrinsicpara, std::string str) {
 
 	const char* m = str.c_str();
-	double aa = 0.4;
-	std::memcpy(&_intrinsicpara.focal, &m[0], sizeof(double));
-	std::memcpy(&_intrinsicpara.ppx, &m[8], sizeof(double));
-	std::memcpy(&_intrinsicpara.ppy, &m[16], sizeof(double));
-	std::memcpy(&_intrinsicpara.k1, &m[24], sizeof(double));
-	std::memcpy(&_intrinsicpara.k2, &m[32], sizeof(double));
-	std::memcpy(&_intrinsicpara.k3, &m[40], sizeof(double));
-	std::memcpy(&_intrinsicpara.width, &m[44], sizeof(int));
-	std::memcpy(&_intrinsicpara.height, &m[48], sizeof(int));
+	std::memcpy(&_intrinsicpara.focalx, &m[0], sizeof(double));
+	std::memcpy(&_intrinsicpara.focaly, &m[8], sizeof(double));
+	std::memcpy(&_intrinsicpara.ppx, &m[16], sizeof(double));
+	std::memcpy(&_intrinsicpara.ppy, &m[24], sizeof(double));
+	std::memcpy(&_intrinsicpara.k1, &m[32], sizeof(double));
+	std::memcpy(&_intrinsicpara.k2, &m[40], sizeof(double));
+	std::memcpy(&_intrinsicpara.k3, &m[48], sizeof(double));
+	std::memcpy(&_intrinsicpara.width, &m[52], sizeof(int));
+	std::memcpy(&_intrinsicpara.height, &m[56], sizeof(int));
 };
 
 void strParserCSV(intrinsicPara& _intrinsicpara, std::string str) {
@@ -394,14 +399,15 @@ void strParserCSV(intrinsicPara& _intrinsicpara, std::string str) {
 	boost::tokenizer< boost::escaped_list_separator< char > > tokens(str);
 	for (auto it = tokens.begin(); it != tokens.end(); ++it) {
 
-		if (std::distance(tokens.begin(), it) == 0) _intrinsicpara.focal = std::stod(*it);
-		else if (std::distance(tokens.begin(), it) == 1) _intrinsicpara.ppx = std::stod(*it);
-		else if (std::distance(tokens.begin(), it) == 2) _intrinsicpara.ppy = std::stod(*it);
-		else if (std::distance(tokens.begin(), it) == 3) _intrinsicpara.k1 = std::stod(*it);
-		else if (std::distance(tokens.begin(), it) == 4) _intrinsicpara.k2 = std::stod(*it);
-		else if (std::distance(tokens.begin(), it) == 5) _intrinsicpara.k3 = std::stod(*it);
-		else if (std::distance(tokens.begin(), it) == 6) _intrinsicpara.width = std::stod(*it);
-		else if (std::distance(tokens.begin(), it) == 7) _intrinsicpara.height = std::stod(*it);
+		if (std::distance(tokens.begin(), it) == 0) _intrinsicpara.focalx = std::stod(*it);
+		else if (std::distance(tokens.begin(), it) == 1) _intrinsicpara.focaly = std::stod(*it);
+		else if (std::distance(tokens.begin(), it) == 2) _intrinsicpara.ppx = std::stod(*it);
+		else if (std::distance(tokens.begin(), it) == 3) _intrinsicpara.ppy = std::stod(*it);
+		else if (std::distance(tokens.begin(), it) == 4) _intrinsicpara.k1 = std::stod(*it);
+		else if (std::distance(tokens.begin(), it) == 5) _intrinsicpara.k2 = std::stod(*it);
+		else if (std::distance(tokens.begin(), it) == 6) _intrinsicpara.k3 = std::stod(*it);
+		else if (std::distance(tokens.begin(), it) == 7) _intrinsicpara.width = std::stod(*it);
+		else if (std::distance(tokens.begin(), it) == 8) _intrinsicpara.height = std::stod(*it);
 	}
 }
 
